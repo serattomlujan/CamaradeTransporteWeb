@@ -54,7 +54,7 @@
 	   nombre=encontrada.getNombre();
 	   apellido=encontrada.getApellido();
 	   telefono=encontrada.getTelefono();;
-	   estado=encontrada.isEstado(); 
+	   estado=encontrada.isEstado();
    } %>
 <div class="row">
   <div class="leftcolumn" align="center">
@@ -66,11 +66,11 @@
         
     <div class="row">
      <div class="col-25"><label for="inputnrosocio" class="sr-only">Nro Socio</label></div>
-     <div class="col-75"> <input  name="nro_socio" class="form-control" type="text" readonly="readonly" value=<%=nro_socio %>> </div>
+     <div class="col-75"> <input  name="nro_socio" class="form-control" type="text" readonly="readonly" <%if (nro_socio.equals("0")) { %>value =""<%} else{ %> value=<%=nro_socio %><%} %>> </div>
     </div>
     <div class="row">
       <div class="col-25"><label for="inputdni" class="sr-only">DNI</label></div>
-      <div class="col-75"><input name="dni" id="inputdni"  class="form-control" placeholder="" required="" autofocus="" type="text" value=<%=dni %>></div>  
+      <div class="col-75"><input name="dni" id="inputdni"  class="form-control" placeholder="" required="" autofocus="" type="text" readonly="readonly" value=<%=dni %>></div>  
     </div>
      <div class="row">
       <div class="col-25"><label for="inputNombre" class="sr-only">Nombre:</label></div>
