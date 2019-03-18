@@ -14,7 +14,7 @@ public class DataSocio {
 		ArrayList<Socio> socs= new ArrayList<Socio>();
 		try {
 		 	stmt = FactoryConexion.getInstancia().getConn().createStatement();
-		 	rs = stmt.executeQuery("select * from camaradetransporte.socios s ");
+		 	rs = stmt.executeQuery("select * from socios s ");
 		 	if(rs!=null){
 		 		while(rs.next()){
 		 			Socio s=new Socio();
