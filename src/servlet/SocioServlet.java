@@ -31,7 +31,7 @@ public class SocioServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		this.listaSocios(request,response);
 	}
 
 	/**
@@ -39,7 +39,6 @@ public class SocioServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String accion=request.getParameter("accion");
-		System.out.println(accion);
 		switch (accion) {
 		case "Ingresar":
 			this.listaSocios(request,response);
@@ -74,13 +73,14 @@ public class SocioServlet extends HttpServlet {
 					ctrl.update(soc);
 				}
 				else{ ctrl.add(soc);}
-				response.getWriter().append("Se han registrado los cambios correctamente");
+				request.setAttribute("actualizado", soc);
+				request.getRequestDispatcher("/WEB-INF/ABMSocio.jsp").forward(request, response);
 		  }catch (AppDataException ade) {
 				request.setAttribute("Error", ade.getMessage());
 			} catch (Exception e) {
 				response.setStatus(500);
 			}
-		
+		  
 	}
 
 	private void agregarSocio(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

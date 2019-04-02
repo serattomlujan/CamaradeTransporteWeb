@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 
-input[type=text], select, textarea {
+input[type=text],[type=password], select, textarea {
   width: 75%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -27,6 +27,7 @@ input[type=submit] {
   border-radius: 4px;
   cursor: pointer;
   float: right;
+ 
 }
 
 input[type=submit]:hover {

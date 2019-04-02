@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="C:/Users/julie/Downloads/descargas/apache-log4j-2.10.0-bin/apache-log4j-2.10.0-bin/log4j-1.2-api-2.10.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/julie/Downloads/descargas/apache-log4j-2.10.0-bin/apache-log4j-2.10.0-bin/log4j-api-2.10.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/julie/Downloads/descargas/apache-log4j-2.10.0-bin/apache-log4j-2.10.0-bin/log4j-core-2.10.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/julie/Downloads/descargas/javax.mail.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
