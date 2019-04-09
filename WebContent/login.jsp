@@ -22,7 +22,7 @@ open(url,'','top=600,left=600,width=600,height=600') ;
      <h5 style="color: #FF0000;" >usuario o contraseña incorrecta</h5><% }%> 
       <input name="user" id="inputUser" placeholder="Usuario" required="" type="text"/>
       <input name="pass" id="inputPass"  placeholder="Contraseña" required="" type="password"/>
-      <a href="javascript:abrir('Home?accion=CambiarPass')" >¿Olvidaste tu contraseña?</a>
+      <a href="javascript:abrir('Home?accion=CambiarPass')" method="post">¿Olvidaste tu contraseña?</a>
       	
        <br><br><input type="submit" name="accion" value="Ingresar"> 
       

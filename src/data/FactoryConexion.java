@@ -5,7 +5,7 @@ import util.AppDataException;
 
 public class FactoryConexion {
 	private String driver="com.mysql.cj.jdbc.Driver";
-	//private String driver="com.mysql.jdbc.Driver";
+	
 		
 	private static FactoryConexion instancia;
 	
