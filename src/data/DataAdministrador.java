@@ -44,7 +44,7 @@ public class DataAdministrador {
 		PreparedStatement stmt= null;
 		ResultSet rs=null;
 		try {
-			 stmt= FactoryConexion.getInstancia().getConn().prepareStatement( "select * from administradores a where  a.correo like ?");
+			 stmt= FactoryConexion.getInstancia().getConn().prepareStatement( "select * from administradores a where  a.correo=?");
 			 stmt.setString(1,adm.getCorreo());
 			 rs=stmt.executeQuery();
 			 if(rs!=null && rs.next()){

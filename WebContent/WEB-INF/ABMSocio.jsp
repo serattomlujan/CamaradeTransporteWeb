@@ -21,7 +21,30 @@
 		 location.reload('Socio');
 	}
 </script>
-
+<script>
+            function Valida(formulario) {
+                /* Validación de campos NO VACÍOS */
+                if ((formulario.dni.value.length == 0) || (formulario.nombre.value.length ==0) || (formulario.apellido.value.length ==0) ||  (formulario.telefono.value.length ==0)) {
+                    alert('Falta información');
+                    return false;
+                } 
+                if (isNaN(parseInt(formulario.telefono.value))) {
+                    alert('El telefono debe ser un número');
+                    formulario.telefono.style.borderColor = "red";
+                    return false;
+                }
+                /* validación del DNI */
+                var erdni=/(^([0-9]{8,8}\-[A-Z])|^)$/;
+                if (!(erdni.test(formulario.dni.value))) {
+                    alert('no es un DNI válido.');
+                    formulario.dni.style.borderColor = "red";
+                    return false;  }
+                /* validación del e-mail */
+               
+                /* si no hemos detectado fallo devolvemos TRUE */
+                return true;
+            }
+        </script>
 
 </head>
 <body>
@@ -51,14 +74,16 @@
 	</div>
 
 	<div class="topnav">
-		<a href="Home">Home</a> <a href="Socio">Socios</a> <a href="Cliente">Clientes</a>
+		<a href="Home?accion=menu">Home</a>
+		<a href="Socio">Socios</a> 
+		<a href="Cliente">Clientes</a>
 	</div>
 	 <div class="row">
 		<div class="leftcolumn" align="center">
 			<div class="card">
 				<div class="container">
 
-					<form class="form-signin" id="myForm" name="abmsocio" action="" method="post">
+					<form name="miFormulario" onsubmit="return Valida(this);" name="abmsocio" action="" method="post">
 						<h2 class="form-signin-heading">Socio</h2>
 						
 						<div class="row">

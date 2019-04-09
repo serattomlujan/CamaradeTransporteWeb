@@ -14,7 +14,7 @@
 	</div>
 
 	<div class="topnav">
-		<a href="Home">Home</a> 
+		<a href="Home?accion=menu">Home</a> 
 		<a href="Socio">Socios</a> 
 		<a href="Cliente">Clientes</a>
 	</div>
