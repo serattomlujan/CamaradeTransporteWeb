@@ -11,6 +11,10 @@ public class Servicio {
 	private float precio_servicio;
 	private Date fecha;
 	private Time hora;
+	private Camion camion;
+	private Precio precio;
+	private Cereal cereal;
+	private Cliente cliente;
 	
 	public int getIdservicio() {
 		return idservicio;
@@ -47,6 +51,30 @@ public class Servicio {
 	}
 	public void setHora(Time hora) {
 		this.hora = hora;
+	}
+	public Camion getCamion() {
+		return camion;
+	}
+	public void setCamion(Camion camion) {
+		this.camion = camion;
+	}
+	public Precio getPrecio() {
+		return precio;
+	}
+	public void setPrecio(Precio precio) {
+		this.precio = precio;
+	}
+	public Cereal getCereal() {
+		return cereal;
+	}
+	public void setCereal(Cereal cereal) {
+		this.cereal = cereal;
+	}
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 	
 

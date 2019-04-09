@@ -14,14 +14,14 @@ public class DataAdministrador {
 		PreparedStatement stmt= null;
 		ResultSet rs=null;
 		try {
-			 stmt= FactoryConexion.getInstancia().getConn().prepareStatement( "select * from administradores a where  a.usuario= ? and a.contraseña=? ");
+			 stmt= FactoryConexion.getInstancia().getConn().prepareStatement( "select * from administradores a where  a.usuario= ? and a.contrasenia=? ");
 			 stmt.setString(1,adm.getUsuario());
 			 stmt.setString(2,adm.getContraseña());
 			 rs=stmt.executeQuery();
 			 if(rs!=null && rs.next()){
 				 a= new Administrador();
 				 a.setUsuario(rs.getString("usuario"));
-				 a.setContraseña(rs.getString("contraseña"));
+				 a.setContraseña(rs.getString("contrasenia"));
 			 } 
 		} catch (SQLException e) {
 //			AppDataException ade=new AppDataException(e, "Error al validar persona.\n"+e.getSQLState()+":"+e.getMessage(), Level.WARN);
@@ -50,7 +50,7 @@ public class DataAdministrador {
 			 if(rs!=null && rs.next()){
 				 a= new Administrador();
 				 a.setUsuario(rs.getString("usuario"));
-				 a.setContraseña(rs.getString("contraseña"));
+				 a.setContraseña(rs.getString("contrasenia"));
 				 a.setNombre(rs.getString("nombre"));
 				 a.setApellido(rs.getString("apellido"));
 				 a.setCorreo(rs.getString("correo"));
@@ -83,7 +83,7 @@ public class DataAdministrador {
 		    			 if(rs!=null && rs.next()){
 		    				 a= new Administrador();
 		    				 a.setUsuario(rs.getString("usuario"));
-		    				 a.setContraseña(rs.getString("contraseña"));
+		    				 a.setContraseña(rs.getString("contrasenia"));
 		    				 a.setNombre(rs.getString("nombre"));
 		    				 a.setApellido(rs.getString("apellido"));
 		    				 a.setCorreo(rs.getString("correo"));
