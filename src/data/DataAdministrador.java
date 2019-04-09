@@ -24,8 +24,8 @@ public class DataAdministrador {
 				 a.setContraseña(rs.getString("contraseña"));
 			 } 
 		} catch (SQLException e) {
-			AppDataException ade=new AppDataException(e, "Error al validar persona.\n"+e.getSQLState()+":"+e.getMessage(), Level.WARN);
-			throw ade;
+//			AppDataException ade=new AppDataException(e, "Error al validar persona.\n"+e.getSQLState()+":"+e.getMessage(), Level.WARN);
+//			throw ade;
 		} catch (AppDataException ade){
 			throw ade;
 		}
