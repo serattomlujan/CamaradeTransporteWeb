@@ -8,14 +8,19 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/palos/Downloads/servlet-api-2.5-6.1h.8.jar"/>
-	<classpathentry kind="lib" path="C:/Users/palos/Downloads/beansbinding-1.2.1.jar/beansbinding-1.2.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/palos/git/CamaradeTransporteWeb/WebContent/WEB-INF/lib/javax.mail.jar"/>
-	<classpathentry kind="lib" path="/TP Web3/WebContent/WEB-INF/lib/beansbinding-1.2.1.jar"/>
-	<classpathentry kind="lib" path="/TP Web3/WebContent/WEB-INF/lib/mail.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/MySQL/Connector.J 5.1/mysql-connector-java-5.1.42-bin.jar"/>
-	<classpathentry kind="lib" path="C:/Users/palos/Downloads/apache-log4j-2.11.2-bin/log4j-1.2-api-2.11.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/palos/Downloads/apache-log4j-2.11.2-bin/log4j-api-2.11.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/palos/Downloads/apache-log4j-2.11.2-bin/log4j-core-2.11.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/julie/Downloads/descargas/apache-log4j-2.10.0-bin/apache-log4j-2.10.0-bin/log4j-1.2-api-2.10.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/julie/Downloads/descargas/apache-log4j-2.10.0-bin/apache-log4j-2.10.0-bin/log4j-api-2.10.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/julie/Downloads/descargas/apache-log4j-2.10.0-bin/apache-log4j-2.10.0-bin/log4j-core-2.10.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/julie/Downloads/descargas/javax.mail.jar"/>
+	<classpathentry kind="lib" path="C:/Users/julie/Downloads/commons-fileupload-1.4-bin/commons-fileupload-1.4-bin/commons-fileupload-1.4.jar" sourcepath="C:/Users/julie/Downloads/commons-fileupload-1.4-bin/commons-fileupload-1.4-bin/commons-fileupload-1.4-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/julie/Downloads/commons-io-2.6-bin/commons-io-2.6/commons-io-2.6.jar" sourcepath="C:/Users/julie/Downloads/commons-io-2.6-bin/commons-io-2.6/commons-io-2.6-sources.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="lib" path="C:/Users/julie/Downloads/mysql-connector-java-8.0.14/mysql-connector-java-8.0.14/mysql-connector-java-8.0.14.jar"/>
+	<classpathentry kind="lib" path="C:/Users/julie/Downloads/poi-bin-4.1.0-20190412/poi-4.1.0/poi-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/julie/Downloads/poi-bin-4.1.0-20190412/poi-4.1.0/poi-ooxml-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/julie/Downloads/poi-bin-4.1.0-20190412/poi-4.1.0/poi-ooxml-schemas-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/julie/Downloads/poi-bin-4.1.0-20190412/poi-4.1.0/lib/commons-collections4-4.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/julie/Downloads/poi-bin-4.1.0-20190412/poi-4.1.0/ooxml-lib/xmlbeans-3.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/julie/Downloads/poi-bin-4.1.0-20190412/poi-4.1.0/lib/commons-compress-1.18.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

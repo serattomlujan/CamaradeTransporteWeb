@@ -32,15 +32,7 @@ public class Home extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String accion=request.getParameter("accion");
-		switch (accion) {
-		case "menu":
-			request.getRequestDispatcher("/WEB-INF/menu.jsp").forward(request, response);
-			break;
-		case "CambiarPass":
-			this.CambiarContraseña(request,response);
-			break;
-		}
+		doPost(request, response);
 		
 	}
 
@@ -49,8 +41,10 @@ public class Home extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String accion=request.getParameter("accion");
-		System.out.println(accion);
 		switch (accion) {
+		case "menu":
+			request.getRequestDispatcher("/WEB-INF/menu.jsp").forward(request, response);
+			break;
 		case "Ingresar":
 			this.login(request,response);
 			break;

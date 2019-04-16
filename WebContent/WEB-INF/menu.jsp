@@ -20,6 +20,7 @@
 		<a href="Home?accion=menu">Home</a> 
 		<a href="Socio">Socios</a> 
 		<a href="Cliente">Clientes</a>
+		<a href="precio?accion=Ingresar">Actualizar precios</a>
 	</div>
 </body>
 </html>

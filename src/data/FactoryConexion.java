@@ -34,7 +34,7 @@ public class FactoryConexion {
 		try {
 			if(conn==null || conn.isClosed()){	
 				conn = DriverManager.getConnection(
-						 "jdbc:mysql://localhost:3306/camaradetransporte?useTimezone=true&serverTimezone=UTC","root","root");
+						 "jdbc:mysql://localhost:3306/camaradetransporte?useTimezone=true&serverTimezone=UTC","root","admin");
 						// "jdbc:mysql://localhost:3306/camaradetransporte?useSSL=false","root","root");
 			}
 		} catch (SQLException e) {

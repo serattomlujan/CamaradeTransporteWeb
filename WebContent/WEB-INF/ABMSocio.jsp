@@ -23,6 +23,7 @@
 </script>
 <script>
             function Valida(formulario) {
+            	
                 /* Validación de campos NO VACÍOS */
                 if ((formulario.dni.value.length == 0) || (formulario.nombre.value.length ==0) || (formulario.apellido.value.length ==0) ||  (formulario.telefono.value.length ==0)) {
                     alert('Falta información');
