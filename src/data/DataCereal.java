@@ -41,7 +41,7 @@ public class DataCereal {
 		return cers;
 		}
 		 	
-		public Cereal getByIdCereal(Cereal c) throws Exception{
+		public Cereal getByDescCereal(Cereal c) throws Exception{
 			Cereal cer=null;
 		 		PreparedStatement stmt=null;
 		 		ResultSet rs=null;
@@ -49,7 +49,7 @@ public class DataCereal {
 		 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
 		 					"select id_cereal, descripcion"
 		 					+ " from cereales cer "
-		 					+ " where id_cereal=?");
+		 					+ " where descripcion=?");
 		 			//stmt(1, cer.getIdcereal());
 		 			rs=stmt.executeQuery();
 		 			if(rs!=null && rs.next()){

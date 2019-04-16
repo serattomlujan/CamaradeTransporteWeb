@@ -28,8 +28,8 @@ public class CtrlABMCereal {
 		
 		
 		
-	public Cereal getByIdCereal(Cereal cer) throws Exception{
-	return this.dataCer.getByIdCereal(cer);
+	public Cereal getByDescCereal(Cereal cer) throws Exception{
+	return this.dataCer.getByDescCereal(cer);
 	}	
 		
 	

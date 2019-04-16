@@ -32,6 +32,8 @@
   <a href="Home?accion=menu">Home</a>
   <a href="Socio">Socios</a>
   <a href="Cliente">Clientes</a>
+  <a href="Camion">Camiones</a>
+  <a href="Cereal">Cereales</a>
 </div>
 <%
    Cliente encontrada=null;

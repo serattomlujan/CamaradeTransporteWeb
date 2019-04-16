@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import entity.Camion;
+import entity.Socio;
 import util.AppDataException;
 
 public class DataCamion {
@@ -25,7 +26,9 @@ public class DataCamion {
 		 			cam.setModelo(rs.getString("modelo"));
 		 			cam.setMarca(rs.getString("marca"));
 		 			cam.setEstado(rs.getBoolean("estado"));
-		 			cam.setFecha_ingreso(rs.getDate("fecha_ingreso"));
+//		 			cam.setFecha_ingreso(rs.getDate("fecha_ingreso"));
+//		 			cam.setSocio(new Socio());
+		 			
 		 			 		
 		 			cams.add(cam);
 		 						}
@@ -63,7 +66,9 @@ public class DataCamion {
 				 			cam.setModelo(rs.getString("modelo"));
 				 			cam.setMarca(rs.getString("marca"));
 				 			cam.setEstado(rs.getBoolean("estado"));
-				 			cam.setFecha_ingreso(rs.getDate("fecha_ingreso"));
+//				 			cam.setFecha_ingreso(rs.getDate("fecha_ingreso"));
+//				 			cam.getSocio().setNro_Socio(rs.getInt("nro_Socio"));
+				 			
 				 		
 		 			}
 		 			
@@ -88,14 +93,15 @@ public class DataCamion {
 		 		ResultSet rs=null;
 		 		try {
 		 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
-		 					"insert into camiones(id_camion, patente, marca, modelo, estado, fecha_ingreso) "
+		 					"insert into camiones(id_camion, patente, marca, modelo, estado) "
 		 					+ "values (?,?,?,?,?)");
 		 			stmt.setInt(1, cam.getIdcamion());
 		 			stmt.setString(2, cam.getPatente());
 		 			stmt.setString(3, cam.getMarca());
 		 			stmt.setString(4, cam.getModelo());
 		 			stmt.setBoolean(5, cam.isEstado());
-		 			stmt.setDate(6, cam.getFecha_ingreso());
+//		 			stmt.setDate(6, cam.getFecha_ingreso());
+//		 			stmt.setInt(7, cam.getSocio().getNro_Socio());
 		 			
 		 			stmt.executeUpdate();
 		 			
@@ -119,7 +125,7 @@ public class DataCamion {
 	 		
 	 		try {
 	 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
-	 					"update camiones set id_camion=?, patente=?, marca=?,modelo=?,estado=?,fecha_ingreso=? "
+	 					"update camiones set id_camion=?, patente=?, marca=?,modelo=?,estado=? "
 	 					+ " where cuit=?"
 	 					);
 	 			stmt.setInt(1, cam.getIdcamion());
@@ -127,7 +133,9 @@ public class DataCamion {
 	 			stmt.setString(3, cam.getMarca());
 	 			stmt.setString(4, cam.getModelo());
 	 			stmt.setBoolean(5, cam.isEstado());
-	 			stmt.setDate(6, cam.getFecha_ingreso());
+//	 			stmt.setDate(6, cam.getFecha_ingreso());
+//	 			stmt.setInt(7, cam.getSocio().getNro_Socio());
+	 			
 	 			stmt.executeUpdate();
 	 				 			 			
 	 		}catch (SQLException | AppDataException e) {

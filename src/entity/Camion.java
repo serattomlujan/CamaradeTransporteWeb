@@ -8,8 +8,16 @@ public class Camion {
 		private String patente;
 		private String marca;
 		private String modelo;
-		private Date fecha_ingreso;
+//		private Date fecha_ingreso;
 		private boolean estado;
+//		private Socio socio;
+		
+//		public Socio getSocio() {
+//			return socio;
+//		}
+//		public void setSocio(Socio socio) {
+//			this.socio = socio;
+//		}
 		
 		public int getIdcamion() {
 			return idcamion;
@@ -35,12 +43,12 @@ public class Camion {
 		public void setModelo(String modelo) {
 			this.modelo = modelo;
 		}
-		public Date getFecha_ingreso() {
-			return fecha_ingreso;
-		}
-		public void setFecha_ingreso(Date fecha_ingreso) {
-			this.fecha_ingreso = fecha_ingreso;
-		}
+//		public Date getFecha_ingreso() {
+//			return fecha_ingreso;
+//		}
+//		public void setFecha_ingreso(Date Date) {
+//			this.fecha_ingreso = Date;
+//		}
 		public boolean isEstado() {
 			return estado;
 		}

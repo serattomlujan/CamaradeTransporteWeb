@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import controles.CtrlABMCamion;
 import entity.Camion;
+
+import entity.Socio;
 import util.AppDataException;
 
 /**
@@ -58,10 +62,12 @@ public class CamionServlet extends HttpServlet {
 		  try {
 			    CtrlABMCamion ctrl= new CtrlABMCamion();
 			    Camion cam=new Camion();
+			    
 			    cam.setIdcamion(Integer.parseInt(request.getParameter("id_camion")));
 			    cam.setPatente(request.getParameter("patente"));
 			    cam.setMarca(request.getParameter("marca"));
 			    cam.setModelo(request.getParameter("modelo"));
+			  //  cam.setSocio(Integer.parseInt(request.getParameter("socio")));
 			    if (request.getParameter("estado")!=null){
 					cam.setEstado(true);
 				}
@@ -72,7 +78,7 @@ public class CamionServlet extends HttpServlet {
 				Camion camion=new Camion();
 				
 				if(camion!=null){
-					//cli.setCuit(request.getParameter("cuit"));
+				cam.setIdcamion(Integer.parseInt(request.getParameter("id_camion")));
 					ctrl.update(cam);
 				}
 				else{ ctrl.add(cam);}
@@ -94,7 +100,8 @@ public class CamionServlet extends HttpServlet {
 		cam.setMarca("");
 		cam.setModelo("");
 		cam.setEstado(true);
-		//cam.setFecha_ingreso("");
+		//cam.setSocio("Socio");
+		//cam.setFecha_ingreso(Date);
 		request.setAttribute("encontrada", cam);
 		request.getRequestDispatcher("/WEB-INF/ABMCamion.jsp").forward(request, response);
 	}
