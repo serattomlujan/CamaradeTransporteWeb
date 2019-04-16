@@ -21,12 +21,12 @@
     </script>
    </head>
 <body >
-<%int id_servicio;
- Date fecha_desde;
- Date fecha_hasta;
- int id_camion;
- String cuit;
- int id_cereal;
+<%int id_servicio=0;
+ Date fecha_desde=null;
+ Date fecha_hasta=null;
+ int id_camion=0;
+ String cuit="";
+ int id_cereal=0;
  %>
 <div class="header">
   <h1>Cámara de Transporte</h1>
@@ -44,7 +44,7 @@
       <div class="container" >
  	<h1 style="text-align: center">Socios </h1>
  	
-     <form class="form-signin" id="myForm" name="socio" action="" method="post" >
+     <form class="form-signin" id="myForm" name="servicio" action="" method="post" >
     <div class="row">
       <div class="col-25"><label for="inputidServicio" class="sr-only">ID SERVICIO</label></div>
       <div class="col-75"><input name="id_servicio" id="inputidServicio"  class="form-control" placeholder="" required="" autofocus="" type="text" value=<%=id_servicio %>></div>

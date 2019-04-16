@@ -25,6 +25,9 @@
 		<a href="Cliente">Clientes</a>
 		<a href="Camion">Camiones</a>
         <a href="Cereal">Cereales</a>
+
+		<a href="precio?accion=Ingresar">Actualizar precios</a>
+
 	</div>
 	
 	<img src="WebContent/Style/camion.jpg" width="100%" height="600px">
