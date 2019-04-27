@@ -127,7 +127,7 @@ public class CamionServlet extends HttpServlet {
 
 	private void listaCamiones(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CtrlABMCamion ctrl1= new CtrlABMCamion();
-		try {
+		try {System.out.println("entro");
 			request.setAttribute("listaCamiones", ctrl1.getAll());
 		} catch (AppDataException ade) {
 			request.setAttribute("Error", ade.getMessage());

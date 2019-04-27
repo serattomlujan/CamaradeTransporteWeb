@@ -87,7 +87,7 @@
 			<td><%=c.getModelo()%></td>
 			<%
 			String estado="";
-			if(c.isEstado()){estado="Activo";} else {estado="Inactivo";}%>
+			/*if(c.isEstado()){estado="Activo";} else {estado="Inactivo";}*/%>
 			<td><%=estado%></td>
 			
 			</tr>

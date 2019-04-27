@@ -61,8 +61,8 @@ public class PrecioServlet extends HttpServlet {
 				request.getRequestDispatcher("/WEB-INF/MantenimientoPrecios.jsp").forward(request, response);
 				break;
 			case "Guardar":
-				SubirExcel(request,response);
-				LeerExcel();
+				this.ActualizarPrecios(request,response);
+
 				break;
 
 			default:
@@ -73,6 +73,14 @@ public class PrecioServlet extends HttpServlet {
 		catch (Exception e) {
 			System.out.println(e);
 		}
+		
+	}
+
+	
+
+	private void ActualizarPrecios(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		this.SubirExcel(request, response);
+		this.guardarPrecios(request, response);
 		
 	}
 
@@ -87,13 +95,14 @@ public class PrecioServlet extends HttpServlet {
 				item.write(new File("C:/Users/julie/OneDrive/Documentos/UTN/HP/upload/Precios.xlsx"));
 			}
 		}catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e);
 		}
 		
 	}
 
-	private void LeerExcel() throws Exception {
+	private void guardarPrecios(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try {
+			String actualizado;
 			CtrlABMPrecio_km ctrl = new CtrlABMPrecio_km();
 			ctrl.delete();
 			Precio p = new Precio();
@@ -110,9 +119,11 @@ public class PrecioServlet extends HttpServlet {
 				p.setPrecio((float)(fila.getCell(1).getNumericCellValue()));
 				ctrl.add(p);
 			}
+			actualizado="se actualizo";
+			request.setAttribute("actualizado", actualizado);
+			request.getRequestDispatcher("/WEB-INF/MantenimientoPrecios.jsp").forward(request, response);
 		
-		
-		} catch (FileNotFoundException e) {
+		} catch (Exception e) {
 			System.out.println(e);
 		}
 		

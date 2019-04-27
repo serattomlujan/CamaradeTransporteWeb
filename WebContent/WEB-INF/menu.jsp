@@ -14,22 +14,27 @@
 <link href="Style/webLayout.css" rel="stylesheet">
 </head>
 <body>
-	<div class="header">
-		<h1>Cámara de Transporte</h1>
-		<p>Gestión de servicios</p>
-	</div>
+	<div class="header" style="background: white;">
 
+
+<div align="left"><img src="Style/carabelas.jpg">
+</div>
+		
+</div>
+
+
+<!-- 		<h1>Cámara de Transporte</h1> -->
+<!-- 		<p>Gestión de servicios</p> -->
+
+	</div>
 	<div class="topnav">
-		<a href="Home?accion=menu">Home</a> 
-		<a href="Socio">Socios</a> 
-		<a href="Cliente">Clientes</a>
-		<a href="Camion">Camiones</a>
-        <a href="Cereal">Cereales</a>
-
-		<a href="precio?accion=Ingresar">Actualizar precios</a>
+		<a href="Home?accion=menu">Home</a> <a href="Socio">Socios</a> <a
+			href="Cliente">Clientes</a> <a href="Camion">Camiones</a> <a
+			href="Cereal">Cereales</a> <a href="precio?accion=Ingresar">Actualizar
+			precios</a>
 
 	</div>
-	
-	<img src="WebContent/Style/camion.jpg" width="100%" height="600px">
+
+	<img src="Style/camion.jpg" width="100%" height="600px">
 </body>
 </html>

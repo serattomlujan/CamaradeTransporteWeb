@@ -55,8 +55,8 @@
 	   marca = encontrada.getMarca();
 	   modelo = encontrada.getModelo();
 	   estado=encontrada.isEstado();
-	   fecha_ingreso = encontrada.getFecha_ingreso();
-	   nro_socio = encontrada.getSocio().getNro_Socio();
+	  // fecha_ingreso = encontrada.getFecha_ingreso();
+	  // nro_socio = encontrada.getSocio().getNro_Socio();
    }
    if (request.getAttribute("actualizado")!=null){%><script type="text/javascript">alerta(); </script>
 	<%} %>

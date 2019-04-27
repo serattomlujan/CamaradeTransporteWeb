@@ -17,11 +17,11 @@ public class DataCamion {
 		ArrayList<Camion> cams= new ArrayList<Camion>();
 		try {
 		 	stmt = FactoryConexion.getInstancia().getConn().createStatement();
-		 	rs = stmt.executeQuery("select * from camiones cam ");
+		 	rs = stmt.executeQuery("select * from camiones ");
 		 	if(rs!=null){
 		 		while(rs.next()){
 		 			Camion cam=new Camion();
-		 			cam.setIdcamion(rs.getInt("idcamion"));
+		 			cam.setIdcamion(rs.getInt("id_camion"));
 		 			cam.setPatente(rs.getString("patente"));
 		 			cam.setModelo(rs.getString("modelo"));
 		 			cam.setMarca(rs.getString("marca"));
