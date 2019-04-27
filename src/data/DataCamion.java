@@ -1,35 +1,33 @@
 package data;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
+import java.util.Calendar;
+import java.sql.*;
+import java.util.Date;
 
-import entity.Camion;
-import entity.Socio;
+import entity.*;
+import java.util.ArrayList;
 import util.AppDataException;
 
 public class DataCamion {
+	
 	public ArrayList<Camion> getAll() throws Exception{
 		Statement stmt=null;
 		ResultSet rs=null;
 		ArrayList<Camion> cams= new ArrayList<Camion>();
 		try {
 		 	stmt = FactoryConexion.getInstancia().getConn().createStatement();
-		 	rs = stmt.executeQuery("select * from camiones cam ");
+		 	rs = stmt.executeQuery("select * from camiones as cam ");
 		 	if(rs!=null){
 		 		while(rs.next()){
 		 			Camion cam=new Camion();
-		 			cam.setIdcamion(rs.getInt("idcamion"));
+		 			cam.setIdcamion(rs.getInt("id_camion"));
 		 			cam.setPatente(rs.getString("patente"));
 		 			cam.setModelo(rs.getString("modelo"));
 		 			cam.setMarca(rs.getString("marca"));
 		 			cam.setEstado(rs.getBoolean("estado"));
 //		 			cam.setFecha_ingreso(rs.getDate("fecha_ingreso"));
-//		 			cam.setSocio(new Socio());
-		 			
-		 			 		
+//		 			cam.getSocio().setNro_Socio(rs.getInt("nro_socio"));
+	 			
 		 			cams.add(cam);
 		 						}
 		 				}		
@@ -48,20 +46,60 @@ public class DataCamion {
 		return cams;
 		}
 		 	
-		public Camion getByIdCamion(Camion cam) throws Exception{
+//		public Camion getByIdCamion(Camion cam) throws Exception{
+//			Camion c=null;
+//		 		PreparedStatement stmt=null;
+//		 		ResultSet rs=null;
+//		 		try {
+//		 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
+//		 					"select cuit, razon_social, direccion, telefono, estado "
+//		 					+ " from clientes c "
+//		 					+ " where cuit=?");
+//		 			stmt.setInt(1, cam.getIdcamion());
+//		 			rs=stmt.executeQuery();
+//		 			if(rs!=null && rs.next()){
+//		 					cam=new Camion();
+//		 					cam.setIdcamion(rs.getInt("id_camion"));
+//				 			cam.setPatente(rs.getString("patente"));
+//				 			cam.setModelo(rs.getString("modelo"));
+//				 			cam.setMarca(rs.getString("marca"));
+//				 			cam.setEstado(rs.getBoolean("estado"));
+////				 			cam.setFecha_ingreso(rs.getDate("fecha_ingreso"));
+////				 			cam.getSocio().setNro_Socio(rs.getInt("nro_Socio"));
+//				 			
+//				 		}
+//		 			
+//		} catch (Exception e) {
+//		throw e;
+//		}
+//		finally{
+//		try {
+//		if(rs!=null)rs.close();
+//		if(stmt!=null)stmt.close();
+//		FactoryConexion.getInstancia().releaseConn();
+//		} catch (SQLException e) {
+//		throw e;
+//			}
+//		 }
+//				
+//		 return c;
+//		}
+		
+		public Camion getByPatente(Camion cam) throws Exception{
 			Camion c=null;
 		 		PreparedStatement stmt=null;
 		 		ResultSet rs=null;
 		 		try {
 		 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
-		 					"select cuit, razon_social, direccion, telefono, estado "
+		 					"select id_camion,patente, marca, modelo, estado "
 		 					+ " from clientes c "
-		 					+ " where cuit=?");
-		 			stmt.setInt(1, cam.getIdcamion());
+		 					+ " where patente=?");
+		 			stmt.setString(1, cam.getPatente());
+		 		
 		 			rs=stmt.executeQuery();
 		 			if(rs!=null && rs.next()){
 		 					cam=new Camion();
-		 					cam.setIdcamion(rs.getInt("idcamion"));
+		 					cam.setIdcamion(rs.getInt("id_camion"));
 				 			cam.setPatente(rs.getString("patente"));
 				 			cam.setModelo(rs.getString("modelo"));
 				 			cam.setMarca(rs.getString("marca"));
@@ -69,8 +107,7 @@ public class DataCamion {
 //				 			cam.setFecha_ingreso(rs.getDate("fecha_ingreso"));
 //				 			cam.getSocio().setNro_Socio(rs.getInt("nro_Socio"));
 				 			
-				 		
-		 			}
+				 		}
 		 			
 		} catch (Exception e) {
 		throw e;
@@ -101,7 +138,7 @@ public class DataCamion {
 		 			stmt.setString(4, cam.getModelo());
 		 			stmt.setBoolean(5, cam.isEstado());
 //		 			stmt.setDate(6, cam.getFecha_ingreso());
-//		 			stmt.setInt(7, cam.getSocio().getNro_Socio());
+//     	 			stmt.setInt(7, cam.getSocio().getNro_Socio());
 		 			
 		 			stmt.executeUpdate();
 		 			
@@ -125,7 +162,7 @@ public class DataCamion {
 	 		
 	 		try {
 	 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
-	 					"update camiones set id_camion=?, patente=?, marca=?,modelo=?,estado=? "
+	 					"update camiones set id_camion=?, patente=?, marca=?,modelo=?,estado=?"
 	 					+ " where cuit=?"
 	 					);
 	 			stmt.setInt(1, cam.getIdcamion());
@@ -133,9 +170,9 @@ public class DataCamion {
 	 			stmt.setString(3, cam.getMarca());
 	 			stmt.setString(4, cam.getModelo());
 	 			stmt.setBoolean(5, cam.isEstado());
-//	 			stmt.setDate(6, cam.getFecha_ingreso());
+//       			stmt.setDate(6, cam.getFecha_ingreso());
 //	 			stmt.setInt(7, cam.getSocio().getNro_Socio());
-	 			
+//	 			
 	 			stmt.executeUpdate();
 	 				 			 			
 	 		}catch (SQLException | AppDataException e) {

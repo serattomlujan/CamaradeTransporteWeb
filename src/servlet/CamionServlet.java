@@ -8,17 +8,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import controles.CtrlABMCamion;
 import entity.Camion;
-
-import entity.Socio;
+import controles.CtrlABMCamion;
 import util.AppDataException;
 
 /**
- * Servlet implementation class ClienteServlet
+ * Servlet implementation class CaamionServlet
  */
 @WebServlet({"/camion/*", "/Camion/*", "/CAMION/*"})
+
 public class CamionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,15 +31,18 @@ public class CamionServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		this.listaCamiones(request, response);
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String accion=request.getParameter("accion");
+		
 		switch (accion) {
 		case "Ingresar":
 			this.listaCamiones(request, response);
@@ -49,20 +50,20 @@ public class CamionServlet extends HttpServlet {
 		case "Buscar":
 			this.buscarCamion(request, response);
 			break;
-		case "Agregar Cliente":
+		case "Agregar":
 			this.agregarCamion(request, response);
 			break;
 		case "Guardar":
 			this.guardarCamion(request, response);
 			break;
 		}
-		}
+	}
+	
 	
 	private void guardarCamion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		  try {
 			    CtrlABMCamion ctrl= new CtrlABMCamion();
 			    Camion cam=new Camion();
-			    
 			    cam.setIdcamion(Integer.parseInt(request.getParameter("id_camion")));
 			    cam.setPatente(request.getParameter("patente"));
 			    cam.setMarca(request.getParameter("marca"));
@@ -93,10 +94,11 @@ public class CamionServlet extends HttpServlet {
 	}
 
 	private void agregarCamion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id_camion=Integer.parseInt(request.getParameter("id_camion"));
+		String patente=request.getParameter("patente");
+		System.out.println("entro aAgregar");
 		Camion cam=new Camion();
-		cam.setIdcamion(id_camion);
-		cam.setPatente("");
+		cam.setIdcamion(0);
+		cam.setPatente(patente);
 		cam.setMarca("");
 		cam.setModelo("");
 		cam.setEstado(true);
@@ -109,11 +111,14 @@ public class CamionServlet extends HttpServlet {
 	
 	private void buscarCamion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CtrlABMCamion ctrl= new CtrlABMCamion();
-		int id_camion=Integer.parseInt(request.getParameter("id_camion"));
+		System.out.println("entro a buscar camiones");
+//		int id_camion=Integer.parseInt(request.getParameter("id_camion"));
+		String patente = request.getParameter("patente");
 		Camion cam=new Camion();
-		cam.setIdcamion(id_camion);
+//		cam.setIdcamion(id_camion);
+		cam.setPatente(patente);
 		try {
-			cam=ctrl.getByIdCamion(cam);
+			cam=ctrl.getByPatente(cam);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -124,18 +129,19 @@ public class CamionServlet extends HttpServlet {
 			this.listaCamiones(request,response);}
 		
 	}
-
-	private void listaCamiones(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CtrlABMCamion ctrl1= new CtrlABMCamion();
+	
+	private void listaCamiones(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		CtrlABMCamion ctrll= new CtrlABMCamion();
+		
 		try {
-			request.setAttribute("listaCamiones", ctrl1.getAll());
+			request.setAttribute("listaCamiones", ctrll.getAll());
 		} catch (AppDataException ade) {
 			request.setAttribute("Error", ade.getMessage());
 		} catch (Exception e) {
-			response.setStatus(502);
+			System.out.println(e);
 		}
 		request.getRequestDispatcher("/WEB-INF/Camion.jsp").forward(request, response);
-	
 	
 	}	
 

@@ -4,8 +4,8 @@ import java.sql.*;
 import util.AppDataException;
 
 public class FactoryConexion {
-	private String driver="com.mysql.cj.jdbc.Driver";
-	
+	//private String driver="com.mysql.cj.jdbc.Driver";
+	private String driver="com.mysql.jdbc.Driver";
 		
 	private static FactoryConexion instancia;
 	
@@ -16,8 +16,6 @@ public class FactoryConexion {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
 	
 	public static FactoryConexion getInstancia(){
@@ -34,8 +32,8 @@ public class FactoryConexion {
 		try {
 			if(conn==null || conn.isClosed()){	
 				conn = DriverManager.getConnection(
-						 "jdbc:mysql://localhost:3306/camaradetransporte?useTimezone=true&serverTimezone=UTC","root","admin");
-						// "jdbc:mysql://localhost:3306/camaradetransporte?useSSL=false","root","root");
+						 //"jdbc:mysql://localhost:3306/camaradetransporte?useTimezone=true&serverTimezone=UTC","root","admin");
+						"jdbc:mysql://localhost:3306/camaradetransporte?useSSL=false","root","root");
 			}
 		} catch (SQLException e) {
 			throw new AppDataException(e, "Error al conectar a la base de datos");

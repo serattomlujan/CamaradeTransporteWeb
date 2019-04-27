@@ -15,7 +15,6 @@ public class CtrlABMCereal {
    
 	}
 	
-	
 	public void add(Cereal cer) throws Exception{
 		dataCer.add(cer); }
 	

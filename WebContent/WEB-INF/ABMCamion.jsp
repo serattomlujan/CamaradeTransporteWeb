@@ -43,8 +43,8 @@
    String marca="";
    String modelo="";
    boolean estado= true;
-   Date fecha_ingreso;
-   int nro_socio= 0;
+//    Date fecha_ingreso;
+//    int nro_socio= 0;
   
    
    
@@ -55,8 +55,8 @@
 	   marca = encontrada.getMarca();
 	   modelo = encontrada.getModelo();
 	   estado=encontrada.isEstado();
-	   fecha_ingreso = encontrada.getFecha_ingreso();
-	   nro_socio = encontrada.getSocio().getNro_Socio();
+// 	   fecha_ingreso = encontrada.getFecha_ingreso();
+// 	   nro_socio = encontrada.getSocio().getNro_Socio();
    }
    if (request.getAttribute("actualizado")!=null){%><script type="text/javascript">alerta(); </script>
 	<%} %>
@@ -89,15 +89,15 @@
      <div class="col-25"><label for="inputEstado" class="sr-only">ESTADO:</label></div>  
     <div class="col-75"> <input type="checkbox" name="estado" id="inputestado" value="true" 
 			<%if(estado){ %>checked<%} %>><label for="inputEstado" class="sr-only">Activo</label></div>
-		</div>
+<!-- 		</div> -->
 <!-- 		<div class="row"> -->
 <!--       <div class="col-25"><label for="inputFechaIngreso" class="sr-only">FECHA INGREO:</label></div> -->
 <%--       <div class="col-75"><input name="fecha_ingreso" id="inputFechaIngreso"  class="form-control" placeholder=""  required="" type="text" value=<%=fecha_ingreso %>></div> --%>
 <!--     </div> -->
-    <div class="row">
-      <div class="col-25"><label for="inputNroSocio" class="sr-only">NRO. SOCIO:</label></div>
-      <div class="col-75"><input name="Nro_socio" id="inputNroSocio"  class="form-control" placeholder=""  required=""   autofocus="" type="text" value=<%=nro_socio %>></div>
-    </div>
+<!--     <div class="row"> -->
+<!--       <div class="col-25"><label for="inputNroSocio" class="sr-only">NRO. SOCIO:</label></div> -->
+<%--       <div class="col-75"><input name="Nro_socio" id="inputNroSocio"  class="form-control" placeholder=""  required=""   autofocus="" type="text" value=<%=nro_socio %>></div> --%>
+<!--     </div> -->
       <div class="row">
         <input type="submit" name="accion" value="Guardar" onclick="javascript: submitForm('Cereal')"> 
             </div> 

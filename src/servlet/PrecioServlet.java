@@ -80,11 +80,11 @@ public class PrecioServlet extends HttpServlet {
 		try{
 		ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
 		List<FileItem> multifiles = sf.parseRequest(request);
-		File archivo = new File("C:/Users/julie/OneDrive/Documentos/UTN/HP/upload/Precios.xlsx");
+		File archivo = new File("C:/Users/palos/Precios.xlsx");
 
 			for (FileItem item : multifiles) {
 				archivo.delete();
-				item.write(new File("C:/Users/julie/OneDrive/Documentos/UTN/HP/upload/Precios.xlsx"));
+				item.write(new File("C:/Users/palos/Precios.xlsx"));
 			}
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -97,7 +97,7 @@ public class PrecioServlet extends HttpServlet {
 			CtrlABMPrecio_km ctrl = new CtrlABMPrecio_km();
 			ctrl.delete();
 			Precio p = new Precio();
-			FileInputStream file = new FileInputStream(new File("C:/Users/julie/OneDrive/Documentos/UTN/HP/upload/Precios.xlsx"));
+			FileInputStream file = new FileInputStream(new File("C:/Users/palos/Precios.xlsx"));
 		
 			XSSFWorkbook wb = new XSSFWorkbook(file);
 			XSSFSheet sheet = wb.getSheetAt(0);
