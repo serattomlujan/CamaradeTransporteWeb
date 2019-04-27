@@ -10,7 +10,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
- <link href="Style/webLayout.css" rel="stylesheet">
+<link href="Style/webLayout.css" rel="stylesheet">
   <link href="Style/tabla.css" rel="stylesheet">
      <link href="Style/formulario.css" rel="stylesheet">
      <script type="text/javascript">
@@ -19,17 +19,11 @@
     		
         }
     </script>
-   </head>
-<body >
-<%
- int id_camion;
- String patente;
- String marca;
- String modelo;
-//  boolean estado;
-//  Date fecha_ingreso;
-//  int nro_socio;
- %>
+</head>
+<body>
+<%String patente="";
+ patente=request.getParameter("patente"); %>
+ 
 <div class="header">
   <h1>Cámara de Transporte</h1>
   <p>Gestión de servicios</p>
@@ -43,24 +37,24 @@
   <a href="Cereal">Cereales</a>
 </div>
 <div class="row">
-  <div class="leftcolumn" align="center">
-    <div class="card">
-      <div class="container" >
- 	<h1 style="text-align: center">Camiones </h1>
- 	
-     <form class="form-signin" id="myForm" name="camiones" action="" method="post" >
-    <div class="row">
-      <div class="col-25"><label for="inputidCamion" class="sr-only">ID CAMION</label></div>
-      <div class="col-75"><input name="id_camion" id="inputidCamion"  class="form-control" type="text"  ></div>
-     </div>
+		<div class="leftcolumn" align="center">
+           <div class="card">
+				<div class="container">
+					<h1 style="text-align: center">Camiones</h1>
+					<form class="form-signin" id="myForm" name="camion" action=""
+						method="post">
+						
+                   <div class="col-25"><label for="inputpatente" class="sr-only">PATENTE</label></div>
+                  <div class="col-75"><input name="dni" id="inputpatente"  class="form-control" placeholder="" required="" autofocus="" type="text" <% if (patente!=null) {%>value=<%=patente %><%} %>></div>
+                  <input type="submit"  name ="accion" value="Buscar" onclick="javascript: submitForm('Camion')"> 
+                  <% if (patente!=null) {%> <p style="color:#FF0000">No se encontró camión registrado</p>   <%} %>
+                  	<input type="submit" name="accion" value="Agregar" onclick="javascript: submitForm('Camion')">
    
-     <input type="submit"  name ="accion" value="Buscar" onclick="javascript: submitForm('Camion')"> 
-<%--         <% if (id_camion!= null) {%> <p style="color:#FF0000">No se encontró camión registrado</p>  <input type="submit" name ="accion" value="Agregar Camion" onclick="javascript: submitForm('Camion')"> <%} %> --%>
-     
-      </form>
-       </div>
-    </div>
-    <div class="card" >
+					</form>
+				</div>
+			</div>
+
+  <div class="card" >
       <table id="customers" align="center">
 
        <tr>
@@ -69,8 +63,8 @@
 			<th>MARCA</th>
 			<th>MODELO</th>
 			<th>ESTADO</th>
-<!-- 			<th>FECHA INGRESO</th> -->
-<!-- 			<th>NRO SOCIO</th> -->
+<!-- 			<th>NRO. SOCIO</th> -->
+			
 				
 		</tr>
 		
@@ -89,6 +83,8 @@
 			String estado="";
 			/*if(c.isEstado()){estado="Activo";} else {estado="Inactivo";}*/%>
 			<td><%=estado%></td>
+<%-- 			<td><%=c.getFecha_ingreso()%></td> --%>
+<%-- 			<td><%=c.getSocio().getNro_Socio()%></td> --%>
 			
 			</tr>
 		<%
@@ -96,9 +92,8 @@
 		%>
 	</table>
       </div>
-  </div>
- 
-  </div>
+     </div>
+     </div>
 
 </body>
 </html>

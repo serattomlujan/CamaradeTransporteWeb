@@ -49,12 +49,11 @@ public class CerealServlet extends HttpServlet {
 		case "Ingresar":
 			this.listaCereales(request, response);
 			break;
-		case "Buscar":
+		case "Editar":
 			this.buscarCereal(request, response);
 			break;
 		case "Agregar":
-			//this.agregarCereal(request, response);
-			System.out.println("hola");
+			this.agregarCereal(request, response);
 			break;
 		case "Guardar":
 			this.guardarCereal(request, response);
@@ -67,7 +66,7 @@ public class CerealServlet extends HttpServlet {
 		try {
 			CtrlABMCereal ctrl = new CtrlABMCereal();
 			Cereal cer = new Cereal();
-			//cer.setIdcereal(Integer.parseInt(request.getParameter("id_cereal")));
+			cer.setIdcereal(Integer.parseInt(request.getParameter("id_cereal")));
 			cer.setDescripcion(request.getParameter("descripcion"));
 
 			Cereal cereal = new Cereal();
@@ -90,17 +89,12 @@ public class CerealServlet extends HttpServlet {
 
 	private void agregarCereal(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("hola");
-	/*String descripcion = request.getParameter("descripcion");
-	Cereal cer = new Cereal();
-	cer.setDescripcion("descripcion");
-	cer.setIdcereal(Integer.parseInt(request.getParameter("id_cereal")));
-	request.setAttribute("encontrada", cer);*/
 		request.getRequestDispatcher("/WEB-INF/ABMCereal.jsp").forward(request, response);
 	}
 
 	private void buscarCereal(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("Entro a buscar cereal");
 		CtrlABMCereal ctrl = new CtrlABMCereal();
 		String descripcion = request.getParameter("descripcion");
 		Cereal cer = new Cereal();
@@ -116,7 +110,7 @@ public class CerealServlet extends HttpServlet {
 		} else {
 			this.listaCereales(request, response);
 		}
-
+		request.getRequestDispatcher("/WEB-INF/ABMCereal.jsp").forward(request, response);
 	}
 
 	private void listaCereales(HttpServletRequest request, HttpServletResponse response)

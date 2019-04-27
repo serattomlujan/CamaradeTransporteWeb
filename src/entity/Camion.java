@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Camion {
 
-		private int idcamion;
+		private int id_camion;
 		private String patente;
 		private String marca;
 		private String modelo;
@@ -20,10 +20,10 @@ public class Camion {
 //		}
 		
 		public int getIdcamion() {
-			return idcamion;
+			return id_camion;
 		}
 		public void setIdcamion(int idcamion) {
-			this.idcamion = idcamion;
+			this.id_camion = idcamion;
 		}
 		public String getPatente() {
 			return patente;
