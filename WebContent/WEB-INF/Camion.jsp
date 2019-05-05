@@ -29,13 +29,14 @@
   <p>Gestión de servicios</p>
 </div>
 
-<div class="topnav">
-  <a href="Home?accion=menu">Home</a>
-  <a href="Socio">Socios</a>
-  <a href="Cliente">Clientes</a>
-  <a href="Camion">Camiones</a>
-  <a href="Cereal">Cereales</a>
-</div>
+	<div class="topnav">
+		<a href="Home?accion=menu">Home</a>
+		<a href="Socio">Socios</a> 
+		<a href="Cliente">Clientes</a>
+		<a href="Camion">Camiones</a> 
+		<a href="Cereal">Cereales</a> 
+		<a href="precio?accion=Ingresar">Actualizar precios</a>
+	</div>
 <div class="row">
 		<div class="leftcolumn" align="center">
            <div class="card">
@@ -45,11 +46,9 @@
 						method="post">
 						
                    <div class="col-25"><label for="inputpatente" class="sr-only">PATENTE</label></div>
-                  <div class="col-75"><input name="dni" id="inputpatente"  class="form-control" placeholder="" required="" autofocus="" type="text" <% if (patente!=null) {%>value=<%=patente %><%} %>></div>
+                  <div class="col-75"><input name="patente" id="inputpatente"  class="form-control" placeholder="" required="" autofocus="" type="text" <% if (patente!=null) {%>value=<%=patente %><%} %>></div>
                   <input type="submit"  name ="accion" value="Buscar" onclick="javascript: submitForm('Camion')"> 
-                  <% if (patente!=null) {%> <p style="color:#FF0000">No se encontró camión registrado</p>   <%} %>
-                  	<input type="submit" name="accion" value="Agregar" onclick="javascript: submitForm('Camion')">
-   
+    <% if (patente!=null) {%> <p style="color:#FF0000">No se encontró camion registrado</p>  <input type="submit" name ="accion" value="Agregar" onclick="javascript: submitForm('Camion')"> <%} %>
 					</form>
 				</div>
 			</div>
@@ -63,8 +62,10 @@
 			<th>MARCA</th>
 			<th>MODELO</th>
 			<th>ESTADO</th>
-<!-- 			<th>NRO. SOCIO</th> -->
-			
+			<th>FECHA INGRESO</th>
+			<th>NRO. SOCIO</th>
+			<th>APELLIDO</th>
+			<th>NOMBRE</th>
 				
 		</tr>
 		
@@ -81,10 +82,12 @@
 			<td><%=c.getModelo()%></td>
 			<%
 			String estado="";
-			/*if(c.isEstado()){estado="Activo";} else {estado="Inactivo";}*/%>
+			if(c.isEstado()){estado="Activo";} else {estado="Inactivo";}%>
 			<td><%=estado%></td>
-<%-- 			<td><%=c.getFecha_ingreso()%></td> --%>
-<%-- 			<td><%=c.getSocio().getNro_Socio()%></td> --%>
+			<td><%=c.getFecha_ingreso()%></td>
+			<td><%=c.getSocio().getNro_Socio()%></td>
+			<td><%=c.getSocio().getApellido()%></td>
+			<td><%=c.getSocio().getNombre()%></td>
 			
 			</tr>
 		<%

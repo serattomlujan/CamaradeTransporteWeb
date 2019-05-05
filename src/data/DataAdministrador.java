@@ -22,6 +22,10 @@ public class DataAdministrador {
 				 a= new Administrador();
 				 a.setUsuario(rs.getString("usuario"));
 				 a.setContraseña(rs.getString("contrasenia"));
+				 a.setNombre(rs.getString("nombre"));
+				 a.setApellido(rs.getString("apellido"));
+				 a.setCorreo(rs.getString("correo"));
+				 a.setPreguntaSecreta(rs.getString("pregunta_secreta"));
 			 } 
 		} catch (SQLException e) {
 //			AppDataException ade=new AppDataException(e, "Error al validar persona.\n"+e.getSQLState()+":"+e.getMessage(), Level.WARN);

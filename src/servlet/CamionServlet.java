@@ -1,7 +1,7 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import entity.Camion;
+import entity.Socio;
 import controles.CtrlABMCamion;
+import controles.CtrlABMSocio;
 import util.AppDataException;
 
 /**
@@ -50,6 +52,9 @@ public class CamionServlet extends HttpServlet {
 		case "Buscar":
 			this.buscarCamion(request, response);
 			break;
+		case "BuscarSocio":
+			this.buscarSocio(request,response);
+			break;
 		case "Agregar":
 			this.agregarCamion(request, response);
 			break;
@@ -60,26 +65,82 @@ public class CamionServlet extends HttpServlet {
 	}
 	
 	
+	private void buscarSocio(HttpServletRequest request, HttpServletResponse response) {
+		
+		Socio s= new Socio();
+		Camion c=new Camion();
+		CtrlABMSocio ctrl=new CtrlABMSocio();
+		CtrlABMCamion ctrlc=new CtrlABMCamion();
+		c.setPatente(request.getParameter("patente"));
+		s.setDni(request.getParameter("dni"));	
+		try {
+			c=ctrlc.getByPatente(c);
+			s=ctrl.getByDni(s);
+			if(s!=null & c!=null){
+				c.getSocio().setDni(s.getDni());
+				c.getSocio().setApellido(s.getApellido());
+				c.getSocio().setNombre(s.getNombre());
+				c.getSocio().setNro_Socio(s.getNro_Socio());
+				
+			}
+			else if(s!=null & c==null){
+				c=new Camion();
+				c.setPatente(request.getParameter("patente"));
+				c.setSocio(new Socio());
+				c.getSocio().setDni(s.getDni());
+				c.getSocio().setApellido(s.getApellido());
+				c.getSocio().setNombre(s.getNombre());
+				c.getSocio().setNro_Socio(s.getNro_Socio());
+				
+			}
+			else if(s==null & c!=null){
+				c.setSocio(new Socio());
+				c.getSocio().setDni("");
+				c.getSocio().setApellido("");
+				c.getSocio().setNombre("");
+				c.getSocio().setNro_Socio(0);
+				
+			}
+			else{
+				c=new Camion();
+				c.setPatente(request.getParameter("patente"));
+				c.setSocio(new Socio());
+				c.getSocio().setDni("");
+				c.getSocio().setApellido("");
+				c.getSocio().setNombre("");
+				c.getSocio().setNro_Socio(0);
+				
+			}
+			request.setAttribute("encontrada", c);
+			request.getRequestDispatcher("/WEB-INF/ABMCamion.jsp").forward(request, response);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+
 	private void guardarCamion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		  try {
+			  System.out.println("guardar camion");
 			    CtrlABMCamion ctrl= new CtrlABMCamion();
 			    Camion cam=new Camion();
-			    cam.setIdcamion(Integer.parseInt(request.getParameter("id_camion")));
+			    cam.setSocio(new Socio());
 			    cam.setPatente(request.getParameter("patente"));
 			    cam.setMarca(request.getParameter("marca"));
 			    cam.setModelo(request.getParameter("modelo"));
-			  //  cam.setSocio(Integer.parseInt(request.getParameter("socio")));
 			    if (request.getParameter("estado")!=null){
 					cam.setEstado(true);
 				}
-			    //cam.setFecha_ingreso("fecha_ingreso");
-
+			    cam.setFecha_ingreso(Date.valueOf(request.getParameter("fecha_ingreso")));
+			   cam.getSocio().setNro_Socio(Integer.parseInt(request.getParameter("nro_socio")));
 			   
-			    
-				Camion camion=new Camion();
-				
+			    Camion camion=new Camion();
+			    camion=ctrl.getByPatente(cam);
 				if(camion!=null){
-				cam.setIdcamion(Integer.parseInt(request.getParameter("id_camion")));
+					cam.setIdcamion(Integer.parseInt(request.getParameter("id_camion")));
 					ctrl.update(cam);
 				}
 				else{ ctrl.add(cam);}
@@ -90,6 +151,7 @@ public class CamionServlet extends HttpServlet {
 			} catch (Exception e) {
 				response.setStatus(500);
 			}
+		  
 		
 	}
 
@@ -97,13 +159,13 @@ public class CamionServlet extends HttpServlet {
 		String patente=request.getParameter("patente");
 		System.out.println("entro aAgregar");
 		Camion cam=new Camion();
+		cam.setSocio(new Socio());
 		cam.setIdcamion(0);
 		cam.setPatente(patente);
 		cam.setMarca("");
 		cam.setModelo("");
 		cam.setEstado(true);
-		//cam.setSocio("Socio");
-		//cam.setFecha_ingreso(Date);
+//		cam.setFecha_ingreso(null);
 		request.setAttribute("encontrada", cam);
 		request.getRequestDispatcher("/WEB-INF/ABMCamion.jsp").forward(request, response);
 	}
@@ -112,10 +174,9 @@ public class CamionServlet extends HttpServlet {
 	private void buscarCamion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CtrlABMCamion ctrl= new CtrlABMCamion();
 		System.out.println("entro a buscar camiones");
-//		int id_camion=Integer.parseInt(request.getParameter("id_camion"));
 		String patente = request.getParameter("patente");
+		System.out.println(patente);
 		Camion cam=new Camion();
-//		cam.setIdcamion(id_camion);
 		cam.setPatente(patente);
 		try {
 			cam=ctrl.getByPatente(cam);
@@ -129,6 +190,7 @@ public class CamionServlet extends HttpServlet {
 			this.listaCamiones(request,response);}
 		
 	}
+	
 
 	private void listaCamiones(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CtrlABMCamion ctrl1= new CtrlABMCamion();

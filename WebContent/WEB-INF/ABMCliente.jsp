@@ -21,6 +21,7 @@
 		 location.reload('Cliente');
 	}
 </script>
+
 </head>
 <body >
 <div class="header">
@@ -28,13 +29,14 @@
   <p>Gestión de servicios</p>
 </div>
 
-<div class="topnav">
-  <a href="Home?accion=menu">Home</a>
-  <a href="Socio">Socios</a>
-  <a href="Cliente">Clientes</a>
-  <a href="Camion">Camiones</a>
-  <a href="Cereal">Cereales</a>
-</div>
+	<div class="topnav">
+		<a href="Home?accion=menu">Home</a>
+		<a href="Socio">Socios</a> 
+		<a href="Cliente">Clientes</a>
+		<a href="Camion">Camiones</a> 
+		<a href="Cereal">Cereales</a> 
+		<a href="precio?accion=Ingresar">Actualizar precios</a>
+	</div>
 <%
    Cliente encontrada=null;
    String cuit="";
@@ -60,7 +62,7 @@
     <div class="card">
       <div class="container" >
  
-      	 <form class="form-signin" id="myForm" name="abmcliente" action="" method="post" >
+      	 <form name="miFormulario" onsubmit="return Valida(this);" name="abmcliente" action="" method="post" >
       	         <h2 class="form-signin-heading"> Cliente</h2>
         
     <div class="row">

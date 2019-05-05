@@ -6,6 +6,7 @@
 <%@page import="servlet.CerealServlet"%>
 <%@page import="servlet.CamionServlet"%>
 <%@page import="servlet.Home"%>
+<%@page import="entity.Administrador"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,27 +15,23 @@
 <link href="Style/webLayout.css" rel="stylesheet">
 </head>
 <body>
-	<div class="header" style="background: white;">
+	<div class="header" >
 
 
-<div align="left"><img src="Style/carabelas.jpg">
-</div>
-		
-</div>
-
-
-<!-- 		<h1>Cámara de Transporte</h1> -->
-<!-- 		<p>Gestión de servicios</p> -->
+		<h1>Cámara de Transporte</h1>
+		<p>Gestión de servicios</p>
 
 	</div>
 	<div class="topnav">
-		<a href="Home?accion=menu">Home</a> <a href="Socio">Socios</a> <a
-			href="Cliente">Clientes</a> <a href="Camion">Camiones</a> <a
-			href="Cereal">Cereales</a> <a href="precio?accion=Ingresar">Actualizar
-			precios</a>
-
+		<a href="Home?accion=menu">Home</a>
+		<a href="Socio">Socios</a> 
+		<a href="Cliente">Clientes</a>
+		<a href="Camion">Camiones</a> 
+		<a href="Cereal">Cereales</a> 
+		<a href="precio?accion=Ingresar">Actualizar precios</a>
 	</div>
 
-	<img src="Style/camion.jpg" width="100%" height="600px">
+<!-- 	<img src="Style/camion.jpg" width="100%" height="600px"> -->
+<h1>Bienvenido/a <%=((Administrador)session.getAttribute("user")).getNombre() %></h1>
 </body>
 </html>

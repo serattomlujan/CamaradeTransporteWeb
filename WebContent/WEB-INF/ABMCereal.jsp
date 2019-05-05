@@ -28,21 +28,27 @@
   <p>Gestión de servicios</p>
 </div>
 
-<div class="topnav">
-  <a href="Home?accion=menu">Home</a>
-  <a href="Socio">Socios</a>
-  <a href="Cliente">Clientes</a>
-  <a href="Camion">Camiones</a>
-  <a href="Cereal">Cereales</a>
-</div>
+	<div class="topnav">
+		<a href="Home?accion=menu">Home</a>
+		<a href="Socio">Socios</a> 
+		<a href="Cliente">Clientes</a>
+		<a href="Camion">Camiones</a> 
+		<a href="Cereal">Cereales</a> 
+		<a href="precio?accion=Ingresar">Actualizar precios</a>
+	</div>
 <%
    Cereal encontrada=null;
-   int id_cereal = 0;
+   String id_cereal="";
    String descripcion="";
    
+   if (request.getAttribute("encontrada") != null) {
+		encontrada = (Cereal) request.getAttribute("encontrada");
+		id_cereal = String.valueOf(encontrada.getIdcereal());
+		descripcion = encontrada.getDescripcion();
+	}
+	if (request.getAttribute("actualizado")!=null){%><script type="text/javascript">alerta(); </script>
+	<%} %>
    
-   
-   %>
 <div class="row">
   <div class="leftcolumn" align="center">
     <div class="card">
@@ -53,7 +59,7 @@
         
     <div class="row">
       <div class="col-25"><label for="inputId_cereal" class="sr-only">ID CEREAL:</label></div>
-      <div class="col-75"><input name="id_cereal" id="inputId_cereal"  class="form-control" placeholder=""  required="" autofocus="" type="text" value=<%=id_cereal %>></div>
+      <div class="col-75"><input name="id_cereal" id="inputId_cereal"  class="form-control" placeholder=""  readonly="readonly" autofocus="" type="text"  value=<%=id_cereal%> ></div>
     </div>
      <div class="row">
       <div class="col-25"><label for="inputDescripcion" class="sr-only">DESCRIPCION:</label></div>

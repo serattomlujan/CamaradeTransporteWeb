@@ -35,7 +35,7 @@
                     return false;
                 }
                 /* validación del DNI */
-                var erdni=/(^([0-9]{8,8}\-[A-Z])|^)$/;
+                var erdni=/(^([0-9]{8,8})|^)$/;
                 if (!(erdni.test(formulario.dni.value))) {
                     alert('no es un DNI válido.');
                     formulario.dni.style.borderColor = "red";
@@ -74,10 +74,13 @@
 		<p>Gestión de servicios</p>
 	</div>
 
-	<div class="topnav">
+		<div class="topnav">
 		<a href="Home?accion=menu">Home</a>
 		<a href="Socio">Socios</a> 
 		<a href="Cliente">Clientes</a>
+		<a href="Camion">Camiones</a> 
+		<a href="Cereal">Cereales</a> 
+		<a href="precio?accion=Ingresar">Actualizar precios</a>
 	</div>
 	 <div class="row">
 		<div class="leftcolumn" align="center">

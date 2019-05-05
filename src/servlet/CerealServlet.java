@@ -41,8 +41,9 @@ public class CerealServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		String accion = request.getParameter("accion");
 		System.out.println(accion);
 		switch (accion) {
@@ -52,7 +53,7 @@ public class CerealServlet extends HttpServlet {
 		case "Editar":
 			this.buscarCereal(request, response);
 			break;
-		case "Agregar":
+		case "Agregar Cereal":
 			this.agregarCereal(request, response);
 			break;
 		case "Guardar":
@@ -66,17 +67,28 @@ public class CerealServlet extends HttpServlet {
 		try {
 			CtrlABMCereal ctrl = new CtrlABMCereal();
 			Cereal cer = new Cereal();
-			cer.setIdcereal(Integer.parseInt(request.getParameter("id_cereal")));
+			String id_cereal=request.getParameter("id_cereal");
 			cer.setDescripcion(request.getParameter("descripcion"));
-
 			Cereal cereal = new Cereal();
 			cereal = ctrl.getByDescCereal(cer);
-			if (cereal != null) {
-
-				ctrl.update(cer);
-			} else {
-				ctrl.add(cer);
+			if (id_cereal.equals("")) {
+				if(cereal!=null){
+					System.out.println("cereal ya existe nuevo");
+				}
+				else{
+					ctrl.add(cer);
+				}
 			}
+			else if (id_cereal.equals("")==false) {
+				if(cereal!=null){
+					System.out.println("cereal ya existe editar");
+				}
+				else{
+					cer.setIdcereal(Integer.parseInt(request.getParameter("id_cereal")));
+					ctrl.update(cer);
+				}
+				}
+			
 			request.setAttribute("actualizado", cer);
 			request.getRequestDispatcher("/WEB-INF/ABMCereal.jsp").forward(request, response);
 		} catch (AppDataException ade) {
@@ -96,9 +108,8 @@ public class CerealServlet extends HttpServlet {
 			throws ServletException, IOException {
 		System.out.println("Entro a buscar cereal");
 		CtrlABMCereal ctrl = new CtrlABMCereal();
-		String descripcion = request.getParameter("descripcion");
 		Cereal cer = new Cereal();
-		cer.setDescripcion(descripcion);
+		cer.setDescripcion(request.getParameter("descripcion"));
 		try {
 			cer = ctrl.getByDescCereal(cer);
 		} catch (Exception e) {
@@ -110,7 +121,6 @@ public class CerealServlet extends HttpServlet {
 		} else {
 			this.listaCereales(request, response);
 		}
-		request.getRequestDispatcher("/WEB-INF/ABMCereal.jsp").forward(request, response);
 	}
 
 	private void listaCereales(HttpServletRequest request, HttpServletResponse response)

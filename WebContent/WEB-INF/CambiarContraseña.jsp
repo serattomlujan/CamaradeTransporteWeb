@@ -5,6 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function submitForm(met) {
+		document.myForm.action = met;
+
+	}
+</script>
 <style>
 div {
   background-color: #f2f2f2;
@@ -19,7 +25,11 @@ div {
 </head>
 <body>
 <div align="center">
-<form name="contraseña" action="Home" method="post">
+
+<%if(request.getAttribute("adm")!=null){
+	%><h1 ><u><b>Se ha enviado la contraseña a su casilla de correo</b></u></h1>
+<%} else { %>
+<form class="form-signin" id="myForm" name="contraseña" action="" method="post">
 <h1 ><u><b>Reestablecer contraseña</b></u></h1>
 <h3><br><br>Correo Electrónico</h3>
 <input name="correo" id="inputcorreo" placeholder="" required="" type="text">
@@ -27,8 +37,9 @@ div {
 <h3>Pregunta Secreta ¿cual es el nombre de mascota?</h3>
 <input name="pregunta" id="inputpregunta" placeholder="" required="" type="text">
 <br><br><br><h4>si la respuesta es correcta se enviará un correo con la nueva contraseña<br><br><br></h4>
-<input type="submit" name="accion" value="Enviar">
+<input type="submit" name="accion" value="Enviar" onclick="javascript: submitForm('Home')">
 </form>
+<%} %>
 </div>
 
 </body>

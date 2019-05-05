@@ -113,48 +113,7 @@ public class DataSocio {
 		 	}
 		
 
-		
-//		public Persona getLogedUser(Persona per) throws Exception{
-//			Persona p=null;
-//			PreparedStatement stmt=null;
-//			ResultSet rs=null;
-//			try {
-//				//stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
-//					//	"select p.id, nombre, apellido, dni, habilitado, categoriaId, descripcion from persona p inner join categoria c on p.categoriaId=c.id where user=? and pass=?");
-//				stmt=FactoryConexion.getInstancia().getConn().prepareStatement(""
-//						+ "	select idpersona, nombre, apellido, dni, habilitado, p.id_categoria, descripcion, email from personas p inner join categorias c on p.id_categoria=c.id_categoria where p.usuario =? and p.contrasenia= ?"); 
-//				stmt.setString(1, per.getUsuario());
-//				stmt.setString(2, per.getContrasenia());
-//				rs=stmt.executeQuery();
-//				if(rs!=null && rs.next()){
-//						p=new Persona();
-//						p.setCategoria(new Categoria());
-//						p.setIdpersona(rs.getInt("idpersona"));
-//						p.setNombre(rs.getString("nombre"));
-//						p.setApellido(rs.getString("apellido"));
-//						p.setDni(rs.getString("dni"));
-//						p.setHabilitado(rs.getBoolean("habilitado"));
-//						p.getCategoria().setId_categoria(rs.getInt("id_categoria"));
-//						p.getCategoria().setDescripcion(rs.getString("descripcion"));
-//						p.setEmail(rs.getString("email"));
-//				}
-//				
-//			} catch (Exception e) {
-//				throw e;
-//			} finally{
-//				try {
-//					if(rs!=null)rs.close();
-//					if(stmt!=null)stmt.close();
-//					FactoryConexion.getInstancia().releaseConn();
-//				} catch (SQLException e) {
-//					throw e;
-//				}
-//			}
-//
-//			return p;
-//		}
-//	 		
-		
+			
 		public void modificar(Socio s) throws Exception{
 	 		PreparedStatement stmt=null;
 	 		
