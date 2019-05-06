@@ -11,7 +11,7 @@
 <link href="Style/webLayout.css" rel="stylesheet">
 <link href="Style/tabla.css" rel="stylesheet">
 <link href="Style/menu.css" rel="stylesheet">
-<!-- <link href="Style/formulario.css" rel="stylesheet"> -->
+ <link href="Style/formulario.css" rel="stylesheet"> 
 
 <title>Insert title here</title>
 <script type="text/javascript">
@@ -50,21 +50,27 @@ background-color: white;
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 10px;
-}</style>
+}
+</style>
 </head>
 <body>
 	<%
 		String descripcion = "";
 	%>
 	<div class="header">
-		<h1>Cámara de Transporte</h1>
-		<p>Gestión de servicios</p>
+		<div class="header" style="background: white;">
+			<div>
+				<img src="Style/Encabezado.png" width="60%">
+			</div>
+		</div>
 	</div>
+	
 	<div class="topnav">
-		<a href="Home?accion=menu">Home</a> <a href="Socio">Socios</a> <a
-			href="Cliente">Clientes</a> <a href="Camion">Camiones</a> <a
-			href="Cereal">Cereales</a> <a href="precio?accion=Ingresar">Actualizar
-			precios</a>
+		<a href="Home?accion=menu">Home</a> 
+		<a href="Socio">Socios</a> <a
+			href="Cliente">Clientes</a> 
+			<a href="Camion">Camiones</a> 
+			<a href="Cereal">Cereales</a> <a href="precio?accion=Ingresar">Actualizar precios</a>
 	</div>
 
 	<div class="row">
@@ -106,7 +112,7 @@ background-color: white;
 				<tr>
 					<td><%=c.getIdcereal()%></td>
 					<td><%=c.getDescripcion()%></td>
-					<td><button type="submit" value="<%=c.getDescripcion()%>"
+					<td><button class="button" type="submit" value="<%=c.getDescripcion()%>"
 							id="descripcion" name="descripcion">Editar</button></td>
 
 

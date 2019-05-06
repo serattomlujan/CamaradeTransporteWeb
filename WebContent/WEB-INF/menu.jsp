@@ -14,24 +14,26 @@
 <title>Insert title here</title>
 <link href="Style/webLayout.css" rel="stylesheet">
 </head>
+
 <body>
-	<div class="header" >
-
-
-		<h1>Cámara de Transporte</h1>
-		<p>Gestión de servicios</p>
-
+	<div class="header">
+		<div class="header" style="background: white;">
+			<div>
+				<img src="Style/Encabezado.png" width="60%">
+			</div>
+		</div>
 	</div>
+
 	<div class="topnav">
-		<a href="Home?accion=menu">Home</a>
-		<a href="Socio">Socios</a> 
-		<a href="Cliente">Clientes</a>
+		<a href="Home?accion=menu">Home</a> <a href="Socio">Socios</a> 
+		<a href="Cliente">Clientes</a> 
 		<a href="Camion">Camiones</a> 
 		<a href="Cereal">Cereales</a> 
-		<a href="precio?accion=Ingresar">Actualizar precios</a>
+		<a href="precio?accion=Ingresar"> Actualizar precios</a>
+
 	</div>
 
-<!-- 	<img src="Style/camion.jpg" width="100%" height="600px"> -->
-<h1>Bienvenido/a <%=((Administrador)session.getAttribute("user")).getNombre() %></h1>
+	<img src="Style/fondo-Camiones.jpg" width="100%" height="600px">
+
 </body>
 </html>

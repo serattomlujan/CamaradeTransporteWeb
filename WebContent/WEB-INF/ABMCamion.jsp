@@ -27,8 +27,11 @@
 </head>
 <body>
 	<div class="header">
-		<h1>Cámara de Transporte</h1>
-		<p>Gestión de servicios</p>
+		<div class="header" style="background: white;">
+			<div>
+				<img src="Style/Encabezado.png" width="60%">
+			</div>
+		</div>
 	</div>
 
 	<div class="topnav">

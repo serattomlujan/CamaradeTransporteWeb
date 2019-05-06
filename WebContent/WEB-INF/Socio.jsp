@@ -21,9 +21,12 @@
 <%String dni="";
  dni=request.getParameter("dni"); %>
 <div class="header">
-  <h1>Cámara de Transporte</h1>
-  <p>Gestión de servicios</p>
-</div>
+		<div class="header" style="background: white;">
+			<div>
+				<img src="Style/Encabezado.png" width="60%">
+			</div>
+		</div>
+	</div>
 
 	<div class="topnav">
 		<a href="Home?accion=menu">Home</a>

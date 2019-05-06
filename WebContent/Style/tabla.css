@@ -25,6 +25,15 @@
   background-color: #4CAF50;
   color: white;
 }
+
+#customer button {
+	color: white;
+    background: #4CAF50;
+    border-radius: 4px;
+    padding: 5px;
+    height: 100%;
+    width: 50%;
+}
 </style>
 </head>
 </html>
