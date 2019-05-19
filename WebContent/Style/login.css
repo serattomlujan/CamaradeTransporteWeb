@@ -64,7 +64,7 @@
 }
 .container:before, .container:after {
   content: "";
-  display: block;
+/*   display: block; */
   clear: both;
 }
 .container .info {

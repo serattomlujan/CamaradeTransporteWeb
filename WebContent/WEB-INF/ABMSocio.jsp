@@ -17,39 +17,46 @@
 </script>
 <script type="text/javascript">
 	function alerta() {
-		 window.onload =  alert('Se ha registrado con exito')
-		 location.reload('Socio');
+		window.onload = alert('Se ha registrado con exito')
+		location.reload('Socio');
 	}
 </script>
 <script>
-            function Valida(formulario) {
-            	
-                /* Validación de campos NO VACÍOS */
-                if ((formulario.dni.value.length == 0) || (formulario.nombre.value.length ==0) || (formulario.apellido.value.length ==0) ||  (formulario.telefono.value.length ==0)) {
-                    alert('Falta información');
-                    return false;
-                } 
-                if (isNaN(parseInt(formulario.telefono.value))) {
-                    alert('El telefono debe ser un número');
-                    formulario.telefono.style.borderColor = "red";
-                    return false;
-                }
-                /* validación del DNI */
-                var erdni=/(^([0-9]{8,8})|^)$/;
-                if (!(erdni.test(formulario.dni.value))) {
-                    alert('no es un DNI válido.');
-                    formulario.dni.style.borderColor = "red";
-                    return false;  }
-                /* validación del e-mail */
-               
-                /* si no hemos detectado fallo devolvemos TRUE */
-                return true;
-            }
-        </script>
+	function Valida(formulario) {
+
+		/* Validación de campos NO VACÍOS */
+		if ((formulario.dni.value.length == 0)
+				|| (formulario.nombre.value.length == 0)
+				|| (formulario.apellido.value.length == 0)
+				|| (formulario.telefono.value.length == 0)) {
+			alert('Falta información');
+			return false;
+		}
+		if (isNaN(parseInt(formulario.telefono.value))) {
+			alert('El telefono debe ser un número');
+			formulario.telefono.style.borderColor = "red";
+			return false;
+		}
+		/* validación del DNI */
+		var erdni = /(^([0-9]{8,8})|^)$/;
+		if (!(erdni.test(formulario.dni.value))) {
+			alert('no es un DNI válido.');
+			formulario.dni.style.borderColor = "red";
+			return false;
+		}
+		/* validación del e-mail */
+
+		/* si no hemos detectado fallo devolvemos TRUE */
+		return true;
+	}
+</script>
 
 </head>
 <body>
-<%	Socio actualizado= null;
+
+
+	<%
+		Socio actualizado = null;
 		Socio encontrada = null;
 		String nro_socio = "";
 		String dni = "";
@@ -67,8 +74,14 @@
 			telefono = encontrada.getTelefono();
 			estado = encontrada.isEstado();
 		}
-		if (request.getAttribute("actualizado")!=null){%><script type="text/javascript">alerta(); </script>
-		<%} %>
+		if (request.getAttribute("actualizado") != null) {
+	%><script type="text/javascript">
+			alerta();
+		</script>
+	<%
+		}
+	%>
+
 	<div class="header">
 		<div class="header" style="background: white;">
 			<div>
@@ -77,78 +90,90 @@
 		</div>
 	</div>
 
-		<div class="topnav">
-		<a href="Home?accion=menu">Home</a>
-		<a href="Socio">Socios</a> 
-		<a href="Cliente">Clientes</a>
-		<a href="Camion">Camiones</a> 
-		<a href="Cereal">Cereales</a> 
-		<a href="precio?accion=Ingresar">Actualizar precios</a>
+
+	<div class="topnav">
+		<a href="Home?accion=menu">Home</a> <a href="Socio">Socios</a> <a
+			href="Cliente">Clientes</a> <a href="Camion">Camiones</a> <a
+			href="Cereal">Cereales</a> <a href="precio?accion=Ingresar">Actualizar
+			precios</a>
 	</div>
-	 <div class="row">
+
+	<div class="row">
 		<div class="leftcolumn" align="center">
 			<div class="card">
 				<div class="container">
+					<form name="miFormulario" onsubmit="return Valida(this);"
+						name="abmsocio" action="" method="post">
+						<h2 class="form-signin-heading encabezadoContainer">Datos de Socio</h2>
 
-					<form name="miFormulario" onsubmit="return Valida(this);" name="abmsocio" action="" method="post">
-						<h2 class="form-signin-heading">Socio</h2>
-						
-						<div class="row">
-							<div class="col-25">
-								<label for="inputnrosocio" class="sr-only">Nro Socio</label>
+						<div class="row lineaForm">
+							<div class="cajaLabel">
+								<label for="inputnrosocio" class="sr-only">Nro Socio:</label>
 							</div>
-							<div class="col-75">
+							<div class="cajaNumerica">
 								<input name="nro_socio" class="form-control" type="text"
 									readonly="readonly" <%if (nro_socio.equals("0")) {%> value=""
 									<%} else {%> value=<%=nro_socio%> <%}%>>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-25">
-								<label for="inputdni" class="sr-only">DNI</label>
+
+							<div class="cajaLabelDNI">
+								<label for="inputdni" class="sr-only">DNI:</label>
 							</div>
-							<div class="col-75">
-								<input name="dni" id="inputdni" class="form-control" placeholder="" required="" autofocus="" type="text" readonly="readonly" value=<%=dni%>>
+							<div class="cajaNumerica">
+								<input name="dni" id="inputdni" class="form-control"
+									placeholder="" required="" autofocus="" type="text"
+									readonly="readonly" value=<%=dni%>>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-25">
+						<div class="row lineaForm">
+							<div class="cajaLabel">
 								<label for="inputNombre" class="sr-only">Nombre:</label>
 							</div>
-							<div class="col-75">
-								<input name="nombre" id="inputnombre" class="form-control" placeholder=""  required="" autofocus="" type="text" value=<%=nombre%>>
+							<div class="cajaInput">
+								<input name="nombre" id="inputnombre" class="form-control"
+									placeholder="" required="" autofocus="" type="text"
+									value=<%=nombre%>>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-25">
+
+							<div class="cajaLabel">
 								<label for="inputApellido" class="sr-only">Apellido:</label>
 							</div>
-							<div class="col-75">
-								<input name="apellido" id="inputapellido" class="form-control" placeholder=""  required=""  autofocus="" type="text" value=<%=apellido%>>
+							<div class="cajaInput">
+								<input name="apellido" id="inputapellido" class="form-control"
+									placeholder="" required="" autofocus="" type="text"
+									value=<%=apellido%>>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-25">
+						<div class="row lineaForm">
+							<div class="cajaLabel">
 								<label for="inputTelefono" class="sr-only">Telefono:</label>
 							</div>
-							<div class="col-75">
-								<input name="telefono" id="inputemail" class="form-control" placeholder=""  required="" autofocus="" type="text" value=<%=telefono%>>
+							<div class="cajaInput">
+								<input name="telefono" id="inputemail" class="form-control"
+									placeholder="" required="" autofocus="" type="text"
+									value=<%=telefono%>>
 							</div>
-						</div>
 
-						<div class="row">
-							<div class="col-25">
+							<div class="cajaLabel">
 								<label for="inputEstado" class="sr-only">Estado:</label>
 							</div>
-							<div class="col-75">
-								<input type="checkbox" name="estado" id="inputestado"	value="true" <%if (estado) {%> checked <%}%>>
-								<label	for="inputEstado" class="sr-only">Activo</label>
+							<div class="cajaEstado">
+								<input type="checkbox" name="estado" id="inputestado"
+									value="true" <%if (estado) {%> checked <%}%>> <label
+									for="inputEstado" class="sr-only">Activo</label>
 							</div>
 						</div>
 						<div class="row">
-							<input type="submit" name="accion" value="Guardar" onclick="javascript: submitForm('Socio')">
-						</div> 
+							<button type="submit" class="botonGuardar" name="accion"
+								value="Guardar" onclick="javascript: submitForm('Socio')"
+								data-toggle="tooltip" data-placement="top"
+								title="Guardaar datos de Socio">GUARDAR</button>
+
+						</div>
 					</form>
+
+
+
 				</div>
 			</div>
 		</div>
