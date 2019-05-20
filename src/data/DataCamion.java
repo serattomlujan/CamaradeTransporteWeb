@@ -49,45 +49,6 @@ public class DataCamion {
 				
 		return cams;
 		}
-		 	
-//		public Camion getByIdCamion(Camion cam) throws Exception{
-//			Camion c=null;
-//		 		PreparedStatement stmt=null;
-//		 		ResultSet rs=null;
-//		 		try {
-//		 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
-//		 					"select cuit, razon_social, direccion, telefono, estado "
-//		 					+ " from clientes c "
-//		 					+ " where cuit=?");
-//		 			stmt.setInt(1, cam.getIdcamion());
-//		 			rs=stmt.executeQuery();
-//		 			if(rs!=null && rs.next()){
-//		 					cam=new Camion();
-//		 					cam.setIdcamion(rs.getInt("id_camion"));
-//				 			cam.setPatente(rs.getString("patente"));
-//				 			cam.setModelo(rs.getString("modelo"));
-//				 			cam.setMarca(rs.getString("marca"));
-//				 			cam.setEstado(rs.getBoolean("estado"));
-////				 			cam.setFecha_ingreso(rs.getDate("fecha_ingreso"));
-////				 			cam.getSocio().setNro_Socio(rs.getInt("nro_Socio"));
-//				 			
-//				 		}
-//		 			
-//		} catch (Exception e) {
-//		throw e;
-//		}
-//		finally{
-//		try {
-//		if(rs!=null)rs.close();
-//		if(stmt!=null)stmt.close();
-//		FactoryConexion.getInstancia().releaseConn();
-//		} catch (SQLException e) {
-//		throw e;
-//			}
-//		 }
-//				
-//		 return c;
-//		}
 		
 		public Camion getByPatente(Camion cam) throws Exception{
 			Camion c=null;
@@ -197,6 +158,45 @@ public class DataCamion {
 	 			e.printStackTrace();
 	 		}
 	 	}
+					
+		public Camion asignarCamion() throws Exception{
+		 		PreparedStatement stmt=null;
+		 		ResultSet rs=null;
+		 		Camion c=null;
+		 		try {
+		 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
+		 					"select * from camiones where estado=1 order by fecha_ingreso limit 1");
+		 		
+		 			rs=stmt.executeQuery();
+		 			if(rs!=null && rs.next()){
+		 					c=new Camion();
+		 					c.setSocio(new Socio());
+		 					c.setIdcamion(rs.getInt("id_camion"));
+				 			c.setPatente(rs.getString("patente"));
+				 			c.setModelo(rs.getString("modelo"));
+				 			c.setMarca(rs.getString("marca"));
+				 			c.setEstado(rs.getBoolean("estado"));
+				 			c.setFecha_ingreso(rs.getDate("fecha_ingreso"));
+				 			c.getSocio().setNro_Socio(rs.getInt("nro_socio"));
+				 			
+				 		}
+		 			
+		} catch (Exception e) {
+		throw e;
+		}
+		finally{
+		try {
+		if(rs!=null)rs.close();
+		if(stmt!=null)stmt.close();
+		FactoryConexion.getInstancia().releaseConn();
+		} catch (SQLException e) {
+		throw e;
+			}
+		 }
+				
+		 return c;
+		}
+			
 		
 
 }

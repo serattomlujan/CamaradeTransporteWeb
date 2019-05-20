@@ -23,7 +23,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import controles.CtrlABMPrecio_km;
-import entity.Precio;
+import entity.PrecioKM;
 
 
 /**
@@ -105,7 +105,7 @@ public class PrecioServlet extends HttpServlet {
 			String actualizado;
 			CtrlABMPrecio_km ctrl = new CtrlABMPrecio_km();
 			ctrl.delete();
-			Precio p = new Precio();
+			PrecioKM p = new PrecioKM();
 			FileInputStream file = new FileInputStream(new File("C:/Users/julie/Precios.xlsx"));
 		
 			XSSFWorkbook wb = new XSSFWorkbook(file);
@@ -116,7 +116,7 @@ public class PrecioServlet extends HttpServlet {
 			for (int a=0; a<=numFilas; a++){
 				Row fila = sheet.getRow(a);
 				p.setNro_km((int)(fila.getCell(0).getNumericCellValue()));
-				p.setPrecio((float)(fila.getCell(1).getNumericCellValue()));
+				p.setValor((float)(fila.getCell(1).getNumericCellValue()));
 				ctrl.add(p);
 			}
 			actualizado="se actualizo";
