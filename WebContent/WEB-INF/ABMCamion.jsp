@@ -35,12 +35,10 @@
 	</div>
 
 	<div class="topnav">
-		<a href="Home?accion=menu">Home</a>
-		<a href="Socio">Socios</a> 
-		<a href="Cliente">Clientes</a>
-		<a href="Camion">Camiones</a> 
-		<a href="Cereal">Cereales</a> 
-		<a href="precio?accion=Ingresar">Actualizar precios</a>
+		<a href="Home?accion=menu">Home</a> <a href="Socio">Socios</a> <a
+			href="Cliente">Clientes</a> <a href="Camion">Camiones</a> <a
+			href="Cereal">Cereales</a> <a href="precio?accion=Ingresar">Actualizar
+			precios</a>
 	</div>
 	<%  Socio socio=null;
 		Camion encontrada = null;
@@ -76,136 +74,144 @@
 	<%
 		}
 	%>
-
+<div class="row">
 	<div class="leftcolumn">
 		<div class="card">
 			<div class="container" align="center">
 
-				<form class="form-signin" id="myForm" name="abmcliente" action=""
+				<form id="myForm" name="abmcliente" action=""
 					method="post">
-					<h2 class="form-signin-heading">Camion</h2>
-					<div class="row">
-						<div class="col-25">
+					<h2 class="form-signin-heading encabezadoContainer" style="padding-left: 0px;">Datos de Camion</h2>
+					<div class="row lineaForm">
+						<div class="cajaLabel">
 							<label for="inputIdCamion">ID CAMION</label>
 						</div>
-						<div class="col-75">
+						<div class="cajaNumerica">
 							<input name="id_camion" id="inputIdCamion" class="form-control"
 								type="text" readonly="readonly" value=<%=id_camion%>>
 						</div>
 					</div>
-					<h5>
-						<u>Datos del Socio</u>
-					</h5>
-					<div class="row">
-						<div class="col-25">
+					
+					<p> <strong> Datos del Socio </strong> </p>
+					<hr>
+					
+					<div class="row lineaForm">
+						<div class="cajaLabel">
 							<label for="inputDni">DNI:</label>
 						</div>
-						<div class="col-75">
-						<%if(nro_socio==0) {%><h6 style="color: #FF0000;">no existe socio registrado para el dni ingresado</h6><%} %>
+						<div class="cajaNumerica">
+<%-- 							<%if(nro_socio==0) {%><h6 style="color: #FF0000;">No existe --%>
+<!-- 								socio registrado para el dni ingresado</h6> -->
+<%-- 							<%} %> --%>
 							<input name="dni" id="inputDni" class="form-control" required=""
 								placeholder="" autofocus="" type="text" value=<%=dni%>>
-							<input type="submit" name="accion" value="BuscarSocio"
-								onclick="javascript: submitForm('Camion')">
+							
 						</div>
-						
-					</div>
-					<div class="row">
-						<div class="col-25">
-							<label for="inputNroSocio">NRO. SOCIO:</label>
+						<button type="submit" name="accion" value="BuscarSocio" class="buscarSocio"
+								onclick="javascript: submitForm('Camion')"> BUCAR SOCIO </button>
+
+						<div class="cajaLabel">
+							<label for="inputNroSocio"> NRO. SOCIO:</label>
 						</div>
-						<div class="col-75">
+						<div class="cajaNumerica">
 							<input style="background: #e9e9e9;" name="nro_socio"
 								id="inputNroSocio" class="form-control" type="text"
 								readonly="readonly" value=<%=nro_socio%>>
 						</div>
 					</div>
+					<div class="row lineaForm">
+					<%if(nro_socio==0) {%><h6 style="color: #FF0000;">
+					No existe socio registrado para el dni ingresado</h6>
+							<%} %>
+					</div>
 
-					<div class="row">
-						<div class="col-25">
+					<div class="row lineaForm">
+						<div class="cajaLabel">
 							<label for="inputApellido">APELLIDO:</label>
 						</div>
-						<div class="col-75">
+						<div class="cajaInput">
 							<input style="background: #e9e9e9;" name="apellido"
 								id="inputApellido" class="form-control" type="text"
 								readonly="readonly" value=<%=apellido%>>
 						</div>
-						</div>
-<div class="row">
-						<div class="col-25">
+					
+						<div class="cajaLabel">
 							<label for="inputNombre">NOMBRE:</label>
 						</div>
-						<div class="col-75">
+						<div class="cajaInput">
 							<input style="background: #e9e9e9;" name="nombre"
 								id="inputNombre" class="form-control" type="text"
 								readonly="readonly" value=<%=nombre%>>
 						</div>
 					</div>
-					<h5>
-						<u>Datos del Camion</u>
-					</h5>
-					<div class="row">
-						<div class="col-25">
+					<p> <strong> Datos del Camion </strong> </p>
+					<hr>
+					
+					<div class="row lineaForm">
+						<div class="cajaLabel">
 							<label for="inputPatente">PATENTE:</label>
 						</div>
-						<div class="col-75">
+						<div class="cajaNumerica">
 							<input name="patente" id="inputPatente" class="form-control"
-								placeholder="" autofocus="" type="text"
-								value=<%=patente%>>
+								placeholder="" autofocus="" type="text" value=<%=patente%>>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-25">
-							<label for="inputMarca">MARCA:</label>
-						</div>
-						<div class="col-75">
-							<input name="marca" id="inputMarca" class="form-control"
-								placeholder="" autofocus="" type="text"
-								value=<%=marca%>>
-						</div>
-						</div>
-						<div class="row">
-						<div class="col-25">
-							<label for="inputModelo">MODELO:</label>
-						</div>
-						<div class="col-75">
-							<input name="modelo" id="inputeModelo" class="form-control"
-								placeholder=""  autofocus="" type="text"
-								value=<%=modelo%>>
-						</div>
-
-					</div>
-
-					<div class="row">
-						<div class="col-25">
-							<label for="inputFechaIngreso">FECHA INGRESO:</label>
-						</div>
-						<div class="col-75">
-							<input name="fecha_ingreso" id="inputFechaIngreso"
-								class="form-control" placeholder="" type="date"
-								value=<%=fecha_ingreso%>>
-						</div>
-						</div>
-						<div class="row">
-						<div class="col-25">
+						
+							<div class="cajaLabel">
 							<label for="inputEstado">ESTADO:</label>
 						</div>
-						<div class="col-75">
-							<!-- 							<select name="estado" required="id" id="categoria"> -->
-							<!-- 								<option value="1" selected>Activo</option> -->
-							<!-- 								<option value="0">Inactivo</option> -->
-							<!-- 							</select> -->
-
+						<div class="cajaEstado">
 							<input type="checkbox" name="estado" id="inputestado"
 								value="true" <%if (estado) {%> checked <%}%>><label
 								for="inputEstado"> Activo</label>
 						</div>
+						
 					</div>
+					
+					<div class="row lineaForm">
+						<div class="cajaLabel">
+							<label for="inputMarca">MARCA:</label>
+						</div>
+						<div class="cajaNumerica">
+							<input name="marca" id="inputMarca" class="form-control"
+								placeholder="" autofocus="" type="text" value=<%=marca%>>
+						</div>
+						
+						<div class="cajaLabel">
+							<label for="inputModelo">MODELO:</label>
+						</div>
+						<div class="cajaNumerica">
+							<input name="modelo" id="inputeModelo" class="form-control"
+								placeholder="" autofocus="" type="text" value=<%=modelo%>>
+						</div>
 
-					<br> <br>
+						<div class="cajaLabel" style="width: 17%">
+							<label for="inputFechaIngreso">FECHA INGRESO:</label>
+						</div>
+						<div class="cajaInput">
+							<input name="fecha_ingreso" id="inputFechaIngreso"
+								class="form-control" placeholder="" type="date"
+								value=<%=fecha_ingreso%>>
+						</div>
+					</div>
+<!-- 					<div class="row lineaForm"> -->
+<!-- 						<div class="cajaLabel"> -->
+<!-- 							<label for="inputEstado">ESTADO:</label> -->
+<!-- 						</div> -->
+<!-- 						<div class="col-75"> -->
+<!-- 														<select name="estado" required="id" id="categoria"> -->
+<!-- 															<option value="1" selected>Activo</option> -->
+<!-- 															<option value="0">Inactivo</option> -->
+<!-- 														</select> -->
 
-					<div align="center">
-						<input type="submit" name="accion" value="Guardar"
-							onclick="javascript: submitForm('Camion')">
+<!-- 							<input type="checkbox" name="estado" id="inputestado" -->
+<%-- 								value="true" <%if (estado) {%> checked <%}%>><label --%>
+<!-- 								for="inputEstado"> Activo</label> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+
+					<div clas="row">
+						<button class="botonGuardar" type="submit" name="accion" value="Guardar"
+							onclick="javascript: submitForm('Camion')"> GUARDAR </button>
 					</div>
 
 
@@ -216,6 +222,6 @@
 
 	</div>
 
-
+</div>
 </body>
 </html>

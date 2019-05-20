@@ -11,7 +11,7 @@
 <link href="Style/webLayout.css" rel="stylesheet">
 <link href="Style/tabla.css" rel="stylesheet">
 <link href="Style/menu.css" rel="stylesheet">
- <link href="Style/formulario.css" rel="stylesheet"> 
+<link href="Style/formulario.css" rel="stylesheet">
 
 <title>Insert title here</title>
 <script type="text/javascript">
@@ -20,38 +20,7 @@
 
 	}
 </script>
-<style type="text/css">
-* {
-  box-sizing: border-box;
-}
-h1{
-	margin-top: 10px;
-	margin-bottom: 15px;
-}
 
-input[type=submit] {
-background-color: #4CAF50;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
- } 
- input[type=file] {
-background-color: white;
-  
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
- }
- .container {
-	
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 10px;
-}
-</style>
 </head>
 <body>
 	<%
@@ -64,39 +33,40 @@ background-color: white;
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="topnav">
-		<a href="Home?accion=menu">Home</a> 
-		<a href="Socio">Socios</a> <a
-			href="Cliente">Clientes</a> 
-			<a href="Camion">Camiones</a> 
-			<a href="Cereal">Cereales</a> <a href="precio?accion=Ingresar">Actualizar precios</a>
+		<a href="Home?accion=menu">Home</a> <a href="Socio">Socios</a> <a
+			href="Cliente">Clientes</a> <a href="Camion">Camiones</a> <a
+			href="Cereal">Cereales</a> <a href="precio?accion=Ingresar">Actualizar
+			precios</a>
 	</div>
 
 	<div class="row">
-		<div class="leftcolumn" >
-			<div class="card">
-				<div class="container">
-					<h1 style="text-align: center">Cereales</h1><br>
+		<div class="leftcolumn">
 
-					<form class="form-signin" id="myForm" name="cereal" action=""
-						method="post">
+			<div class="buscadorDiv">
+				<h1 style="text-align: center; margin-bottom: 0px;" >Cereales</h1>
+				<br>
 
-						
-					<div align="center"><input type="submit" name="accion" value="Agregar Cereal"
-								onclick="javascript: submitForm('Cereal')"></div>	
-						
+				<form class="form-signin" id="myForm" name="cereal" action=""
+					method="post">
 
-					</form>
-				</div>
+
+					<div class="card" align="center" style="padding: 3px 20px;">
+						<button type="submit" name="accion" value="Agregar Cereal"
+							onclick="javascript: submitForm('Cereal')">AGREGAR
+							CEREAL</button>
+					</div>
+				</form>
 			</div>
+
 		</div>
 	</div>
 
 	<form class="form-signin" id="myForm" name="cereal"
 		action="Cereal?accion=Editar" method="post">
-		<div class="card">
-			<table id="customers" align="center">
+		<div class="card" style="padding: 3px 20px;">
+			<table id="customers" align="center" class="tabla">
 
 				<tr>
 					<th>ID CEREAL</th>
@@ -112,8 +82,11 @@ background-color: white;
 				<tr>
 					<td><%=c.getIdcereal()%></td>
 					<td><%=c.getDescripcion()%></td>
-					<td><button class="button" type="submit" value="<%=c.getDescripcion()%>"
-							id="descripcion" name="descripcion">Editar</button></td>
+					<td>
+						<button class="buttonGrilla" type="submit"
+							value="<%=c.getDescripcion()%>" id="descripcion"
+							name="descripcion">EDITAR CEREAL</button>
+					</td>
 
 
 				</tr>

@@ -8,13 +8,13 @@
 
 body {
   font-family: Arial;
- // padding: 10px;
   background: #ffffff;
+
 }
 
 /* Header/Blog Title */
 .header {
-  padding: 30px;
+  padding: 15px;
   text-align: center;
   background: #333;
 }
@@ -32,7 +32,7 @@ body {
 /* Style the topnav links */
 .topnav a {
   float: left;
-  display: block;
+/*   display: block; */
   color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
@@ -63,7 +63,13 @@ body {
 .card {
   background-color: #ffffff;
   padding: 20px;
-  margin-top: 20px;
+/*   margin-top: 20px; */
+  display: flex;
+}
+
+.textoError{
+	    padding: 0px 65px;
+	    margin-top: 0px;
 }
 
 /* Clear floats after the columns */
