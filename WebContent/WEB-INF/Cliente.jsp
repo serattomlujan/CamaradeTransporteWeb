@@ -55,7 +55,6 @@
 						<%
 							if (cuit != null) {
 						%>
-						<p style="color: #FF0000">No se encontró cliente registrado</p>
 						<button type="submit" name="accion" value="Agregar Cliente"
 							onclick="javascript: submitForm('Cliente')">AGREGAR
 							CLIENTE</button>
@@ -67,7 +66,7 @@
 					<%
 							if (cuit != null) {
 						%>
-						<p style="color: #FF0000">No se encontró cliente registrado</p>
+						<p style="color: #FF0000; margin-top: 0px">No se encontró cliente registrado</p>
 						<%
 							}
 						%>
@@ -80,8 +79,8 @@
 
 					<tr>
 						<th>CUIT</th>
-						<th>RAZON SOCIAL</th>
-						<th>DIRECCION</th>
+						<th style="width: 30%">RAZON SOCIAL</th>
+						<th style="width: 30%">DIRECCION</th>
 						<th>TELEFONO</th>
 						<th>ESTADO</th>
 

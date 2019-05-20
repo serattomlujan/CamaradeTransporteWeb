@@ -52,7 +52,6 @@
 						<button type="submit" name="accion" value="Buscar"
 							onclick="javascript: submitForm('Camion')">BUSCAR</button>
 						<% if (patente!=null) {%>
-						<p style="color: #FF0000">No se encontró camion registrado</p>
 						<button type="submit" name="accion" value="Agregar"
 							onclick="javascript: submitForm('Camion')">AGREGAR
 							CAMION</button>
@@ -60,7 +59,7 @@
 					</div>
 					<div class="textoError">
 					<% if (patente!=null) {%>
-						<p style="color: #FF0000">No se encontró camion registrado</p>
+						<p style="color: #FF0000; margin-top: 0px">No se encontró camion registrado</p>
 						<%} %>
 					</div>
 				</form>
@@ -79,8 +78,8 @@
 				<th>ESTADO</th>
 				<th>FECHA INGRESO</th>
 				<th>NRO. SOCIO</th>
-				<th>APELLIDO</th>
-				<th>NOMBRE</th>
+				<th >APELLIDO</th>
+				<th >NOMBRE</th>
 
 			</tr>
 

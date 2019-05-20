@@ -50,14 +50,16 @@
 	<div class="row">
 		<div class="leftcolumn"  align="center">
 			<div class="buscadorDiv">
-				<h1>Mantenimiento de Precios</h1>
 				
-					<form name="precio" action="precio?accion=Guardar" method="post"
+				
+					<form  name="precio" action="precio?accion=Guardar" method="post"
 						enctype="multipart/form-data">
 						
 						<div class="container">
+						<h1>Mantenimiento de Precios</h1>
+						<div class="row" style="text-align: left">
 							<input type="file" class="archivo" name="file" multiple />
-						
+						</div>
 						<div class="row">
 							<button type="submit" value="Guardar" class="botonGuardar">
 								GUARDAR</button>

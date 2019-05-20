@@ -68,7 +68,7 @@
 					<%
 								if (dni != null) {
 							%>
-							<p style="color: #FF0000">No se encontró socio registrado</p>
+							<p style="color: #FF0000; margin-top: 0px">No se encontró socio registrado</p>
 							<%
 								}
 							%>
@@ -82,8 +82,8 @@
 					<tr>
 						<th>NRO SOCIO</th>
 						<th>DNI</th>
-						<th>APELLIDO</th>
-						<th>NOMBRE</th>
+						<th style="width: 30%">APELLIDO</th>
+						<th style="width: 30%">NOMBRE</th>
 						<th>TELEFONO</th>
 						<th>ESTADO</th>
 
@@ -95,7 +95,7 @@
 						ArrayList<Socio> listaSocs = (ArrayList<Socio>) request.getAttribute("listaSocios");
 						for (Socio s : listaSocs) {
 					%>
-
+                  
 					<tr>
 						<td><%=s.getNro_Socio()%></td>
 						<td><%=s.getDni()%></td>
