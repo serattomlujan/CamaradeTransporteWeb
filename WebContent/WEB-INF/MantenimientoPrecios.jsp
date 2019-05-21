@@ -19,7 +19,7 @@
 <script type="text/javascript">
 	function alerta() {
 		window.onload = alert('Se ha registrado con exito')
-		location.reload('Home?accion=menu');
+		location.assign('Home?accion=menu');
 	}
 </script>
 

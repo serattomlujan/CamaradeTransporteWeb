@@ -21,7 +21,7 @@
 <script type="text/javascript">
 	function alerta() {
 		window.onload = alert('Se ha registrado con exito')
-		location.reload('Camion');
+		location.assign('Camion');
 	}
 </script>
 </head>
@@ -162,7 +162,7 @@
 						<div class="cajaEstado">
 							<input type="checkbox" name="estado" id="inputestado"
 								value="true" <%if (estado) {%> checked <%}%>><label
-								for="inputEstado"> Activo</label>
+								for="inputEstado"> Disponible </label>
 						</div>
 						
 					</div>

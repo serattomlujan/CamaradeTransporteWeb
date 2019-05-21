@@ -56,7 +56,7 @@
 							if (cuit != null) {
 						%>
 						<button type="submit" name="accion" value="Agregar Cliente"
-							onclick="javascript: submitForm('Cliente')">AGREGAR
+							onclick="javascript: submitForm('Cliente?accion=Agregar Cliente')">AGREGAR
 							CLIENTE</button>
 						<%
 							}

@@ -18,7 +18,7 @@
 <script type="text/javascript">
 	function alerta() {
 		window.onload = alert('Se ha registrado con exito')
-		location.reload('Cereal');
+		location.assign('Cereal');
 	}
 </script>
 </head>
