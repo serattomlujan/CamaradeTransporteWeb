@@ -32,10 +32,11 @@
 		<a href="Cereal">Cereales</a> 
 		<a href="precio?accion=Ingresar"> Actualizar precios</a>
 		<a href="Servicio?accion=ABMServicio"> Alta de Servicio</a>
-		<a href="Servicio?accion=FinalizarServicio"> Finalizar Servicio</a>
-
-
+ 		<a href="Servicio?accion=FinalizarServicio"> Finalizar Servicio</a> 
+	
+     
 	</div>
+
 
 	<img src="Style/fondo-Camiones.jpg" width="100%" height="600px">
 

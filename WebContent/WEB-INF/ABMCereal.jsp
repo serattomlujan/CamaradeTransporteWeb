@@ -32,10 +32,13 @@
 	</div>
 
 	<div class="topnav">
-		<a href="Home?accion=menu">Home</a> <a href="Socio">Socios</a> <a
-			href="Cliente">Clientes</a> <a href="Camion">Camiones</a> <a
-			href="Cereal">Cereales</a> <a href="precio?accion=Ingresar">Actualizar
-			precios</a>
+		<a href="Home?accion=menu">Home</a> <a href="Socio">Socios</a> 
+		<a href="Cliente">Clientes</a> 
+		<a href="Camion">Camiones</a> 
+		<a href="Cereal">Cereales</a> 
+		<a href="precio?accion=Ingresar"> Actualizar precios</a>
+		<a href="Servicio?accion=ABMServicio"> Alta de Servicio</a>
+ 		<a href="Servicio?accion=FinalizarServicio"> Finalizar Servicio</a> 
 	</div>
 	<%
 		Cereal encontrada = null;

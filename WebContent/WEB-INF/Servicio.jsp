@@ -38,8 +38,13 @@
 	</div>
 
 	<div class="topnav">
-		<a href="Home?accion=menu">Home</a> <a href="Socio">Socios</a> <a
-			href="Cliente">Clientes</a>
+		<a href="Home?accion=menu">Home</a> <a href="Socio">Socios</a> 
+		<a href="Cliente">Clientes</a> 
+		<a href="Camion">Camiones</a> 
+		<a href="Cereal">Cereales</a> 
+		<a href="precio?accion=Ingresar"> Actualizar precios</a>
+		<a href="Servicio?accion=ABMServicio"> Alta de Servicio</a>
+ 		<a href="Servicio?accion=FinalizarServicio"> Finalizar Servicio</a> 
 	</div>
 	<div class="row">
 		<div class="leftcolumn" align="center">
@@ -49,52 +54,52 @@
 
 					<form class="form-signin" id="myForm" name="servicio" action=""
 						method="post">
-						<div class="row">
-							<div class="col-25">
+						<div class="row lineaForm">
+							<div class="cajalabel">
 								<label for="inputidServicio" class="sr-only">ID Servicio</label>
 							</div>
-							<div class="col-75">
+							<div class="cajaNumerica">
 								<input name="id_servicio" id="inputidServicio"
 									class="form-control" placeholder="" required="" autofocus=""
 									type="text" value=<%=id_servicio%>>
 							</div>
-							<div class="col-25">
+							<div class="cajalabel">
 								<label for="inputidCamion" class="sr-only">ID camion</label>
 							</div>
-							<div class="col-75">
+							<div class="cajaNumerica">
 								<input name="id_camion" id="inputidCamion" class="form-control"
 									placeholder="" required="" autofocus="" type="text"
 									value=<%=id_camion%>>
 							</div>
-							<div class="col-25">
+							<div class="cajalabel">
 								<label for="inputCuit" class="sr-only">Cuit</label>
 							</div>
-							<div class="col-75">
+							<div class="cajaNumerica">
 								<input name="cuit" id="inputCuit" class="form-control"
 									placeholder="" required="" autofocus="" type="text"
 									value=<%=cuit%>>
 							</div>
 
 						</div>
-						<div class="row">
-							<div class="col-25">
+						<div class="row lineaForm">
+							<div class="cajalabel">
 								<label for="inputFechaDesde" class="sr-only">Fecha Desde</label>
 							</div>
-							<div class="col-75">
+							<div class="cajaNumerica">
 								<input name="fecha_desde" id="inputFechaDesde"
 									class="form-control" placeholder="" required="" autofocus=""
 									type="Date" value=<%=fecha_desde%>>
 							</div>
-							<div class="col-25">
+							<div class="cajalabel">
 								<label for="inputFechaHasta" class="sr-only">Fecha Hasta</label>
 							</div>
-							<div class="col-75">
+							<div class="cajaNumerica">
 								<input name="fecha_hasta" id="inputFechaHasta"
 									class="form-control" placeholder="" required="" autofocus=""
 									type="Date" value=<%=fecha_hasta%>>
 							</div>
 
-							<div class="col-25">
+							<div class="cajalabel">
 								<label for="inputCereal" class="sr-only">Cereal</label>
 							</div>
 							<%
@@ -102,7 +107,7 @@
 								ArrayList<Cereal> cereales = new ArrayList<Cereal>();
 								cereales = ctrl.getAll();
 							%>
-							<div class="col-75">
+							<div class="cajaInput">
 								<select name="cereal" id="inputCereal">
 									<%
 										for (Cereal c : cereales) {
@@ -119,8 +124,8 @@
 							</div>
 
 						</div>
-						<input type="submit" name="accion" value="Buscar"
-							onclick="javascript: submitForm('Servicio')">
+						<button type="submit" name="accion" value="Buscar" class="BuscarSocio"
+							onclick="javascript: submitForm('Servicio')"> BUSCAR SERVICIO </button>
 					</form>
 				</div>
 			</div>
@@ -164,10 +169,8 @@
 						<td><%=s.getCant_toneladas()%></td>
 						<td><%=s.getKm_transportados()%></td>
 						<td><%=s.getPrecio_servicio()%></td>
-						<td><button class="button" type="submit" value="<%=s.getIdservicio()%>"
-							id="servicio" name="servicio">Editar</button></td>
-
-
+						<td><button class="buttonGrilla" type="submit" value="<%=s.getIdservicio()%>"
+							id="servicio" name="servicio">EDITAR SERVICIO</button></td>
 
 					</tr>
 					<%

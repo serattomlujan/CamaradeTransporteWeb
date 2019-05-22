@@ -92,10 +92,13 @@
 
 
 	<div class="topnav">
-		<a href="Home?accion=menu">Home</a> <a href="Socio">Socios</a> <a
-			href="Cliente">Clientes</a> <a href="Camion">Camiones</a> <a
-			href="Cereal">Cereales</a> <a href="precio?accion=Ingresar">Actualizar
-			precios</a>
+	<a href="Home?accion=menu">Home</a> <a href="Socio">Socios</a> 
+		<a href="Cliente">Clientes</a> 
+		<a href="Camion">Camiones</a> 
+		<a href="Cereal">Cereales</a> 
+		<a href="precio?accion=Ingresar"> Actualizar precios</a>
+		<a href="Servicio?accion=ABMServicio"> Alta de Servicio</a>
+ 		<a href="Servicio?accion=FinalizarServicio"> Finalizar Servicio</a> 
 	</div>
 
 	<div class="row">
@@ -167,7 +170,8 @@
 							<button type="submit" class="botonGuardar" name="accion"
 								value="Guardar" onclick="javascript: submitForm('Socio')"
 								data-toggle="tooltip" data-placement="top"
-								title="Guardaar datos de Socio">GUARDAR</button>
+								title="Guardaar datos de Socio"> 
+								<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> GUARDAR</button>
 
 						</div>
 					</form>
