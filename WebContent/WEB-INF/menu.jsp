@@ -33,6 +33,7 @@
 		<a href="precio?accion=Ingresar"> Actualizar precios</a>
 		<a href="Servicio?accion=ABMServicio"> Alta de Servicio</a>
 		<a href="Servicio?accion=FinalizarServicio"> Finalizar Servicio</a>
+		<a href="Servicio?accion=informeServicio"> Finalizar Servicio</a>
 
 
 	</div>

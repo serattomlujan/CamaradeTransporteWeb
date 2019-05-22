@@ -62,6 +62,9 @@ public class ServicioServlet extends HttpServlet {
 		case "FinalizarServicio":
 			this.listaServicios(request, response);
 			break;
+		case "informeServicio":
+			this.informeServicios(request, response);
+			break;
 		case "Editar":
 			this.editarServicio(request, response);
 			break;
@@ -79,6 +82,19 @@ public class ServicioServlet extends HttpServlet {
 			break;
 		}
 	}
+
+	private void informeServicios(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		CtrlABMServicio ctrl1 = new CtrlABMServicio();
+		try {
+			request.setAttribute("listaServicios", ctrl1.getAll());
+		} catch (AppDataException ade) {
+			request.setAttribute("Error", ade.getMessage());
+		} catch (Exception e) {
+			response.setStatus(502);
+		}
+		request.getRequestDispatcher("/WEB-INF/informeServicios.jsp").forward(request, response);
+	}
+		
 
 	private void guardarServicio(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
