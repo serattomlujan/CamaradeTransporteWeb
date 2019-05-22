@@ -69,9 +69,9 @@
 			<table id="customers" align="center" class="tabla">
 
 				<tr>
-					<th>ID CEREAL</th>
-					<th>DESCRIPCION</th>
-					<th>ACCION</th>
+					<th style="width: 20%">ID CEREAL</th>
+					<th style="width: 50%">DESCRIPCION</th>
+					<th style="width: 30%">ACCION</th>
 				</tr>
 
 

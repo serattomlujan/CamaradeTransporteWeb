@@ -113,6 +113,7 @@ public class SocioServlet extends HttpServlet {
 
 	private void listaSocios(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CtrlABMSocio ctrl1= new CtrlABMSocio();
+		System.out.println(ctrl1);
 		try {
 			request.setAttribute("listaSocios", ctrl1.getAll());
 		} catch (AppDataException ade) {
@@ -121,7 +122,7 @@ public class SocioServlet extends HttpServlet {
 			response.setStatus(502);
 		}
 		request.getRequestDispatcher("/WEB-INF/Socio.jsp").forward(request, response);
-	
+       
 	
 	}	
 	}

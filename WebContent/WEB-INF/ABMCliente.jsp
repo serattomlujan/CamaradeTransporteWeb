@@ -17,8 +17,8 @@
 </script>
 <script type="text/javascript">
 	function alerta() {
-		window.onload = alert('Se ha registrado con exito')
-		location.reload('Cliente');
+ 		window.onload = alert('Se ha registrado con exito');
+ 		location.assign('Cliente');
 	}
 </script>
 
@@ -55,7 +55,9 @@
 			estado = encontrada.isEstado();
 		}
 		if (request.getAttribute("actualizado") != null) {
-	%><script
+			request.setAttribute("actualizado", null);
+	%>
+	<script
 		type="text/javascript">
 				alerta();
 			</script>

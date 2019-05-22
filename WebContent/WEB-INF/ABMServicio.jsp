@@ -29,7 +29,7 @@
 <script type="text/javascript">
 	function alerta() {
 		window.onload = alert('Se ha registrado con exito')
-		location.reload('Servicio');
+		location.assign('Servicio');
 	}
 </script>
 </head>
