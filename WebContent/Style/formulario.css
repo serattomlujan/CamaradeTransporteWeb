@@ -18,6 +18,11 @@ input[type=text], [type=password], [type=date], select, textarea {
 	font-size: 20px;
 }
 
+input[type=checkbox]{
+	width: 18px !important;
+    height: 18px !important;
+}
+
 .buscador {
 	width: 15% !important;
 }

@@ -79,8 +79,10 @@
 				</form>
 
 			</div>
+			
+
 			<div class="card">
-				<table id="customers" align="center" class="tabla">
+				<table  id="customers" align="center" class="tabla">
 
 					<tr>
 						<th>NRO SOCIO</th>
@@ -115,13 +117,11 @@
 						%>
 						<td><%=estado%></td>
 
-
-
-
-					</tr>
+</tr>
 					<%
 						}
 					%>
+			
 				</table>
 			</div>
 		</div>

@@ -110,16 +110,7 @@
 						<h2 class="form-signin-heading encabezadoContainer">Datos de Socio</h2>
 
 						<div class="row lineaForm">
-							<div class="cajaLabel">
-								<label for="inputnrosocio" class="sr-only">Nro Socio:</label>
-							</div>
-							<div class="cajaNumerica">
-								<input name="nro_socio" class="form-control" type="text"
-									readonly="readonly" <%if (nro_socio.equals("0")) {%> value=""
-									<%} else {%> value=<%=nro_socio%> <%}%>>
-							</div>
-
-							<div class="cajaLabelDNI">
+						<div class="cajaLabel">
 								<label for="inputdni" class="sr-only">DNI:</label>
 							</div>
 							<div class="cajaNumerica">
@@ -127,6 +118,17 @@
 									placeholder="" required="" autofocus="" type="text"
 									readonly="readonly" value=<%=dni%>>
 							</div>
+							
+						<% if((nro_socio.equals("0")) == false) {%>
+							<div class=" cajaLabelDNI">
+								<label for="inputnrosocio" class="sr-only">Nro Socio:</label>
+							</div>
+							<div class="cajaNumerica">
+								<input name="nro_socio" class="form-control" type="text"
+									readonly="readonly" id="inputNroSocio"  value=<%=nro_socio%>>
+										
+							</div>
+							<%} %>
 						</div>
 						<div class="row lineaForm">
 							<div class="cajaLabel">
