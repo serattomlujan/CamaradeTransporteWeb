@@ -14,11 +14,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>CTCarabelas</title>
+<link rel="icon" type="iman/png" href="Style/Icono.png">
 <script src="https://code.jquery.com/jquery-1.10.2.js"	type="text/javascript"></script>
 <script src="js/app-ajax.js" type="text/javascript"></script>
 <link href="Style/webLayout.css" rel="stylesheet">
 <link href="Style/formulario.css" rel="stylesheet">
+<link href="Style/Layout.css" rel="stylesheet">
 <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
 <script type="text/javascript">
 	function submitForm(met) {
@@ -42,11 +44,22 @@
 		</div>
 	</div>
 
-	<div class="topnav">
-		<a href="Home?accion=menu">Home</a> <a href="Socio">Socios</a> <a
-			href="Cliente">Clientes</a> <a href="Camion">Camiones</a> <a
-			href="Cereal">Cereales</a> <a href="precio?accion=Ingresar">Actualizar
-			precios</a>
+	<div id="header" class="topnav">
+		<ul class="nav">
+		<li> <a href="Home?accion=menu">Home</a> </li>
+		<li> <a href="Socio">Socios</a> </li>
+		<li> <a href="Cliente">Clientes</a> </li>
+		<li> <a href="Camion">Camiones</a> </li>
+		<li> <a href="Cereal">Cereales</a> </li>
+		<li> <a href="#">Servicios</a>
+					<ul>
+						<li><a href="precio?accion=Ingresar"> Actualizar precios</a></li>
+						<li><a href="Servicio?accion=ABMServicio"> Alta de Servicio</a></li>
+						<li><a href="Servicio?accion=FinalizarServicio"> Finalizar Servicio</a></li>
+					</ul>
+		
+	
+     </ul>
 	</div>
 	<%
 		Servicio encontrada = null;
@@ -103,60 +116,65 @@
 		}
 	%>
 
-	<div class="leftcolumn">
+	<div class="leftcolumn" align="center">
 		<div class="card">
 			<div class="container" align="center">
 
 				<form class="form-signin" id="myForm" name="abmcliente" action=""
 					method="post">
-					<h2 class="form-signin-heading">Servicio</h2>
-					<div class="row">
-						<div class="col-25">
-							<label for="inputIdCamion">ID SERVICIO</label>
+					<h2 class="form-signin-heading encabezadoContainer">Datos de alta Servicio</h2>
+					
+					
+					<div class="row lineaForm">
+						<div class="cajaLabel" style="margin-left: 10px;">
+							<label for="inputIdCamion">ID SERVICIO:</label>
 						</div>
-						<div class="col-75">
+						<div class="cajaNumerica">
 							<input name="id_servicio" id="inputIdServicio"
 								class="form-control" type="text" readonly="readonly"
 								value=<%=id_servicio%>>
 						</div>
 					</div>
-					<h5>
-						<u>Datos del Cliente</u>
-					</h5>
-					<div class="row">
-						<div class="col-25">
-							<label for="inputDni">Cuit:</label>
+					<p> <strong> Datos del Cliente </strong> </p>
+					<hr>
+					
+					
+					<div class="row lineaForm">
+						<div class="cajaLabel">
+							<label for="inputDni">CUIT:</label>
 						</div>
-						<div class="col-75">
+						<div class="cajaNumerica">
 							<% if (cuit == null) { %>
-							<h6 style="color: #FF0000;">no existe
-								cliente registrado para el cuit ingresado</h6>
+							<p style="color: #FF0000; margin-top: 0px">No existe
+								cliente registrado para el cuit ingresado</p>
 							<%}%>
+							
 							<input name="cuit" id="inputCuit" class="form-control"
 								required="" placeholder="" autofocus="" type="text"
-								value=<%=cuit%>> <input type="submit" name="accion"
-								value="Buscar"
-								onclick="javascript: submitForm('Servicio')">
+								value=<%=cuit%>> 
 						</div>
+								<button type="submit" name="accion"
+								value="Buscar" class="buscarSocio"
+								onclick="javascript: submitForm('Servicio')"> BUSCAR </button>
+						
 
-					</div>
-					<div class="row">
-						<div class="col-25">
-							<label for="inputRazonSocial">Razon Social:</label>
+						<div class="cajaLabel" style="width: 15%">
+							<label for="inputRazonSocial">RAZON SOCIAL:</label>
 						</div>
-						<div class="col-75">
+						<div class="cajaInput">
 							<input style="background: #e9e9e9;" name="razon_social"
 								id="inputRazonSocial" class="form-control" type="text"
 								readonly="readonly" value=<%=razon_social%>>
 						</div>
 					</div>
-					<div class="row">
-     <div class="col-25"><label for="inputCereal" class="sr-only">Cereal</label></div>
+					<div class="row lineaForm">
+     <div class="cajaLabel">
+     <label for="inputCereal" class="sr-only">CEREAL:</label></div>
       <%CtrlABMCereal ctrl=new CtrlABMCereal();
 			ArrayList<Cereal> cereales= new ArrayList<Cereal>();
 			cereales=ctrl.getAll();
 		%>
-      <div class="col-75"><select name="cereal" id="inputCereal"><%	for(Cereal c : cereales){ 
+      <div class="cajaInput"><select name="cereal" id="inputCereal"><%	for(Cereal c : cereales){ 
 		if(c.getIdcereal()==id_cereal){
 				%><option value="<%=c.getIdcereal() %>"selected><%=c.getDescripcion()%></option>
 			<%}
@@ -164,76 +182,83 @@
 			 <%  } }%>
 		</select> </div>
      
-    </div>
-					<div class="row">
-						<div class="col-25">
-							<label for="inputFechaServicio">Fecha de Servicio:</label>
+   
+						<div class="cajaLabel">
+							<label for="inputFechaServicio">FECHA:</label>
 						</div>
-						<div class="col-75">
+						<div class="cajaInput">
 							<input name="fecha_servicio" id="inputFechaServicio" 
 								class="form-control" placeholder="" type="date"
+								style="height: 25px;"
 								 value=<%=fecha_servicio%>>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-25">
-							<label for="inputHoraServicio">Hora de Servicio:</label>
+					
+						<div class="cajaLabel">
+							<label for="inputHoraServicio">HORA:</label>
 						</div>
-						<div class="col-75">
+						<div class="cajaHora">
 							<input name="hora_servicio" id="inputHoraServicio" 
-								class="form-control" placeholder="" type="time"
+								class="form-control cajaHora" placeholder="" type="time"
+								style="font-size: 20px; height: 35px; border-radius: 4px; margin-top: 6px;"
 								 value=<%=hora_servicio%>>
 						</div>
 					</div>
-					<h5>
-						<u>Datos del Camion</u>
-					</h5>
-					<div class="row">
-						<div class="col-25">
-							<label for="inputCamion">Id Camion:</label>
+					<p> <strong> Datos del Camion </strong> </p>
+					<hr>
+					<div class="row lineaForm">
+						<div class="cajaLabel">
+							<label for="inputCamion">ID CAMION:</label>
 						</div>
-						<div class="col-75">
+						<div class="cajaNumerica">
 							<input name="camion" id="inputCamion" class="form-control"
 								placeholder="" autofocus="" type="text" value=<%=id_camion%>>
-								<input type="submit" name="accion"
-								value="Asignar Camion"
-								onclick="javascript: submitForm('Servicio')">
+								
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-25">
-							<label for="inputPatente">Patente:</label>
+						<button type="submit" name="accion"
+								value="Asignar Camion" class="buscarSocio"
+								onclick="javascript: submitForm('Servicio')"> ASIGNAR CAMION </button>
+					
+						<div class="cajaLabel">
+							<label for="inputPatente">PATENTE:</label>
 						</div>
-						<div class="col-75">
+						<div class="cajaNumerica">
 							<input name="patente" id="inputPatente" class="form-control"
 								placeholder="" autofocus="" type="text" value=<%=patente%>>
 						</div>
 					</div>
 					<%if(id_servicio!=""){ %>
-					<div class="row">
-						<div class="col-25">
-							<label for="inputKmTransp">Km Transportados:</label>
+					<div class="row lineaForm">
+						<div class="cajaLabel" style="width: 19%">
+							<label for="inputKmTransp">KM TRANSPORTADOS:</label>
 						</div>
-						<div class="col-75">
+						<div class="cajaNumerica">
 							<input name="km_transportados" id="inputKmTransp" class="form-control"
 								placeholder="" autofocus="" type="text" value="" onblur="calculaPrecio()">
 						</div>
 
-					</div>
-
-					<div class="row">
-						<div class="col-25">
-							<label for="inputCantToneladas">Cantidad de toneladas:</label>
+					
+						<div class="cajaLabel" style="width: 21%">
+							<label for="inputCantToneladas">CANT. DE TONELADAS:</label>
 						</div>
-						<div class="col-75">
+						<div class="cajaNumerica">
 							<input name="cant_toneladas" id="inputCantToneladas"
 								class="form-control" placeholder="" type="text"
 								value="" onblur="calculaPrecio()">
 						</div>
+						
+						<div class="cajaLabel">
+							<label for="inputTotal">TOTAL:</label>
+						</div>
+						<div class="cajaNumerica">
+							<input name="total" id="inputTotal"
+								class="form-control" placeholder="" type="text"
+								value=<%=precio_servicio%>>
+						</div>
+						
 					</div>
-					<div class="row">
-						<div class="col-25">
-							<label for="inputObservacion">Observacion:</label>
+					<div class="row lineaForm">
+						<div class="cajaLabel" style="width: 19%">
+							<label for="inputObservacion">OBSERVASION:</label>
 						</div>
 						<div class="col-75">
 							<input name="observacion" id="inputObservacion"
@@ -241,23 +266,13 @@
 								value=<%=observacion%>>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-25">
-							<label for="inputTotal">Total:</label>
-						</div>
-						<div class="col-75">
-							<input name="total" id="inputTotal"
-								class="form-control" placeholder="" type="text"
-								value=<%=precio_servicio%>>
-						</div>
-					</div>
 					<%} %>
 					
-					<br> <br>
+					
 
 					<div align="center">
-						<input type="submit" name="accion" value="Guardar"
-							onclick="javascript: submitForm('Servicio')">
+						<button type="submit" name="accion" value="Guardar" class="botonGuardar"
+							onclick="javascript: submitForm('Servicio')"> GUARDAR </button>
 					</div>
 
 
@@ -266,6 +281,7 @@
 			</div>
 		</div>
 
+	</div>
 	</div>
 <script type="text/javascript">
  function calculaPrecio() {

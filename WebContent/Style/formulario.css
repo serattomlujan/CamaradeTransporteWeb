@@ -18,6 +18,11 @@ input[type=text], [type=password], [type=date], select, textarea {
 	font-size: 20px;
 }
 
+input[type=checkbox]{
+	width: 18px !important;
+    height: 18px !important;
+}
+
 .buscador {
 	width: 15% !important;
 }
@@ -174,6 +179,13 @@ input[type=submit]:hover {
 	margin-left: 10px;
 	margin-right: 10px;
 }
+
+.cajaHora{
+	font-size: 20px !important;
+    height: 40px !important;
+    border-radius: 4px !important;
+}
+
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
 	.col-25, .col-75, input[type=submit] {

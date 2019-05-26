@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>CTCarabelas</title>
+<link rel="icon" type="iman/png" href="Style/Icono.png">
  <link href="Style/login.css" rel="stylesheet">
  <script> 
 function abrir(url) { 

@@ -9,6 +9,8 @@
 body {
   font-family: Arial;
   background: #ffffff;
+  margin: 0px ;
+  width: 100% ;
 
 }
 
@@ -16,7 +18,7 @@ body {
 .header {
   padding: 15px;
   text-align: center;
-  background: #333;
+  background: black;
 }
 
 .header h1 {
@@ -26,7 +28,7 @@ body {
 /* Style the top navigation bar */
 .topnav {
   overflow: hidden;
-  background-color: #333;
+  background-color: black !important;
 }
 
 /* Style the topnav links */
@@ -47,6 +49,7 @@ body {
 
 /* Create two unequal columns that floats next to each other */
 /* Left column */
+
 .leftcolumn {   
   float: left;
   width: 100%;
@@ -55,6 +58,7 @@ body {
 /* Fake image */
 .fakeimg {
   background-color: #aaa;
+  color: white;
   width: 100%;
   padding: 20px;
 }
@@ -84,6 +88,7 @@ body {
   padding: 20px;
   text-align: center;
   background: #ddd;
+  color: white;
   margin-top: 20px;
 }
 
@@ -91,7 +96,7 @@ body {
 @media screen and (max-width: 800px) {
   .leftcolumn, .rightcolumn {   
     width: 100%;
-    padding: 0;
+    padding: 0px;
   }
 }
 

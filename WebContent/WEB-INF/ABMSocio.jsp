@@ -6,9 +6,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>CTCarabelas</title>
+<link rel="icon" type="iman/png" href="Style/Icono.png">
 <link href="Style/webLayout.css" rel="stylesheet">
+<link href="Style/tabla.css" rel="stylesheet">
 <link href="Style/formulario.css" rel="stylesheet">
+<link href="Style/Layout.css" rel="stylesheet">
 <script type="text/javascript">
 	function submitForm(met) {
 		document.myForm.action = met;
@@ -91,11 +94,22 @@
 	</div>
 
 
-	<div class="topnav">
-		<a href="Home?accion=menu">Home</a> <a href="Socio">Socios</a> <a
-			href="Cliente">Clientes</a> <a href="Camion">Camiones</a> <a
-			href="Cereal">Cereales</a> <a href="precio?accion=Ingresar">Actualizar
-			precios</a>
+	<div id="header" class="topnav">
+		<ul class="nav">
+		<li> <a href="Home?accion=menu">Home</a> </li>
+		<li> <a href="Socio">Socios</a> </li>
+		<li> <a href="Cliente">Clientes</a> </li>
+		<li> <a href="Camion">Camiones</a> </li>
+		<li> <a href="Cereal">Cereales</a> </li>
+		<li> <a href="#">Servicios</a>
+					<ul>
+						<li><a href="precio?accion=Ingresar"> Actualizar precios</a></li>
+						<li><a href="Servicio?accion=ABMServicio"> Alta de Servicio</a></li>
+						<li><a href="Servicio?accion=FinalizarServicio"> Finalizar Servicio</a></li>
+					</ul>
+		
+	
+     </ul>
 	</div>
 
 	<div class="row">
@@ -107,16 +121,7 @@
 						<h2 class="form-signin-heading encabezadoContainer">Datos de Socio</h2>
 
 						<div class="row lineaForm">
-							<div class="cajaLabel">
-								<label for="inputnrosocio" class="sr-only">Nro Socio:</label>
-							</div>
-							<div class="cajaNumerica">
-								<input name="nro_socio" class="form-control" type="text"
-									readonly="readonly" <%if (nro_socio.equals("0")) {%> value=""
-									<%} else {%> value=<%=nro_socio%> <%}%>>
-							</div>
-
-							<div class="cajaLabelDNI">
+						<div class="cajaLabel">
 								<label for="inputdni" class="sr-only">DNI:</label>
 							</div>
 							<div class="cajaNumerica">
@@ -124,6 +129,17 @@
 									placeholder="" required="" autofocus="" type="text"
 									readonly="readonly" value=<%=dni%>>
 							</div>
+							
+						<% if((nro_socio.equals("0")) == false) {%>
+							<div class=" cajaLabelDNI">
+								<label for="inputnrosocio" class="sr-only">Nro Socio:</label>
+							</div>
+							<div class="cajaNumerica">
+								<input name="nro_socio" class="form-control" type="text"
+									readonly="readonly" id="inputNroSocio"  value=<%=nro_socio%>>
+										
+							</div>
+							<%} %>
 						</div>
 						<div class="row lineaForm">
 							<div class="cajaLabel">
@@ -167,7 +183,8 @@
 							<button type="submit" class="botonGuardar" name="accion"
 								value="Guardar" onclick="javascript: submitForm('Socio')"
 								data-toggle="tooltip" data-placement="top"
-								title="Guardaar datos de Socio">GUARDAR</button>
+								title="Guardaar datos de Socio"> 
+								<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> GUARDAR</button>
 
 						</div>
 					</form>

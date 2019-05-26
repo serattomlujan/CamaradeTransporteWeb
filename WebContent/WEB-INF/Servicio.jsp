@@ -8,10 +8,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+
+<title>CTCarabelas</title>
+<link rel="icon" type="iman/png" href="Style/Icono.png">
 <link href="Style/webLayout.css" rel="stylesheet">
 <link href="Style/tabla.css" rel="stylesheet">
+<link href="Style/Layout.css" rel="stylesheet">
 <link href="Style/formulario.css" rel="stylesheet">
 <link rel="stylesheet" href="Style/jquery.dataTables.min.css">
 <script src="Style/jquery-3.4.1.min.js"></script>
@@ -70,12 +74,26 @@ $(document).ready(function(){
 		</div>
 	</div>
 
-	<div class="topnav">
-		<a href="Home?accion=menu">Home</a> <a href="Socio">Socios</a> <a
-			href="Cliente">Clientes</a>
+	<div id="header" class="topnav">
+		<ul class="nav">
+		<li> <a href="Home?accion=menu">Home</a> </li>
+		<li> <a href="Socio">Socios</a> </li>
+		<li> <a href="Cliente">Clientes</a> </li>
+		<li> <a href="Camion">Camiones</a> </li>
+		<li> <a href="Cereal">Cereales</a> </li>
+		<li> <a href="#">Servicios</a>
+					<ul>
+						<li><a href="precio?accion=Ingresar"> Actualizar precios</a></li>
+						<li><a href="Servicio?accion=ABMServicio"> Alta de Servicio</a></li>
+						<li><a href="Servicio?accion=FinalizarServicio"> Finalizar Servicio</a></li>
+					</ul>
+		
+	
+     </ul>
 	</div>
 	<form class="form-signin" id="myForm" name="servicio" action="Servicio?accion=Editar" method="post">
 			<div class="card">
+
 				<table id="customers" class="display" style="width:100%">
         <thead>
             <tr>
