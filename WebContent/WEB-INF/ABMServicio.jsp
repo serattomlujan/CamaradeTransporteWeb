@@ -275,7 +275,7 @@
  	console.log(toneladas);
  	var datos = 'accion='+ accion + '&toneladas='+ toneladas + '&km='+ km;
  	$.ajax({
- 		url : 'Servicio',
+ 		url : 'Servicio?accion=Editar',
  		data : datos,
  		success : function(responseText) {
  			$('#inputTotal').val(responseText);

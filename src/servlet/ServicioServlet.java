@@ -1,6 +1,5 @@
 package servlet;
-
-import java.io.IOException;
+import java.io.*;
 import java.sql.Date;
 import java.sql.Time;
 
@@ -10,17 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+import com.google.gson.JsonObject;
+
+import controles.CtrlABMCamion;
 import controles.CtrlABMCliente;
 import controles.CtrlABMPrecio_km;
 import controles.CtrlABMServicio;
-import controles.CtrlABMSocio;
 import entity.Camion;
 import entity.Cereal;
 import entity.Cliente;
 import entity.PrecioKM;
 import entity.Servicio;
-import entity.Socio;
-import util.AppDataException;
 
 /**
  * Servlet implementation class ServicioServlet
@@ -65,6 +65,10 @@ public class ServicioServlet extends HttpServlet {
 		case "informeServicio":
 			this.informeServicios(request, response);
 			break;
+		case "listarInfomeServicios":
+			this.buscarInformeServicios(request, response);
+		case "listarServicios":
+			this.buscarListadoServicios(request, response);
 		case "Editar":
 			this.editarServicio(request, response);
 			break;
@@ -82,49 +86,92 @@ public class ServicioServlet extends HttpServlet {
 			break;
 		}
 	}
-
-	private void informeServicios(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CtrlABMServicio ctrl1 = new CtrlABMServicio();
+	private void buscarInformeServicios(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.setContentType("application/json;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		CtrlABMServicio ctrl = new CtrlABMServicio();
+		
+		com.google.gson.JsonObject gson= new JsonObject();
 		try {
-			request.setAttribute("listaServicios", ctrl1.getAll());
-		} catch (AppDataException ade) {
-			request.setAttribute("Error", ade.getMessage());
+			gson=ctrl.getServiciosFinalizados();
+				out.print(gson.toString());
+				
 		} catch (Exception e) {
 			response.setStatus(502);
 		}
+		finally{
+			out.close();
+		}
+		
+	}
+	private void buscarListadoServicios(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.setContentType("application/json;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		CtrlABMServicio ctrl = new CtrlABMServicio();
+		
+		com.google.gson.JsonObject gson= new JsonObject();
+		try {
+			gson=ctrl.getServiciosSinFinalizar();
+				out.print(gson.toString());
+				
+		} catch (Exception e) {
+			response.setStatus(502);
+		}
+		finally{
+			out.close();
+		}
+		
+	}
+	private void informeServicios(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		request.getRequestDispatcher("/WEB-INF/informeServicios.jsp").forward(request, response);
 	}
-		
 
 	private void guardarServicio(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
+			CtrlABMCamion ctrlc = new CtrlABMCamion();
 			CtrlABMServicio ctrl = new CtrlABMServicio();
 			Servicio s = new Servicio();
 			s.setCliente(new Cliente());
 			s.setCamion(new Camion());
 			s.setCereal(new Cereal());
 			s.setPrecio(new PrecioKM());
-			
-			String id_servicio=request.getParameter("id_servicio");
-			
+
+			String id_servicio = request.getParameter("id_servicio");
+
 			s.getCliente().setCuit(request.getParameter("cuit"));
-			
+
 			s.getCereal().setIdcereal(Integer.valueOf(request.getParameter("cereal")));
 			s.setFecha(Date.valueOf(request.getParameter("fecha_servicio")));
 			s.setHora(Time.valueOf(request.getParameter("hora_servicio")));
 			s.getCamion().setIdcamion(Integer.parseInt(request.getParameter("camion")));
-			
-			if(id_servicio==""){
-			ctrl.add(s);
-			}
-			else{
+			s.getCamion().setPatente(request.getParameter("patente"));
+			Camion c = new Camion();
+			c = ctrlc.getByPatente(s.getCamion());
+
+			if (id_servicio == "") {
+				if (c.isEstado()) {
+					c.setEstado(false);
+					ctrlc.update(c);
+
+					ctrl.add(s);
+				} else {
+					System.out.println("el camion ya no esta disponible");
+				}
+
+			} else {
 				s.setIdservicio(Integer.parseInt(id_servicio));
 				s.setCant_toneladas(Float.parseFloat(request.getParameter("cant_toneladas")));
 				s.setKm_transportados(Integer.parseInt(request.getParameter("km_transportados")));
 				s.setObservaciones(request.getParameter("observacion"));
 				s.setPrecio_servicio(Float.parseFloat(request.getParameter("total")));
-			ctrl.update(s);
+				c.setEstado(true);
+				ctrlc.update(c);
+				ctrl.update(s);
 			}
 			request.setAttribute("actualizado", s);
 			request.getRequestDispatcher("/WEB-INF/ABMSocio.jsp").forward(request, response);
@@ -224,15 +271,8 @@ public class ServicioServlet extends HttpServlet {
 
 	private void listaServicios(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		CtrlABMServicio ctrl1 = new CtrlABMServicio();
-		try {
-			request.setAttribute("listaServicios", ctrl1.getAll());
-		} catch (AppDataException ade) {
-			request.setAttribute("Error", ade.getMessage());
-		} catch (Exception e) {
-			response.setStatus(502);
-		}
 		request.getRequestDispatcher("/WEB-INF/Servicio.jsp").forward(request, response);
+		
 	}
 
 	private void ABMServicio(HttpServletRequest request, HttpServletResponse response)

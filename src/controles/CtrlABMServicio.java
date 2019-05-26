@@ -1,7 +1,6 @@
 package controles;
 
 import java.util.ArrayList;
-
 import data.DataCamion;
 import data.DataServicio;
 import entity.Camion;
@@ -19,8 +18,11 @@ public class CtrlABMServicio {
 		 servicios= new ArrayList<Servicio>();
 	   
 		}
-	public ArrayList<Servicio> getAll() throws Exception {
-		return dataSer.getAll();
+	public com.google.gson.JsonObject getServiciosFinalizados() throws Exception {
+		return dataSer.getServiciosFinalizados();
+	}
+	public com.google.gson.JsonObject getServiciosSinFinalizar() throws Exception {
+		return dataSer.getServiciosSinFinalizar();
 	}
 	public Servicio getById(int id_servicio) throws Exception {
 		return dataSer.getById(id_servicio);
