@@ -258,7 +258,7 @@
 					</div>
 					<div class="row lineaForm">
 						<div class="cajaLabel" style="width: 19%">
-							<label for="inputObservacion">OBSERVASION:</label>
+							<label for="inputObservacion">OBSERVACION:</label>
 						</div>
 						<div class="col-75">
 							<input name="observacion" id="inputObservacion"
@@ -291,7 +291,7 @@
  	console.log(toneladas);
  	var datos = 'accion='+ accion + '&toneladas='+ toneladas + '&km='+ km;
  	$.ajax({
- 		url : 'Servicio?accion=Editar',
+ 		url : 'Servicio?accion=calculaPrecio',
  		data : datos,
  		success : function(responseText) {
  			$('#inputTotal').val(responseText);
