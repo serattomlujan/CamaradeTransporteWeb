@@ -33,7 +33,7 @@ body {
 
 /* Style the topnav links */
 .topnav a {
-  float: left;
+/*   float: left; */
 /*   display: block; */
   color: #f2f2f2;
   text-align: center;
@@ -44,7 +44,7 @@ body {
 /* Change color on hover */
 .topnav a:hover {
   background-color: #aaa;
-  color: black;
+  color: white;
 }
 
 /* Create two unequal columns that floats next to each other */

@@ -9,8 +9,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>CTCarabelas</title>
+<link rel="icon" type="iman/png" href="Style/Icono.png">
 <link href="Style/webLayout.css" rel="stylesheet">
+<link href="Style/Layout.css" rel="stylesheet">
 <link href="Style/tabla.css" rel="stylesheet">
 <link href="Style/formulario.css" rel="stylesheet">
 <link rel="stylesheet" href="Style/jquery.dataTables.min.css">
@@ -29,7 +31,7 @@
 											var title = $(this).text();
 											$(this)
 													.html(
-															'<input type="text" placeholder="Buscar '+title+'" />');
+															'<input style="font-size: 16px; width: 93%; margin: -4px" type="text" class="textoBuscarGrilla" placeholder="Buscar '+title+'" />');
 
 											$('input', this)
 													.on(
@@ -105,14 +107,28 @@
 		</div>
 	</div>
 
-	<div class="topnav">
-		<a href="Home?accion=menu">Home</a> <a href="Socio">Socios</a> <a
-			href="Cliente">Clientes</a>
+	<div id="header" class="topnav">
+		<ul class="nav">
+		<li> <a href="Home?accion=menu">Home</a> </li>
+		<li> <a href="Socio">Socios</a> </li>
+		<li> <a href="Cliente">Clientes</a> </li>
+		<li> <a href="Camion">Camiones</a> </li>
+		<li> <a href="Cereal">Cereales</a> </li>
+		<li> <a href="#">Servicios</a>
+					<ul>
+						<li><a href="precio?accion=Ingresar"> Actualizar precios</a></li>
+						<li><a href="Servicio?accion=ABMServicio"> Alta de Servicio</a></li>
+						<li><a href="Servicio?accion=FinalizarServicio"> Finalizar Servicio</a></li>
+						<li><a href="Servicio?accion=informeServicio"> Informe de Servicios</a></li>
+					</ul>
+		
+	
+     </ul>
 	</div>
 
 
 	<div class="card">
-		<table id="example" class="display" style="width: 100%">
+		<table id="example" class="display tabla" style="width: 100%">
 			<thead>
 				<tr>
 					<th>ID Servicio</th>
@@ -134,7 +150,7 @@
 
 			</tbody>
 			<tfoot>
-				<tr>
+				<tr style="visibility: hidden">
 					<th>ID Servicio</th>
 					<th>Cereal</th>
 					<th>Cuit</th>

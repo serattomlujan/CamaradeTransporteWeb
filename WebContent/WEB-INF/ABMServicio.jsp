@@ -56,6 +56,7 @@
 						<li><a href="precio?accion=Ingresar"> Actualizar precios</a></li>
 						<li><a href="Servicio?accion=ABMServicio"> Alta de Servicio</a></li>
 						<li><a href="Servicio?accion=FinalizarServicio"> Finalizar Servicio</a></li>
+						<li><a href="Servicio?accion=informeServicio"> Informe de Servicios</a></li>
 					</ul>
 		
 	
@@ -126,7 +127,9 @@
 					
 					
 					<div class="row lineaForm">
-						<div class="cajaLabel" style="margin-left: 10px;">
+					
+					<% if(id_servicio != "") {%>
+							<div class="cajaLabel" style="margin-left: 10px;">
 							<label for="inputIdCamion">ID SERVICIO:</label>
 						</div>
 						<div class="cajaNumerica">
@@ -134,6 +137,8 @@
 								class="form-control" type="text" readonly="readonly"
 								value=<%=id_servicio%>>
 						</div>
+							<%} %>
+						
 					</div>
 					<p> <strong> Datos del Cliente </strong> </p>
 					<hr>
