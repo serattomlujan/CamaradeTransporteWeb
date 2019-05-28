@@ -1,4 +1,5 @@
 package servlet;
+
 import java.io.*;
 import java.sql.Date;
 import java.sql.Time;
@@ -8,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 
 import com.google.gson.JsonObject;
 
@@ -84,46 +84,91 @@ public class ServicioServlet extends HttpServlet {
 		case "Guardar":
 			this.guardarServicio(request, response);
 			break;
+		case "BuscarServicio":
+			this.reporteServicio(request, response);
+			break;
 		}
 	}
+
+	private void reporteServicio(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		response.setContentType("application/json;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		request.getParameter("opcion");
+		Date fecha_desde=Date.valueOf(request.getParameter("fecha_desde"));
+		Date fecha_hasta=Date.valueOf(request.getParameter("fecha_hasta"));
+
+		CtrlABMServicio ctrl = new CtrlABMServicio();
+
+		com.google.gson.JsonObject gson = new JsonObject();
+		try {
+//			switch (request.getParameter("opcion")) {
+//			case "socios":
+//				gson = ctrl.getInformeCereal(fecha_desde, fecha_hasta);
+//				break;
+//			case "cereales":
+//				gson = ctrl.getInformeCereal(fecha_desde, fecha_hasta);
+//				break;
+//			case "camiones":
+//				gson = ctrl.getInformeCereal(fecha_desde, fecha_hasta);
+//				break;
+//			case "clientes":
+//				gson = ctrl.getInformeCereal(fecha_desde, fecha_hasta);
+//				break;
+//
+//			default:
+//				break;
+//			}
+			gson = ctrl.getInformeCereal(fecha_desde, fecha_hasta);
+			request.setAttribute("reporteServ", gson);
+			out.print(gson.toString());
+			
+		} catch (Exception e) {
+			response.setStatus(502);
+		} finally {
+			out.close();
+		}
+
+	}
+
 	private void buscarInformeServicios(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		CtrlABMServicio ctrl = new CtrlABMServicio();
-		
-		com.google.gson.JsonObject gson= new JsonObject();
+
+		com.google.gson.JsonObject gson = new JsonObject();
 		try {
-			gson=ctrl.getServiciosFinalizados();
-				out.print(gson.toString());
-				
+			gson = ctrl.getServiciosFinalizados();
+			out.print(gson.toString());
+			
 		} catch (Exception e) {
 			response.setStatus(502);
-		}
-		finally{
+		} finally {
 			out.close();
 		}
-		
+
 	}
+
 	private void buscarListadoServicios(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		CtrlABMServicio ctrl = new CtrlABMServicio();
-		
-		com.google.gson.JsonObject gson= new JsonObject();
+
+		com.google.gson.JsonObject gson = new JsonObject();
 		try {
-			gson=ctrl.getServiciosSinFinalizar();
-				out.print(gson.toString());
-				
+			gson = ctrl.getServiciosSinFinalizar();
+			out.print(gson.toString());
+
 		} catch (Exception e) {
 			response.setStatus(502);
-		}
-		finally{
+		} finally {
 			out.close();
 		}
-		
+
 	}
+
 	private void informeServicios(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -272,7 +317,7 @@ public class ServicioServlet extends HttpServlet {
 	private void listaServicios(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getRequestDispatcher("/WEB-INF/Servicio.jsp").forward(request, response);
-		
+
 	}
 
 	private void ABMServicio(HttpServletRequest request, HttpServletResponse response)

@@ -1,5 +1,6 @@
 package controles;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import data.DataCamion;
 import data.DataServicio;
@@ -23,6 +24,9 @@ public class CtrlABMServicio {
 	}
 	public com.google.gson.JsonObject getServiciosSinFinalizar() throws Exception {
 		return dataSer.getServiciosSinFinalizar();
+	}
+	public com.google.gson.JsonObject getInformeCereal(Date fechaDesde, Date fechaHasta) throws Exception {
+		return dataSer.getInformeCereal(fechaDesde, fechaHasta);
 	}
 	public Servicio getById(int id_servicio) throws Exception {
 		return dataSer.getById(id_servicio);
