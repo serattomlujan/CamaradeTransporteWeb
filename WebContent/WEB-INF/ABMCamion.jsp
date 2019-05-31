@@ -229,7 +229,7 @@
 					</div>
 					
 
-					<div clas="row">
+					<div class="row">
 						<button class="botonGuardar" type="submit" name="accion" value="Guardar"
 							onclick="javascript: submitForm('Camion')"> GUARDAR </button>
 					</div>

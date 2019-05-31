@@ -18,83 +18,10 @@
 <link rel="stylesheet" href="Style/jquery.dataTables.min.css">
 <script src="Style/jquery-3.4.1.min.js"></script>
 <script src="Style/jquery.dataTables.min.js"></script>
-<%if(request.getAttribute("reporteServ")==null){ %>
-<script>
-	$(document)
-			.ready(
-					function() {
-						//  Setup - add a text input to each footer cell 
-						$('#example thead tr').clone(true).appendTo(
-								'#example thead');
-						$('#example thead tr:eq(1) th')
-								.each(
-										function(i) {
-											var title = $(this).text();
-											$(this)
-													.html(
-															'<input style="font-size: 16px; width: 93%; margin: -4px" type="text" class="textoBuscarGrilla" placeholder="Buscar '+title+'" />');
 
-											$('input', this)
-													.on(
-															'keyup change',
-															function() {
-																if (table
-																		.column(
-																				i)
-																		.search() !== this.value) {
-																	table
-																			.column(
-																					i)
-																			.search(
-																					this.value)
-																			.draw();
-																}
-															});
-										});
-
-						var table = $('#example')
-								.DataTable(
-										{
-											"language" : {
-												"url" : "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-											},
-											orderCellsTop : true,
-											fixedHeader : true,
-											ajax : {
-												method : "GET",
-												url : "Servicio?accion=listarInfomeServicios",
-												dataSrc : "datos"
-											},
-											columns : [ {
-												"data" : "id_servicio"
-											}, {
-												"data" : "cereal"
-											}, {
-												"data" : "cuit"
-											}, {
-												"data" : "razon_social"
-											}, {
-												"data" : "id_camion"
-											}, {
-												"data" : "patente"
-											}, {
-												"data" : "fecha"
-											}, {
-												"data" : "hora"
-											}, {
-												"data" : "cant_toneladas"
-											}, {
-												"data" : "km_transportados"
-											}, {
-												"data" : "precio_servicio"
-											} ]
-										});
-					});
-</script>
-<%} %>
 <script>
 function table() {
-
+	$('#reporte').dataTable().fnDestroy();
 						var table = $('#reporte')
 								.DataTable(
 										{
@@ -105,13 +32,13 @@ function table() {
 											fixedHeader : true,
 											ajax : {
 												method : "GET",
-												url : "Servicio?fecha_desde="+$(inputFechaDesde).val()+"&fecha_hasta="+$(inputFechaHasta).val()+"&accion=BuscarServicio",
+												url : "Servicio?opcion="+$('input:radio[name=opcion]:checked').val()+"&fecha_desde="+$(inputFechaDesde).val()+"&fecha_hasta="+$(inputFechaHasta).val()+"&accion=BuscarServicio",
 												dataSrc : "datos"
 											},
 											columns : [ {
-												"data" : "id_cereal"
+												"data" : "string1"
 											}, {
-												"data" : "descripcion"
+												"data" : "string2"
 											}, {
 												"data" : "cant_servicio"
 											}, {
@@ -164,18 +91,16 @@ function table() {
 
 				<h1 style="text-align: center">Servicios</h1>
 
-				<form class="form-signin" id="myForm" name="servicio" action=""
-					method="post">
 					<div class="card">
 				 <div>
         <label>Seleccione una opcion</label>
-        <input type = "radio" id="opcion" name = "opcion" value ="socios" /> Socios
+        <input type = "radio" id="opcion1" name = "opcion" value ="socios" > Socios
         <br>
-        <input type = "radio" id="opcion" name = "opcion" value ="cereales" /> Cereales
+        <input type = "radio" id="opcion2" name = "opcion" value ="cereales" > Cereales
         <br>
-        <input type = "radio" id="opcion" name = "opcion" value ="camiones" /> Camiones
+        <input type = "radio" id="opcion3" name = "opcion" value ="camiones" > Camiones
         <br>
-        <input type = "radio" id="opcion" name = "opcion" value ="clientes" /> Clientes
+        <input type = "radio" id="opcion4" name = "opcion" value ="clientes" > Clientes
     </div>
 							
 						
@@ -203,52 +128,11 @@ function table() {
 						</div>
 						
 					</div>
-				</form>
+				
 
 			</div>	</div>	</div>
 
-	<div class="card">
-		<table id="example" class="display tabla" style="width: 100%">
-			<thead>
-				<tr>
-					<th>ID Servicio</th>
-					<th>Cereal</th>
-					<th>Cuit</th>
-					<th>Razon Social</th>
-					<th>ID Camion</th>
-					<th>Patente</th>
-					<th>Fecha</th>
-					<th>Hora</th>
-					<th>Toneladas</th>
-					<th>KM</th>
-					<th>Precio Servicio</th>
-
-				</tr>
-
-			</thead>
-			<tbody>
-
-			</tbody>
-			<tfoot>
-				<tr style="visibility: hidden">
-					<th>ID Servicio</th>
-					<th>Cereal</th>
-					<th>Cuit</th>
-					<th>Razon Social</th>
-					<th>ID Camion</th>
-					<th>Patente</th>
-					<th>Fecha</th>
-					<th>Hora</th>
-					<th>Toneladas</th>
-					<th>KM</th>
-					<th>Precio Servicio</th>
-
-				</tr>
-
-
-			</tfoot>
-		</table>
-	</div>
+	
 	<div class="card">
 		<table id="reporte" class="display" style="width: 100%">
 			<thead>
@@ -266,8 +150,9 @@ function table() {
 			</tbody>
 			<tfoot>
 				<tr>
-					<th>ID Cereal</th>
-					<th>Descripcion</th>
+				
+					<th>Cuit</th>
+					<th>Razon Social</th>
 					<th>Servicios Realizados</th>
 					<th>Total Toneladas</th>
 					<th>Total km</th>

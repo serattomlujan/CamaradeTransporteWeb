@@ -28,6 +28,15 @@ public class CtrlABMServicio {
 	public com.google.gson.JsonObject getInformeCereal(Date fechaDesde, Date fechaHasta) throws Exception {
 		return dataSer.getInformeCereal(fechaDesde, fechaHasta);
 	}
+	public com.google.gson.JsonObject getInformeCliente(Date fechaDesde, Date fechaHasta) throws Exception {
+		return dataSer.getInformeCliente(fechaDesde, fechaHasta);
+	}
+	public com.google.gson.JsonObject getInformeSocio(Date fechaDesde, Date fechaHasta) throws Exception {
+		return dataSer.getInformeSocio(fechaDesde, fechaHasta);
+	}
+	public com.google.gson.JsonObject getInformeCamion(Date fechaDesde, Date fechaHasta) throws Exception {
+		return dataSer.getInformeCamion(fechaDesde, fechaHasta);
+	}
 	public Servicio getById(int id_servicio) throws Exception {
 		return dataSer.getById(id_servicio);
 	}

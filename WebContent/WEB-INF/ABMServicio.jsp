@@ -9,17 +9,24 @@
 <%@page import="java.sql.Time"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <title>CTCarabelas</title>
+
 <link rel="icon" type="iman/png" href="Style/Icono.png">
+
 <script src="https://code.jquery.com/jquery-1.10.2.js"	type="text/javascript"></script>
+
 <script src="js/app-ajax.js" type="text/javascript"></script>
+
 <link href="Style/webLayout.css" rel="stylesheet">
+
 <link href="Style/formulario.css" rel="stylesheet">
+
 <link href="Style/Layout.css" rel="stylesheet">
 <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
 <script type="text/javascript">
@@ -62,7 +69,7 @@
 	
      </ul>
 	</div>
-	<%
+		<%
 		Servicio encontrada = null;
 		String id_servicio = "";
 		String cuit = "";
@@ -116,12 +123,11 @@
 	<%
 		}
 	%>
-
-	<div class="leftcolumn" align="center">
+	<div class="row">
+	<div class="leftcolumn">
 		<div class="card">
 			<div class="container" align="center">
-
-				<form class="form-signin" id="myForm" name="abmcliente" action=""
+			<form id="myForm" name="abmcliente" action="Servicio"
 					method="post">
 					<h2 class="form-signin-heading encabezadoContainer">Datos de alta Servicio</h2>
 					
@@ -137,6 +143,7 @@
 								class="form-control" type="text" readonly="readonly"
 								value=<%=id_servicio%>>
 						</div>
+						
 							<%} %>
 						
 					</div>
@@ -159,8 +166,7 @@
 								value=<%=cuit%>> 
 						</div>
 								<button type="submit" name="accion"
-								value="Buscar" class="buscarSocio"
-								onclick="javascript: submitForm('Servicio')"> BUSCAR </button>
+								value="Buscar" class="buscarSocio"> BUSCAR </button>
 						
 
 						<div class="cajaLabel" style="width: 15%">
@@ -220,8 +226,7 @@
 								
 						</div>
 						<button type="submit" name="accion"
-								value="Asignar Camion" class="buscarSocio"
-								onclick="javascript: submitForm('Servicio')"> ASIGNAR CAMION </button>
+								value="AsignarCamion" class="buscarSocio"> ASIGNAR CAMION </button>
 					
 						<div class="cajaLabel">
 							<label for="inputPatente">PATENTE:</label>
@@ -238,7 +243,7 @@
 						</div>
 						<div class="cajaNumerica">
 							<input name="km_transportados" id="inputKmTransp" class="form-control"
-								placeholder="" autofocus="" type="text" value="" onblur="calculaPrecio()">
+								type="text" value="" onblur="calculaPrecio()">
 						</div>
 
 					
@@ -247,7 +252,7 @@
 						</div>
 						<div class="cajaNumerica">
 							<input name="cant_toneladas" id="inputCantToneladas"
-								class="form-control" placeholder="" type="text"
+								class="form-control" type="text"
 								value="" onblur="calculaPrecio()">
 						</div>
 						
@@ -272,39 +277,51 @@
 						</div>
 					</div>
 					<%} %>
-					
-					
+						
 
 					<div align="center">
-						<button type="submit" name="accion" value="Guardar" class="botonGuardar"
-							onclick="javascript: submitForm('Servicio')"> GUARDAR </button>
+						<button type="submit" name="accion" value="Guardar" class="botonGuardar"> GUARDAR </button>
 					</div>
 
-
-
 				</form>
-			</div>
+						</div>
 		</div>
 
 	</div>
-	</div>
-<script type="text/javascript">
- function calculaPrecio() {
- 	var toneladas = $('#inputCantToneladas').val();
- 	var km = $('#inputKmTransp').val();
- 	var accion='calculaPrecio'
- 	console.log(toneladas);
- 	var datos = 'accion='+ accion + '&toneladas='+ toneladas + '&km='+ km;
- 	$.ajax({
- 		url : 'Servicio?accion=calculaPrecio',
- 		data : datos,
- 		success : function(responseText) {
- 			$('#inputTotal').val(responseText);
- 		}
- 	});
-	
- }
-</script>
 
+</div>
+<script type="text/javascript">
+
+ function calculaPrecio() {
+
+ 	var toneladas = $('#inputCantToneladas').val();
+
+ 	var km = $('#inputKmTransp').val();
+
+ 	var accion='calculaPrecio'
+
+ 	console.log(toneladas);
+
+ 	var datos = 'accion='+ accion + '&toneladas='+ toneladas + '&km='+ km;
+
+ 	$.ajax({
+
+ 		url : 'Servicio?accion=calculaPrecio',
+
+ 		data : datos,
+
+ 		success : function(responseText) {
+
+ 			$('#inputTotal').val(responseText);
+
+ 		}
+
+ 	});
+
+	
+
+ }
+
+</script>
 </body>
 </html>

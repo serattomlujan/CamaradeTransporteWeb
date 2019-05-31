@@ -28,6 +28,7 @@ import entity.Servicio;
 @WebServlet({ "/servicio/*", "/Servicio/*", "/SERVICIO/*" })
 public class ServicioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private String clientes;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -62,6 +63,9 @@ public class ServicioServlet extends HttpServlet {
 		case "FinalizarServicio":
 			this.listaServicios(request, response);
 			break;
+		case "serviciosFinalizados":
+			this.serviciosFinalizados(request, response);
+			break;
 		case "informeServicio":
 			this.informeServicios(request, response);
 			break;
@@ -93,36 +97,34 @@ public class ServicioServlet extends HttpServlet {
 	private void reporteServicio(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		
-		request.getParameter("opcion");
-		Date fecha_desde=Date.valueOf(request.getParameter("fecha_desde"));
-		Date fecha_hasta=Date.valueOf(request.getParameter("fecha_hasta"));
-
 		CtrlABMServicio ctrl = new CtrlABMServicio();
+
+		Date fecha_desde = Date.valueOf(request.getParameter("fecha_desde"));
+		Date fecha_hasta = Date.valueOf(request.getParameter("fecha_hasta"));
+		String opcion = request.getParameter("opcion");
 
 		com.google.gson.JsonObject gson = new JsonObject();
 		try {
-//			switch (request.getParameter("opcion")) {
-//			case "socios":
-//				gson = ctrl.getInformeCereal(fecha_desde, fecha_hasta);
-//				break;
-//			case "cereales":
-//				gson = ctrl.getInformeCereal(fecha_desde, fecha_hasta);
-//				break;
-//			case "camiones":
-//				gson = ctrl.getInformeCereal(fecha_desde, fecha_hasta);
-//				break;
-//			case "clientes":
-//				gson = ctrl.getInformeCereal(fecha_desde, fecha_hasta);
-//				break;
-//
-//			default:
-//				break;
-//			}
-			gson = ctrl.getInformeCereal(fecha_desde, fecha_hasta);
-			request.setAttribute("reporteServ", gson);
+			switch (opcion) {
+			case "socios":
+				gson = ctrl.getInformeSocio(fecha_desde, fecha_hasta);
+				break;
+			case "clientes":
+				gson = ctrl.getInformeCliente(fecha_desde, fecha_hasta);
+				break;
+			case "cereales":
+				gson = ctrl.getInformeCereal(fecha_desde, fecha_hasta);
+				break;
+			case "camiones":
+				gson = ctrl.getInformeCamion(fecha_desde, fecha_hasta);
+				break;
+			}
+			request.setAttribute("opcion", opcion);
+			if(request.getAttribute("opcion").toString().equals("cereales")){
+				String entro;
+			}
 			out.print(gson.toString());
-			
+
 		} catch (Exception e) {
 			response.setStatus(502);
 		} finally {
@@ -141,7 +143,7 @@ public class ServicioServlet extends HttpServlet {
 		try {
 			gson = ctrl.getServiciosFinalizados();
 			out.print(gson.toString());
-			
+
 		} catch (Exception e) {
 			response.setStatus(502);
 		} finally {
@@ -169,10 +171,16 @@ public class ServicioServlet extends HttpServlet {
 
 	}
 
+	private void serviciosFinalizados(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		request.getRequestDispatcher("/WEB-INF/listadoServicios.jsp").forward(request, response);
+	}
+
 	private void informeServicios(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.getRequestDispatcher("/WEB-INF/informeServicios.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/informeServicio.jsp").forward(request, response);
 	}
 
 	private void guardarServicio(HttpServletRequest request, HttpServletResponse response)
@@ -198,7 +206,7 @@ public class ServicioServlet extends HttpServlet {
 			Camion c = new Camion();
 			c = ctrlc.getByPatente(s.getCamion());
 
-			if (id_servicio == "") {
+			if (id_servicio == null) {
 				if (c.isEstado()) {
 					c.setEstado(false);
 					ctrlc.update(c);

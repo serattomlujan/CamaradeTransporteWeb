@@ -130,26 +130,169 @@ public class DataServicio {
 		ResultSet rs = null;
 		com.google.gson.JsonObject gson = new JsonObject();
 		try {
-			stmt = FactoryConexion.getInstancia().getConn()
-			.prepareStatement(
+			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
 					"select s.id_cereal,c.descripcion,count(s.id_servicio) as cant_servicio, sum(s.cant_toneladas) as cant_toneladas, "
-					+ "sum(s.nro_km) as cant_km from servicios s inner join cereales c on s.id_cereal=c.id_cereal "
-					+ "where s.precio_servicio is not null and s.fecha between ? and ? ;");
+							+ "sum(s.nro_km) as cant_km from servicios s inner join cereales c on s.id_cereal=c.id_cereal "
+							+ "where s.precio_servicio is not null and s.fecha between ? and ? group by s.id_cereal;");
 			stmt.setDate(1, fechaDesde);
 			stmt.setDate(2, fechaHasta);
 			rs = stmt.executeQuery();
 			if (rs != null) {
-//				String datos = "";
+				// String datos = "";
 
 				com.google.gson.JsonArray array = new com.google.gson.JsonArray();
 				while (rs.next()) {
 
 					JsonObject item = new JsonObject();
-					item.addProperty("id_cereal", String.valueOf(rs.getInt("id_cereal")));
-					item.addProperty("descripcion", rs.getString("descripcion"));
+					item.addProperty("string1", String.valueOf(rs.getInt("id_cereal")));
+					item.addProperty("string2", rs.getString("descripcion"));
 					item.addProperty("cant_servicio", String.valueOf(rs.getInt("cant_servicio")));
-					item.addProperty("cant_toneladas", rs.getString("cant_toneladas"));
-					item.addProperty("cant_km", rs.getString("cant_km"));
+					item.addProperty("cant_toneladas", String.valueOf(rs.getFloat("cant_toneladas")));
+					item.addProperty("cant_km", String.valueOf(rs.getInt("cant_km")));
+					array.add(item);
+
+				}
+				gson.add("datos", array);
+
+			}
+		} catch (SQLException e) {
+			throw e;
+		} catch (AppDataException ade) {
+			throw ade;
+		}
+		try {
+			if (rs != null)
+				rs.close();
+			if (stmt != null)
+				stmt.close();
+			FactoryConexion.getInstancia().releaseConn();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return gson;
+	}
+
+	public com.google.gson.JsonObject getInformeCamion(Date fechaDesde, Date fechaHasta) throws Exception {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		com.google.gson.JsonObject gson = new JsonObject();
+		try {
+			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
+					"select s.id_camion,c.patente,count(s.id_servicio) as cant_servicio, sum(s.cant_toneladas) as cant_toneladas, "
+							+ "sum(s.nro_km) as cant_km from servicios s inner join camiones c on s.id_camion=c.id_camion "
+							+ "where s.precio_servicio is not null and s.fecha between ? and ? group by s.id_camion;");
+			stmt.setDate(1, fechaDesde);
+			stmt.setDate(2, fechaHasta);
+			rs = stmt.executeQuery();
+			if (rs != null) {
+				// String datos = "";
+
+				com.google.gson.JsonArray array = new com.google.gson.JsonArray();
+				while (rs.next()) {
+
+					JsonObject item = new JsonObject();
+					item.addProperty("string1", String.valueOf(rs.getInt("id_camion")));
+					item.addProperty("string2", rs.getString("patente"));
+					item.addProperty("cant_servicio", String.valueOf(rs.getInt("cant_servicio")));
+					item.addProperty("cant_toneladas", String.valueOf(rs.getFloat("cant_toneladas")));
+					item.addProperty("cant_km", String.valueOf(rs.getInt("cant_km")));
+					array.add(item);
+
+				}
+				gson.add("datos", array);
+
+			}
+		} catch (SQLException e) {
+			throw e;
+		} catch (AppDataException ade) {
+			throw ade;
+		}
+		try {
+			if (rs != null)
+				rs.close();
+			if (stmt != null)
+				stmt.close();
+			FactoryConexion.getInstancia().releaseConn();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return gson;
+	}
+
+	public com.google.gson.JsonObject getInformeSocio(Date fechaDesde, Date fechaHasta) throws Exception {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		com.google.gson.JsonObject gson = new JsonObject();
+		try {
+			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
+					"select so.dni,so.nombre,so.apellido,count(s.id_servicio) as cant_servicio, sum(s.cant_toneladas) as cant_toneladas, "
+							+ "sum(s.nro_km) as cant_km from servicios s inner join camiones c on s.id_camion=c.id_camion inner join socios so "
+							+ "on c.nro_socio=so.nro_socio where s.precio_servicio is not null and s.fecha between ? and ? group by so.dni;");
+			stmt.setDate(1, fechaDesde);
+			stmt.setDate(2, fechaHasta);
+			rs = stmt.executeQuery();
+			if (rs != null) {
+				// String datos = "";
+
+				com.google.gson.JsonArray array = new com.google.gson.JsonArray();
+				while (rs.next()) {
+
+					JsonObject item = new JsonObject();
+					item.addProperty("string1", String.valueOf(rs.getInt("dni")));
+					item.addProperty("string2", rs.getString("nombre")+", "+rs.getString("apellido"));
+					item.addProperty("cant_servicio", String.valueOf(rs.getInt("cant_servicio")));
+					item.addProperty("cant_toneladas", String.valueOf(rs.getFloat("cant_toneladas")));
+					item.addProperty("cant_km", String.valueOf(rs.getInt("cant_km")));
+					array.add(item);
+
+				}
+				gson.add("datos", array);
+
+			}
+		} catch (SQLException e) {
+			throw e;
+		} catch (AppDataException ade) {
+			throw ade;
+		}
+		try {
+			if (rs != null)
+				rs.close();
+			if (stmt != null)
+				stmt.close();
+			FactoryConexion.getInstancia().releaseConn();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return gson;
+	}
+
+	public com.google.gson.JsonObject getInformeCliente(Date fechaDesde, Date fechaHasta) throws Exception {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		com.google.gson.JsonObject gson = new JsonObject();
+		try {
+			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
+					"select c.cuit,c.razon_social,count(s.id_servicio) as cant_servicio, sum(s.cant_toneladas) as cant_toneladas, "
+							+ "sum(s.nro_km) as cant_km from servicios s inner join clientes c on s.cuit=c.cuit "
+							+ "where s.precio_servicio is not null and s.fecha between ? and ? group by c.cuit;");
+			stmt.setDate(1, fechaDesde);
+			stmt.setDate(2, fechaHasta);
+			rs = stmt.executeQuery();
+			if (rs != null) {
+				// String datos = "";
+
+				com.google.gson.JsonArray array = new com.google.gson.JsonArray();
+				while (rs.next()) {
+
+					JsonObject item = new JsonObject();
+					item.addProperty("string1", rs.getString("cuit"));
+					item.addProperty("string2", rs.getString("razon_social"));
+					item.addProperty("cant_servicio", String.valueOf(rs.getInt("cant_servicio")));
+					item.addProperty("cant_toneladas", String.valueOf(rs.getFloat("cant_toneladas")));
+					item.addProperty("cant_km", String.valueOf(rs.getInt("cant_km")));
 					array.add(item);
 
 				}
