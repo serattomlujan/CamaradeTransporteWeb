@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 
 import javax.servlet.ServletException;
@@ -8,9 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.JsonObject;
+
 import entity.Camion;
 import entity.Socio;
 import controles.CtrlABMCamion;
+import controles.CtrlABMServicio;
 import controles.CtrlABMSocio;
 import util.AppDataException;
 
@@ -35,7 +40,7 @@ public class CamionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		this.listaCamiones(request, response);
+		doPost(request, response);
 	}
 	
 
@@ -48,6 +53,9 @@ public class CamionServlet extends HttpServlet {
 		switch (accion) {
 		case "Ingresar":
 			this.listaCamiones(request, response);
+			break;
+		case "cargarListado":
+			this.cargarListado(request, response);
 			break;
 		case "Buscar":
 			this.buscarCamion(request, response);
@@ -65,6 +73,23 @@ public class CamionServlet extends HttpServlet {
 	}
 	
 	
+	private void cargarListado(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		response.setContentType("application/json;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		CtrlABMCamion ctrl = new CtrlABMCamion();
+
+		com.google.gson.JsonObject gson = new JsonObject();
+		try {
+			gson = ctrl.getAll();
+			out.print(gson.toString());
+
+		} catch (Exception e) {
+			response.setStatus(502);
+		} finally {
+			out.close();
+		}
+	}
+
 	private void buscarSocio(HttpServletRequest request, HttpServletResponse response) {
 		
 		Socio s= new Socio();
@@ -193,14 +218,7 @@ public class CamionServlet extends HttpServlet {
 	
 
 	private void listaCamiones(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CtrlABMCamion ctrl1= new CtrlABMCamion();
-		try {System.out.println("entro");
-			request.setAttribute("listaCamiones", ctrl1.getAll());
-		} catch (AppDataException ade) {
-			request.setAttribute("Error", ade.getMessage());
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+
 		request.getRequestDispatcher("/WEB-INF/Camion.jsp").forward(request, response);
 	
 	}	

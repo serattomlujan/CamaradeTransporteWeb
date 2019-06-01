@@ -35,7 +35,7 @@ public class CtrlABMCamion {
 	}
 	
 
-	public ArrayList<Camion> getAll() throws Exception {
+	public com.google.gson.JsonObject getAll() throws Exception {
 		return dataCam.getAll();
 	}
 }

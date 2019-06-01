@@ -1,39 +1,38 @@
 package data;
 
-import java.util.Calendar;
 import java.sql.*;
-import java.util.Date;
+
+import com.google.gson.JsonObject;
 
 import entity.*;
-import java.util.ArrayList;
 import util.AppDataException;
 
 public class DataCamion {
 	
-	public ArrayList<Camion> getAll() throws Exception{
+	public com.google.gson.JsonObject getAll() throws Exception{
 		Statement stmt=null;
 		ResultSet rs=null;
-		ArrayList<Camion> cams= new ArrayList<Camion>();
+		com.google.gson.JsonObject gson = new JsonObject();
 		try {
 		 	stmt = FactoryConexion.getInstancia().getConn().createStatement();
 
 		 	rs = stmt.executeQuery("select * from camiones inner join socios on camiones.nro_socio=socios.nro_socio ");
 		 	if(rs!=null){
+		 		com.google.gson.JsonArray array = new com.google.gson.JsonArray();
 		 		while(rs.next()){
-		 			Camion cam=new Camion();
-		 			cam.setSocio(new Socio());
-		 			cam.setIdcamion(rs.getInt("id_camion"));
-		 			cam.setPatente(rs.getString("patente"));
-		 			cam.setModelo(rs.getString("modelo"));
-		 			cam.setMarca(rs.getString("marca"));
-		 			cam.setEstado(rs.getBoolean("estado"));
-		 			cam.setFecha_ingreso(rs.getDate("fecha_ingreso"));
-		 			cam.getSocio().setNro_Socio(rs.getInt("nro_socio"));
-		 			cam.getSocio().setApellido(rs.getString("apellido"));
-		 			cam.getSocio().setNombre(rs.getString("nombre"));
-	 			
-		 			cams.add(cam);
+		 			JsonObject item = new JsonObject();
+		 			item.addProperty("id_camion", String.valueOf(rs.getInt("id_camion")));
+		 			item.addProperty("patente", String.valueOf(rs.getString("patente")));
+		 			item.addProperty("modelo", String.valueOf(rs.getString("modelo")));
+		 			item.addProperty("marca", String.valueOf(rs.getString("marca")));
+		 			item.addProperty("estado", String.valueOf(rs.getBoolean("estado")));
+		 			item.addProperty("fecha_ingreso", String.valueOf(rs.getDate("fecha_ingreso")));
+		 			item.addProperty("nro_socio", String.valueOf(rs.getInt("nro_socio")));
+		 			item.addProperty("apellido", String.valueOf(rs.getString("apellido")));
+		 			item.addProperty("nombre", String.valueOf(rs.getString("nombre")));
+		 			array.add(item);
 		 						}
+		 		gson.add("datos", array);
 		 				}		
 			} catch (SQLException e) {throw e;
 			} catch (AppDataException ade){
@@ -47,7 +46,7 @@ public class DataCamion {
 					e.printStackTrace();
 		 		}
 				
-		return cams;
+		return gson;
 		}
 		
 		public Camion getByPatente(Camion cam) throws Exception{

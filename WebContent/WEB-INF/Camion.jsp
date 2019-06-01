@@ -3,24 +3,55 @@
 <%@page import="entity.Socio"%>
 <%@page import="entity.Camion"%>
 <%@page import="java.sql.Date"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>CTCarabelas</title>
 <link rel="icon" type="iman/png" href="Style/Icono.png">
 <link href="Style/webLayout.css" rel="stylesheet">
 <link href="Style/tabla.css" rel="stylesheet">
-<link href="Style/formulario.css" rel="stylesheet">
 <link href="Style/Layout.css" rel="stylesheet">
+<link href="Style/formulario.css" rel="stylesheet">
+<link rel="stylesheet" href="Style/jquery.dataTables.min.css">
+<script src="Style/jquery-3.4.1.min.js"></script>
+<script src="Style/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
     	function submitForm(met) {
     		document.myForm.action=met;
     		
         }
     </script>
+    <script>
+$(document).ready(function(){
+	var tabla= $('#customers').DataTable({
+bFilter:false,
+		"language" : {
+			"url" : "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+		},	
+		ajax:{
+				method: "GET",
+				url: "Camion?accion=cargarListado",
+				dataSrc: "datos"
+			},
+			columns: [
+				{"data": "id_camion"},
+				{"data": "patente"},
+				{"data": "modelo"},
+				{"data": "marca"},
+				{"data": "estado"},
+				{"data": "fecha_ingreso"},
+				{"data": "nro_socio"},
+				{"data": "apellido"},
+				{"data": "nombre"}
+			]
+	});
+			
+});
+</script>
 </head>
 <body>
 	<%String patente="";
@@ -73,7 +104,7 @@
 					</div>
 					<div class="textoError">
 					<% if (patente!=null) {%>
-						<p style="color: #FF0000; margin-top: 0px">No se encontró camion registrado</p>
+						<p style="color: #FF0000; margin-top: 0px">No se encontrÃ³ camion registrado</p>
 						<%} %>
 					</div>
 				</form>
@@ -83,7 +114,7 @@
 
 	<div class="card">
 		<table id="customers" align="center" class="tabla">
-
+  <thead>
 			<tr>
 				<th>ID CAMION</th>
 				<th>PATENTE</th>
@@ -96,35 +127,13 @@
 				<th >NOMBRE</th>
 
 			</tr>
-
-
-			<%ArrayList<Camion>listaCams= (ArrayList<Camion>)request.getAttribute("listaCamiones");
-			for(Camion c : listaCams){
-		%>
-
-
-			<tr>
-				<td><%=c.getIdcamion()%></td>
-				<td><%=c.getPatente()%></td>
-				<td><%=c.getMarca() %></td>
-				<td><%=c.getModelo()%></td>
-				<%
-			String estado="";
-			if(c.isEstado()){estado="Activo";} else {estado="Inactivo";}%>
-				<td><%=estado%></td>
-				<td><%=c.getFecha_ingreso()%></td>
-				<td><%=c.getSocio().getNro_Socio()%></td>
-				<td><%=c.getSocio().getApellido()%></td>
-				<td><%=c.getSocio().getNombre()%></td>
-
-			</tr>
-			<%
-			}
-		%>
+ </thead>
+<tbody id="employee_data">
+        
+        </tbody>
 		</table>
 	</div>
-	</div>
-	</div>
+
 
 </body>
 </html>
