@@ -76,7 +76,7 @@
 			<div class="card">
 				<div class="container">
 
-					<form class="form-signin" id="myForm" name="abmcereal" action=""
+					<form class="form-signin" id="myForm" name="abmcereal" action="Cereal"
 						method="post">
 						<h2 class="form-signin-heading encabezadoContainer">Datos de Cereal</h2>
 
@@ -106,8 +106,7 @@
 						</div>
 
 						<div class="row">
-							<button  class="botonGuardar" type="submit" name="accion" value="Guardar"
-								onclick="javascript: submitForm('Cereal')"> GUARDAR </button>
+							<button  class="botonGuardar" type="submit" name="accion" value="Guardar"> GUARDAR </button>
 						</div>
 
 

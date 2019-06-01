@@ -79,7 +79,7 @@ public class ServicioServlet extends HttpServlet {
 		case "Buscar":
 			this.buscarCliente(request, response);
 			break;
-		case "Asignar Camion":
+		case "AsignarCamion":
 			this.asignarCamion(request, response);
 			break;
 		case "calculaPrecio":
@@ -102,7 +102,8 @@ public class ServicioServlet extends HttpServlet {
 		Date fecha_desde = Date.valueOf(request.getParameter("fecha_desde"));
 		Date fecha_hasta = Date.valueOf(request.getParameter("fecha_hasta"));
 		String opcion = request.getParameter("opcion");
-
+		Servicio s=new Servicio();
+s.setIdservicio(1);
 		com.google.gson.JsonObject gson = new JsonObject();
 		try {
 			switch (opcion) {
@@ -119,10 +120,10 @@ public class ServicioServlet extends HttpServlet {
 				gson = ctrl.getInformeCamion(fecha_desde, fecha_hasta);
 				break;
 			}
-			request.setAttribute("opcion", opcion);
-			if(request.getAttribute("opcion").toString().equals("cereales")){
-				String entro;
-			}
+			
+//			if(request.getAttribute("opcion").toString().equals("cereales")){
+//				String entro;
+//			}
 			out.print(gson.toString());
 
 		} catch (Exception e) {
@@ -227,7 +228,7 @@ public class ServicioServlet extends HttpServlet {
 				ctrl.update(s);
 			}
 			request.setAttribute("actualizado", s);
-			request.getRequestDispatcher("/WEB-INF/ABMSocio.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/ABMServicio.jsp").forward(request, response);
 		} catch (Exception e) {
 			response.setStatus(500);
 		}

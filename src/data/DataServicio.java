@@ -132,7 +132,7 @@ public class DataServicio {
 		try {
 			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
 					"select s.id_cereal,c.descripcion,count(s.id_servicio) as cant_servicio, sum(s.cant_toneladas) as cant_toneladas, "
-							+ "sum(s.nro_km) as cant_km from servicios s inner join cereales c on s.id_cereal=c.id_cereal "
+							+ "sum(s.nro_km) as cant_km , sum(s.precio_servicio) as precio_total from servicios s inner join cereales c on s.id_cereal=c.id_cereal "
 							+ "where s.precio_servicio is not null and s.fecha between ? and ? group by s.id_cereal;");
 			stmt.setDate(1, fechaDesde);
 			stmt.setDate(2, fechaHasta);
@@ -149,6 +149,7 @@ public class DataServicio {
 					item.addProperty("cant_servicio", String.valueOf(rs.getInt("cant_servicio")));
 					item.addProperty("cant_toneladas", String.valueOf(rs.getFloat("cant_toneladas")));
 					item.addProperty("cant_km", String.valueOf(rs.getInt("cant_km")));
+					item.addProperty("recaudacion", String.valueOf(rs.getFloat("precio_total")));
 					array.add(item);
 
 				}
@@ -180,7 +181,7 @@ public class DataServicio {
 		try {
 			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
 					"select s.id_camion,c.patente,count(s.id_servicio) as cant_servicio, sum(s.cant_toneladas) as cant_toneladas, "
-							+ "sum(s.nro_km) as cant_km from servicios s inner join camiones c on s.id_camion=c.id_camion "
+							+ "sum(s.nro_km) as cant_km , sum(s.precio_servicio) as precio_total from servicios s inner join camiones c on s.id_camion=c.id_camion "
 							+ "where s.precio_servicio is not null and s.fecha between ? and ? group by s.id_camion;");
 			stmt.setDate(1, fechaDesde);
 			stmt.setDate(2, fechaHasta);
@@ -197,6 +198,7 @@ public class DataServicio {
 					item.addProperty("cant_servicio", String.valueOf(rs.getInt("cant_servicio")));
 					item.addProperty("cant_toneladas", String.valueOf(rs.getFloat("cant_toneladas")));
 					item.addProperty("cant_km", String.valueOf(rs.getInt("cant_km")));
+					item.addProperty("recaudacion", String.valueOf(rs.getFloat("precio_total")));
 					array.add(item);
 
 				}
@@ -228,7 +230,7 @@ public class DataServicio {
 		try {
 			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
 					"select so.dni,so.nombre,so.apellido,count(s.id_servicio) as cant_servicio, sum(s.cant_toneladas) as cant_toneladas, "
-							+ "sum(s.nro_km) as cant_km from servicios s inner join camiones c on s.id_camion=c.id_camion inner join socios so "
+							+ "sum(s.nro_km) as cant_km, sum(s.precio_servicio) as precio_total from servicios s inner join camiones c on s.id_camion=c.id_camion inner join socios so "
 							+ "on c.nro_socio=so.nro_socio where s.precio_servicio is not null and s.fecha between ? and ? group by so.dni;");
 			stmt.setDate(1, fechaDesde);
 			stmt.setDate(2, fechaHasta);
@@ -245,6 +247,7 @@ public class DataServicio {
 					item.addProperty("cant_servicio", String.valueOf(rs.getInt("cant_servicio")));
 					item.addProperty("cant_toneladas", String.valueOf(rs.getFloat("cant_toneladas")));
 					item.addProperty("cant_km", String.valueOf(rs.getInt("cant_km")));
+					item.addProperty("recaudacion", String.valueOf(rs.getFloat("precio_total")));
 					array.add(item);
 
 				}
@@ -276,7 +279,7 @@ public class DataServicio {
 		try {
 			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
 					"select c.cuit,c.razon_social,count(s.id_servicio) as cant_servicio, sum(s.cant_toneladas) as cant_toneladas, "
-							+ "sum(s.nro_km) as cant_km from servicios s inner join clientes c on s.cuit=c.cuit "
+							+ "sum(s.nro_km) as cant_km, sum(s.precio_servicio) as precio_total from servicios s inner join clientes c on s.cuit=c.cuit "
 							+ "where s.precio_servicio is not null and s.fecha between ? and ? group by c.cuit;");
 			stmt.setDate(1, fechaDesde);
 			stmt.setDate(2, fechaHasta);
@@ -293,6 +296,7 @@ public class DataServicio {
 					item.addProperty("cant_servicio", String.valueOf(rs.getInt("cant_servicio")));
 					item.addProperty("cant_toneladas", String.valueOf(rs.getFloat("cant_toneladas")));
 					item.addProperty("cant_km", String.valueOf(rs.getInt("cant_km")));
+					item.addProperty("recaudacion", String.valueOf(rs.getFloat("precio_total")));
 					array.add(item);
 
 				}

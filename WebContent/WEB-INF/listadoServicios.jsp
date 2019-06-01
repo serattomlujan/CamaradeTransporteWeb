@@ -18,15 +18,14 @@
 <link rel="stylesheet" href="Style/jquery.dataTables.min.css">
 <script src="Style/jquery-3.4.1.min.js"></script>
 <script src="Style/jquery.dataTables.min.js"></script>
-<%if(request.getAttribute("reporteServ")==null){ %>
 <script>
 	$(document)
 			.ready(
 					function() {
 						//  Setup - add a text input to each footer cell 
-						$('#example thead tr').clone(true).appendTo(
-								'#example thead');
-						$('#example thead tr:eq(1) th')
+						$('#customers thead tr').clone(true).appendTo(
+								'#customers thead');
+						$('#customers thead tr:eq(1) th')
 								.each(
 										function(i) {
 											var title = $(this).text();
@@ -52,7 +51,7 @@
 															});
 										});
 
-						var table = $('#example')
+						var table = $('#customers')
 								.DataTable(
 										{
 											"language" : {
@@ -91,7 +90,6 @@
 										});
 					});
 </script>
-<%} %>
 
 <script type="text/javascript">
 	function submitForm(met) {
@@ -131,7 +129,7 @@
 
 
 	<div class="card">
-		<table id="example" class="display tabla" style="width: 100%">
+		<table id="customers" class="display tabla" style="width: 100%">
 			<thead>
 				<tr>
 					<th>ID Servicio</th>

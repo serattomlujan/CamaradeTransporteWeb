@@ -71,7 +71,7 @@ public class CerealServlet extends HttpServlet {
 			cer.setDescripcion(request.getParameter("descripcion"));
 			Cereal cereal = new Cereal();
 			cereal = ctrl.getByDescCereal(cer);
-			if (id_cereal.equals("")) {
+			if (id_cereal==null) {
 				if(cereal!=null){
 					System.out.println("cereal ya existe nuevo");
 				}
@@ -79,7 +79,7 @@ public class CerealServlet extends HttpServlet {
 					ctrl.add(cer);
 				}
 			}
-			else if (id_cereal.equals("")==false) {
+			else {
 				if(cereal!=null){
 					System.out.println("cereal ya existe editar");
 				}

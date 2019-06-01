@@ -5,6 +5,7 @@
 <%@page import="java.sql.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,36 +19,89 @@
 <link rel="stylesheet" href="Style/jquery.dataTables.min.css">
 <script src="Style/jquery-3.4.1.min.js"></script>
 <script src="Style/jquery.dataTables.min.js"></script>
-
 <script>
-function table() {
-	$('#reporte').dataTable().fnDestroy();
-						var table = $('#reporte')
-								.DataTable(
-										{
-											"language" : {
-												"url" : "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-											},
-											orderCellsTop : true,
-											fixedHeader : true,
-											ajax : {
-												method : "GET",
-												url : "Servicio?opcion="+$('input:radio[name=opcion]:checked').val()+"&fecha_desde="+$(inputFechaDesde).val()+"&fecha_hasta="+$(inputFechaHasta).val()+"&accion=BuscarServicio",
-												dataSrc : "datos"
-											},
-											columns : [ {
-												"data" : "string1"
-											}, {
-												"data" : "string2"
-											}, {
-												"data" : "cant_servicio"
-											}, {
-												"data" : "cant_toneladas"
-											}, {
-												"data" : "cant_km"
-											}]
-										});
-					}
+	$(document).ready(function() {
+		$('#customers').hide();
+	});
+</script>
+<script>
+	function table() {
+		var opcion = $('input:radio[name=opcion]:checked').val();
+		switch (opcion) {
+		case "cereales":
+			var idCereal = "ID Cereal";
+			$('#string1').val(idCereal);
+			$('#string1').html(idCereal);
+			var descripcion = "Descripcion";
+			$('#string2').val(descripcion);
+			$('#string2').html(descripcion);
+			break;
+		case "socios":
+			var dni = "DNI";
+			$('#string1').val(dni);
+			$('#string1').html(dni);
+			var apeynom = "Apellido y Nombre";
+			$('#string2').val(apeynom);
+			$('#string2').html(apeynom);
+			break;
+		case "clientes":
+			var cuit = "CUIT";
+			$('#string1').val(cuit);
+			$('#string1').html(cuit);
+			var razonSocial = "Razon Social";
+			$('#string2').val(razonSocial);
+			$('#string2').html(razonSocial);
+			break;
+		case "camiones":
+			var idCamion = "ID Camion";
+			$('#string1').val(idCamion);
+			$('#string1').html(idCamion);
+			var patente = "Patente";
+			$('#string2').val(patente);
+			$('#string2').html(patente);
+			break;
+		default:
+			break;
+		}
+		if (opcion == "cereales") {
+			var th1 = "cereales";
+		}
+		$('#customers').dataTable().fnDestroy();
+		var table = $('#customers')
+				.DataTable(
+						{
+							"language" : {
+								"url" : "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+							},
+							orderCellsTop : true,
+							fixedHeader : true,
+							ajax : {
+								method : "GET",
+								url : "Servicio?opcion="
+										+ $('input:radio[name=opcion]:checked')
+												.val() + "&fecha_desde="
+										+ $(inputFechaDesde).val()
+										+ "&fecha_hasta="
+										+ $(inputFechaHasta).val()
+										+ "&accion=BuscarServicio",
+								dataSrc : "datos"
+							},
+							columns : [ {
+								"data" : "string1"
+							}, {
+								"data" : "string2"
+							}, {
+								"data" : "cant_servicio"
+							}, {
+								"data" : "cant_toneladas"
+							}, {
+								"data" : "cant_km"
+							}, {
+								"data" : "recaudacion"
+							} ]
+						});
+		$('#customers').show();
+	}
 </script>
 
 <script type="text/javascript">
@@ -68,80 +122,76 @@ function table() {
 
 	<div id="header" class="topnav">
 		<ul class="nav">
-		<li> <a href="Home?accion=menu">Home</a> </li>
-		<li> <a href="Socio">Socios</a> </li>
-		<li> <a href="Cliente">Clientes</a> </li>
-		<li> <a href="Camion">Camiones</a> </li>
-		<li> <a href="Cereal">Cereales</a> </li>
-		<li> <a href="#">Servicios</a>
-					<ul>
-						<li><a href="precio?accion=Ingresar"> Actualizar precios</a></li>
-						<li><a href="Servicio?accion=ABMServicio"> Alta de Servicio</a></li>
-						<li><a href="Servicio?accion=FinalizarServicio"> Finalizar Servicio</a></li>
-						<li><a href="Servicio?accion=informeServicio"> Informe de Servicios</a></li>
-					</ul>
-		
-	
-     </ul>
+			<li><a href="Home?accion=menu">Home</a></li>
+			<li><a href="Socio">Socios</a></li>
+			<li><a href="Cliente">Clientes</a></li>
+			<li><a href="Camion">Camiones</a></li>
+			<li><a href="Cereal">Cereales</a></li>
+			<li><a href="#">Servicios</a>
+				<ul>
+					<li><a href="precio?accion=Ingresar"> Actualizar precios</a></li>
+					<li><a href="Servicio?accion=ABMServicio"> Alta de
+							Servicio</a></li>
+					<li><a href="Servicio?accion=FinalizarServicio"> Finalizar
+							Servicio</a></li>
+					<li><a href="Servicio?accion=informeServicio"> Informe de
+							Servicios</a></li>
+				</ul>
+		</ul>
 	</div>
 
-<div class="row">
+	<div class="row">
 		<div class="leftcolumn" align="center">
 			<div class="">
 
 				<h1 style="text-align: center">Servicios</h1>
 
-					<div class="card">
-				 <div>
-        <label>Seleccione una opcion</label>
-        <input type = "radio" id="opcion1" name = "opcion" value ="socios" > Socios
-        <br>
-        <input type = "radio" id="opcion2" name = "opcion" value ="cereales" > Cereales
-        <br>
-        <input type = "radio" id="opcion3" name = "opcion" value ="camiones" > Camiones
-        <br>
-        <input type = "radio" id="opcion4" name = "opcion" value ="clientes" > Clientes
-    </div>
-							
-						
-							<label for="inputFechaDesde">FECHA DESDE:</label>
-							<input name="fecha_desde" id="inputFechaDesde" 
-								class="form-control" placeholder="" type="date"
-								style="height: 25px;"
-								 value="">
-					
-							<label for="inputFechaHasta">FECHA HASTA:</label>
-						
-					
-							<input name="fecha_hasta" id="inputFechaHasta" 
-								class="form-control" placeholder="" type="date"
-								style="height: 25px;"
-								 value="">
-								 
-								 <div class="row">
-							<button type="submit" class="botonGuardar" name="accion"
-								value="BuscarServicio" onclick="table()"
-								data-toggle="tooltip" data-placement="top"
-								title="Buscar datos del Servicio"> 
-								<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> BUSCAR</button>
-
-						</div>
-						
+				<div class="card">
+					<div>
+						<label>Seleccione una opcion</label> <input type="radio"
+							id="opcion1" name="opcion" value="socios"> Socios <br>
+						<input type="radio" id="opcion2" name="opcion" value="cereales">
+						Cereales <br> <input type="radio" id="opcion3" name="opcion"
+							value="camiones"> Camiones <br> <input type="radio"
+							id="opcion4" name="opcion" value="clientes"> Clientes
 					</div>
-				
 
-			</div>	</div>	</div>
 
-	
+					<label for="inputFechaDesde">FECHA DESDE:</label> <input
+						name="fecha_desde" id="inputFechaDesde" class="form-control"
+						placeholder="" type="date" style="height: 25px;" value="">
+
+					<label for="inputFechaHasta">FECHA HASTA:</label> <input
+						name="fecha_hasta" id="inputFechaHasta" class="form-control"
+						placeholder="" type="date" style="height: 25px;" value="">
+
+					<div class="row">
+						<button type="submit" class="botonGuardar" name="accion"
+							value="BuscarServicio" onclick="table()" data-toggle="tooltip"
+							data-placement="top" title="Buscar datos del Servicio">
+							<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+							BUSCAR
+						</button>
+
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+	</div>
 	<div class="card">
-		<table id="reporte" class="display" style="width: 100%">
+		<table id="customers" class="display tabla" style="width: 100%">
 			<thead>
 				<tr>
-					<th>ID Cereal</th>
-					<th>Descripcion</th>
+
+					<th id="string1" value=""></th>
+					<th id="string2" value=""></th>
 					<th>Servicios Realizados</th>
 					<th>Total Toneladas</th>
 					<th>Total km</th>
+					<th>Recaudacion</th>
 				</tr>
 
 			</thead>
@@ -149,17 +199,15 @@ function table() {
 
 			</tbody>
 			<tfoot>
-				<tr>
-				
-					<th>Cuit</th>
-					<th>Razon Social</th>
-					<th>Servicios Realizados</th>
-					<th>Total Toneladas</th>
-					<th>Total km</th>
+				<tr style="visibility: hidden">
+					<th></th>
+					<th></th>
+					<th></th>
+					<th>Social</th>
+					<th>Camion</th>
+					<th>Recaudacion</th>
 
 				</tr>
-
-
 			</tfoot>
 		</table>
 	</div>
