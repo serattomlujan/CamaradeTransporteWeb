@@ -1,6 +1,6 @@
 table.dataTable {
 	background: #4CAF50;
-	width: 100%;
+	width: 100% !important;
 	margin: 0 auto;
 	clear: both;
 	border-collapse: separate;
@@ -320,7 +320,7 @@ table.dataTable, table.dataTable th, table.dataTable td {
 }
 
 .dataTables_wrapper {
-	position: relative;
+/* 	 position: relative; */
 	clear: both;
 	*zoom: 1;
 	zoom: 1

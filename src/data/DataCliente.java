@@ -1,5 +1,8 @@
 package data;
 import java.util.ArrayList;
+
+import com.google.gson.JsonObject;
+
 import java.sql.*;
 
 import util.AppDataException;
@@ -8,24 +11,25 @@ import entity.*;
 
 public class DataCliente {
 	
-	public ArrayList<Cliente> getAll() throws Exception{
+	public com.google.gson.JsonObject getAll() throws Exception{
 		Statement stmt=null;
 		ResultSet rs=null;
-		ArrayList<Cliente> clis= new ArrayList<Cliente>();
+		com.google.gson.JsonObject gson = new JsonObject();
 		try {
 		 	stmt = FactoryConexion.getInstancia().getConn().createStatement();
 		 	rs = stmt.executeQuery("select * from clientes c ");
 		 	if(rs!=null){
+		 		com.google.gson.JsonArray array = new com.google.gson.JsonArray();
 		 		while(rs.next()){
-		 			Cliente c=new Cliente();
-		 			c.setCuit(rs.getString("cuit"));
-		 			c.setRazon_social(rs.getString("razon_social"));
-		 			c.setDireccion(rs.getString("direccion"));
-		 			c.setTelefono(rs.getString("telefono"));
-		 			c.setEstado(rs.getBoolean("estado"));
-		 		
-		 			clis.add(c);
-		 						}
+		 			JsonObject item = new JsonObject();
+		 			item.addProperty("cuit", String.valueOf(rs.getString("cuit")));
+		 			item.addProperty("razon_social", String.valueOf(rs.getString("razon_social")));
+		 			item.addProperty("direccion", String.valueOf(rs.getString("direccion")));
+		 			item.addProperty("telefono", String.valueOf(rs.getString("telefono")));
+		 			item.addProperty("estado", String.valueOf(rs.getBoolean("estado")));
+		 			array.add(item);	
+		 		}
+		 		gson.add("datos", array);
 		 				}		
 			} catch (SQLException e) {throw e;
 			} catch (AppDataException ade){
@@ -39,7 +43,7 @@ public class DataCliente {
 					e.printStackTrace();
 		 		}
 				
-		return clis;
+		return gson;
 		}
 		 	
 		public Cliente getByCuit(Cliente cli) throws Exception{

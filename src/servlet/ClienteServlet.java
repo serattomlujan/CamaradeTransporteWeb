@@ -1,11 +1,15 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.JsonObject;
 
 import controles.CtrlABMCliente;
 import entity.Cliente;
@@ -30,7 +34,7 @@ public class ClienteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.listaClientes(request, response);
+		doPost(request, response);
 	}
 
 	/**
@@ -41,6 +45,9 @@ public class ClienteServlet extends HttpServlet {
 		switch (accion) {
 		case "Ingresar":
 			this.listaClientes(request,response);
+			break;
+		case "cargarListado":
+			this.cargarListado(request, response);
 			break;
 		case "Buscar":
 			this.buscarCliente(request,response);
@@ -110,17 +117,26 @@ public class ClienteServlet extends HttpServlet {
 		
 	}
 
-	private void listaClientes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CtrlABMCliente ctrl1= new CtrlABMCliente();
+	private void cargarListado(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("application/json;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		CtrlABMCliente ctrl= new CtrlABMCliente();
+		com.google.gson.JsonObject gson = new JsonObject();
 		try {
-			request.setAttribute("listaClientes", ctrl1.getAll());
-		} catch (AppDataException ade) {
-			request.setAttribute("Error", ade.getMessage());
+			gson = ctrl.getAll();
+			out.print(gson.toString());
+		
 		} catch (Exception e) {
 			response.setStatus(502);
-		}
-		request.getRequestDispatcher("/WEB-INF/Cliente.jsp").forward(request, response);
+		} finally {
+			out.close();
+		}	
 	
+	}	
+	
+	private void listaClientes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		request.getRequestDispatcher("/WEB-INF/Cliente.jsp").forward(request, response);
 	
 	}	
 
