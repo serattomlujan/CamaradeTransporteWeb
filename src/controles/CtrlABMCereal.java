@@ -31,9 +31,10 @@ public class CtrlABMCereal {
 	return this.dataCer.getByDescCereal(cer);
 	}	
 		
+	public ArrayList<Cereal> getAll2() throws Exception{
+		return dataCer.getAll2();}
 	
-	
-	public ArrayList<Cereal>getAll() throws Exception{
+	public com.google.gson.JsonObject getAll() throws Exception{
 		return dataCer.getAll();}
 	
 }

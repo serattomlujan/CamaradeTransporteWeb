@@ -38,7 +38,7 @@
 <script type="text/javascript">
 	function alerta() {
 		window.onload = alert('Se ha registrado con exito')
-		location.assign('Servicio');
+		location.assign('Servicio?accion=FinalizarServicio');
 	}
 </script>
 </head>
@@ -90,6 +90,9 @@
 			id_servicio=String.valueOf(encontrada.getIdservicio());
 			if(id_servicio.equals("0")){
 				id_servicio="";
+				id_camion="";
+				patente="";
+				
 			}
 			cuit = encontrada.getCliente().getCuit();
 			razon_social = encontrada.getCliente().getRazon_social();
@@ -183,7 +186,7 @@
      <label for="inputCereal" class="sr-only">CEREAL:</label></div>
       <%CtrlABMCereal ctrl=new CtrlABMCereal();
 			ArrayList<Cereal> cereales= new ArrayList<Cereal>();
-			cereales=ctrl.getAll();
+			cereales=ctrl.getAll2();
 		%>
       <div class="cajaInput"><select name="cereal" id="inputCereal"><%	for(Cereal c : cereales){ 
 		if(c.getIdcereal()==id_cereal){
@@ -280,7 +283,7 @@
 						
 
 					<div align="center">
-						<button type="submit" name="accion" value="Guardar" class="botonGuardar"> GUARDAR </button>
+						<button type="submit" name="accion" value="Guardar" class="botonGuardar" > GUARDAR </button>
 					</div>
 
 				</form>
@@ -323,5 +326,6 @@
  }
 
 </script>
+
 </body>
 </html>

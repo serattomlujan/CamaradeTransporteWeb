@@ -2,12 +2,17 @@ package servlet;
 
 import java.io.Console;
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.JsonObject;
+
+import controles.CtrlABMCamion;
 import controles.CtrlABMCereal;
 import entity.Cereal;
 import util.AppDataException;
@@ -34,7 +39,7 @@ public class CerealServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		this.listaCereales(request, response);
+		doPost(request, response);
 	}
 
 	/**
@@ -50,15 +55,35 @@ public class CerealServlet extends HttpServlet {
 		case "Ingresar":
 			this.listaCereales(request, response);
 			break;
+		case "cargarListado":
+			this.cargarListado(request, response);
+			break;
 		case "Editar":
 			this.buscarCereal(request, response);
 			break;
-		case "Agregar Cereal":
+		case "AgregarCereal":
 			this.agregarCereal(request, response);
 			break;
 		case "Guardar":
 			this.guardarCereal(request, response);
 			break;
+		}
+	}
+
+	private void cargarListado(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		response.setContentType("application/json;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		CtrlABMCereal ctrl = new CtrlABMCereal();
+
+		com.google.gson.JsonObject gson = new JsonObject();
+		try {
+			gson = ctrl.getAll();
+			out.print(gson.toString());
+
+		} catch (Exception e) {
+			response.setStatus(502);
+		} finally {
+			out.close();
 		}
 	}
 
@@ -111,6 +136,7 @@ public class CerealServlet extends HttpServlet {
 		Cereal cer = new Cereal();
 		cer.setDescripcion(request.getParameter("descripcion"));
 		try {
+			
 			cer = ctrl.getByDescCereal(cer);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -125,14 +151,6 @@ public class CerealServlet extends HttpServlet {
 
 	private void listaCereales(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		CtrlABMCereal ctrll = new CtrlABMCereal();
-		try {
-			request.setAttribute("listaCereales", ctrll.getAll());
-		} catch (AppDataException ade) {
-			request.setAttribute("Error", ade.getMessage());
-		} catch (Exception e) {
-			response.setStatus(502);
-		}
 		request.getRequestDispatcher("/WEB-INF/Cereals.jsp").forward(request, response);
 
 	}

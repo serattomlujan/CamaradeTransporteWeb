@@ -301,6 +301,8 @@ s.setIdservicio(1);
 				s.getCliente().setCuit(c.getCuit());
 				s.getCliente().setRazon_social(c.getRazon_social());
 			}
+			s.getCamion().setIdcamion(0);
+			s.getCamion().setPatente("");
 			request.setAttribute("encontrada", s);
 			request.getRequestDispatcher("/WEB-INF/ABMServicio.jsp").forward(request, response);
 		} catch (Exception e) {
@@ -315,6 +317,7 @@ s.setIdservicio(1);
 		try {
 			Servicio s = new Servicio();
 			s = ctrl.getById(id_servicio);
+			s.setObservaciones("");
 			request.setAttribute("encontrada", s);
 			request.getRequestDispatcher("/WEB-INF/ABMServicio.jsp").forward(request, response);
 		} catch (Exception e) {

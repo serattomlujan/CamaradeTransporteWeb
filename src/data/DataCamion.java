@@ -25,7 +25,12 @@ public class DataCamion {
 		 			item.addProperty("patente", String.valueOf(rs.getString("patente")));
 		 			item.addProperty("modelo", String.valueOf(rs.getString("modelo")));
 		 			item.addProperty("marca", String.valueOf(rs.getString("marca")));
-		 			item.addProperty("estado", String.valueOf(rs.getBoolean("estado")));
+		 			if(rs.getBoolean("estado")){
+		 				item.addProperty("estado", "Disponible");
+		 			}
+		 			else {
+		 				item.addProperty("estado", "No Disponible");
+		 			}
 		 			item.addProperty("fecha_ingreso", String.valueOf(rs.getDate("fecha_ingreso")));
 		 			item.addProperty("nro_socio", String.valueOf(rs.getInt("nro_socio")));
 		 			item.addProperty("apellido", String.valueOf(rs.getString("apellido")));

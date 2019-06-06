@@ -23,7 +23,7 @@
 <script type="text/javascript">
 	function alerta() {
 		window.onload = alert('Se ha registrado con exito')
-		location.assign('Camion');
+		location.assign('Camion?accion=Ingresar');
 	}
 </script>
 </head>

@@ -6,25 +6,61 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.google.gson.JsonObject;
+
 import entity.Cereal;
 import entity.Socio;
 import util.AppDataException;
 
 public class DataCereal {
 	
-	public ArrayList<Cereal> getAll() throws Exception{
+	public com.google.gson.JsonObject getAll() throws Exception{
 		Statement stmt=null;
 		ResultSet rs=null;
-		ArrayList<Cereal> cers= new ArrayList<Cereal>();
+		com.google.gson.JsonObject gson = new JsonObject();
 		try {
 		 	stmt = FactoryConexion.getInstancia().getConn().createStatement();
 		 	rs = stmt.executeQuery("select * from cereales");
 		 	if(rs!=null){
+		 		com.google.gson.JsonArray array = new com.google.gson.JsonArray();
 		 		while(rs.next()){
-		 			Cereal cer=new Cereal();
-		 			cer.setIdcereal(rs.getInt("id_cereal"));
-		 			cer.setDescripcion(rs.getString("descripcion"));
-		 			cers.add(cer);
+		 			JsonObject item = new JsonObject();
+		 			item.addProperty("id_cereal", String.valueOf(rs.getInt("id_cereal")));
+		 			item.addProperty("descripcion", String.valueOf(rs.getString("descripcion")));
+		 			item.addProperty("accion", "<button class='buttonGrilla' type='submit' value='"
+							+ rs.getString("descripcion") +"' name='descripcion' >EDITAR CEREAL</button>");
+		 			array.add(item);
+		 						}
+		 		gson.add("datos", array);
+		 				}		
+			} catch (SQLException e) {throw e;
+			} catch (AppDataException ade){
+					throw ade;
+				 		}
+				try {
+				if(rs!=null)rs.close();
+				if(stmt!=null)stmt.close();
+				FactoryConexion.getInstancia().releaseConn();
+				} catch (SQLException e) {
+					e.printStackTrace();
+		 		}
+				
+		return gson;
+		}
+	public ArrayList<Cereal> getAll2() throws Exception{
+		Statement stmt=null;
+		ResultSet rs=null;
+		ArrayList<Cereal> cers=new ArrayList<Cereal>();
+		try {
+		 	stmt = FactoryConexion.getInstancia().getConn().createStatement();
+		 	rs = stmt.executeQuery("select * from cereales");
+		 	if(rs!=null){
+		 		com.google.gson.JsonArray array = new com.google.gson.JsonArray();
+		 		while(rs.next()){
+		 			Cereal c=new Cereal();
+		 			c.setIdcereal(rs.getInt("id_cereal"));
+		 			c.setDescripcion(rs.getString("descripcion"));
+		 			cers.add(c);
 		 						}
 		 				}		
 			} catch (SQLException e) {throw e;
@@ -39,7 +75,7 @@ public class DataCereal {
 					e.printStackTrace();
 		 		}
 				
-		return cers;
+				return cers;
 		}
 		 	public Cereal getByDescCereal(Cereal cer) throws Exception{
 			Cereal c=null;

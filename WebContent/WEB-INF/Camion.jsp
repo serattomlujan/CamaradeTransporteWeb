@@ -118,8 +118,8 @@ bFilter:false,
 			<tr>
 				<th>ID CAMION</th>
 				<th>PATENTE</th>
-				<th>MARCA</th>
 				<th>MODELO</th>
+				<th>MARCA</th>
 				<th>ESTADO</th>
 				<th>FECHA INGRESO</th>
 				<th>NRO. SOCIO</th>
@@ -129,7 +129,9 @@ bFilter:false,
 			</tr>
  </thead>
 <tbody id="employee_data">
-        
+        <tr style="visibility: hidden">
+					<th>ID Servicio</th>
+				</tr>
         </tbody>
 		</table>
 	</div>

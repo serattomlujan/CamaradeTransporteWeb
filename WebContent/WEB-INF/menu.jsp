@@ -33,7 +33,7 @@
 		<li> <a href="Socio">Socios</a> </li>
 		<li> <a href="Cliente">Clientes</a> </li>
 		<li> <a href="Camion?accion=Ingresar">Camiones</a> </li>
-		<li> <a href="Cereal">Cereales</a> </li>
+		<li> <a href="Cereal?accion=Ingresar">Cereales</a> </li>
 		<li> <a href="#">Servicios</a>
 					<ul>
 						<li><a href="precio?accion=Ingresar"> Actualizar precios</a></li>
