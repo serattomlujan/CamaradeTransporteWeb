@@ -1,6 +1,7 @@
 <%@page import="controles.CtrlABMSocio"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="entity.Socio"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,12 +14,43 @@
 <link href="Style/tabla.css" rel="stylesheet">
 <link href="Style/formulario.css" rel="stylesheet">
 <link href="Style/Layout.css" rel="stylesheet">
+<link rel="stylesheet" href="Style/jquery.dataTables.min.css">
+<script src="Style/jquery-3.4.1.min.js"></script>
+<script src="Style/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
 	function submitForm(met) {
 		document.myForm.action = met;
 
 	}
 </script>
+    <script>
+$(document).ready(function(){
+	var tabla= $('#customers').DataTable({
+bFilter:false,
+		"language" : {
+			"url" : "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+		},	
+		ajax:{
+				method: "GET",
+				url: "Socio?accion=cargarListado",
+				dataSrc: "datos"
+			},
+			columns: [
+				
+				{"data": "dni"},
+				{"data": "nombre"},
+				{"data": "apellido"},
+				{"data": "estado"},
+				{"data": "nro_socio"},
+				{"data": "telefono"}
+				]
+	});
+			
+});
+</script>
+
+
+
 </head>
 <body>
 	<%
@@ -35,10 +67,10 @@
 <div id="header" class="topnav">
 		<ul class="nav">
 		<li> <a href="Home?accion=menu">Home</a> </li>
-		<li> <a href="Socio">Socios</a> </li>
-		<li> <a href="Cliente">Clientes</a> </li>
-		<li> <a href="Camion">Camiones</a> </li>
-		<li> <a href="Cereal">Cereales</a> </li>
+		<li> <a href="Socio?accion=Ingresar">Socios</a> </li>
+		<li> <a href="Cliente?accion=Ingresar">Clientes</a> </li>
+		<li> <a href="Camion?accion=Ingresar">Camiones</a> </li>
+		<li> <a href="Cereal?accion=Ingresar">Cereales</a> </li>
 		<li> <a href="#">Servicios</a>
 					<ul>
 						<li><a href="precio?accion=Ingresar"> Actualizar precios</a></li>
@@ -92,8 +124,9 @@
 			
 
 			<div class="card">
-				<table  id="customers" align="center" class="tabla">
+				<table  id="customers" align="left" class="tabla">
 
+  <thead>
 					<tr>
 						<th>NRO SOCIO</th>
 						<th>DNI</th>
@@ -106,31 +139,10 @@
 					</tr>
 
 
-					<%
-						ArrayList<Socio> listaSocs = (ArrayList<Socio>) request.getAttribute("listaSocios");
-						for (Socio s : listaSocs) {
-					%>
-                  
-					<tr>
-						<td><%=s.getNro_Socio()%></td>
-						<td><%=s.getDni()%></td>
-						<td><%=s.getApellido()%></td>
-						<td><%=s.getNombre()%></td>
-						<td><%=s.getTelefono()%></td>
-						<%
-							String estado = "";
-								if (s.isEstado()) {
-									estado = "Activo";
-								} else {
-									estado = "Inactivo";
-								}
-						%>
-						<td><%=estado%></td>
-
-</tr>
-					<%
-						}
-					%>
+</thead>
+<tbody id="employee_data">
+        
+        </tbody>
 			
 				</table>
 			</div>

@@ -1,32 +1,48 @@
 package data;
-import java.util.ArrayList;
+
+
+import com.google.gson.JsonObject;
+
 import java.sql.*;
 
 import util.AppDataException;
 import entity.*;
 
 
+
 public class DataSocio {
 	
-	public ArrayList<Socio> getAll() throws Exception{
+	public com.google.gson.JsonObject getAll() throws Exception{
 		Statement stmt=null;
 		ResultSet rs=null;
-		ArrayList<Socio> socs= new ArrayList<Socio>();
+//		ArrayList<Socio> socs= new ArrayList<Socio>();
+		com.google.gson.JsonObject gson = new JsonObject();
 		try {
 		 	stmt = FactoryConexion.getInstancia().getConn().createStatement();
 		 	rs = stmt.executeQuery("select * from socios s ");
 		 	if(rs!=null){
+		 		com.google.gson.JsonArray array = new com.google.gson.JsonArray();
 		 		while(rs.next()){
-		 			Socio s=new Socio();
-		 			s.setDni(rs.getString("dni"));
-		 			s.setNombre(rs.getString("nombre"));
-		 			s.setApellido(rs.getString("apellido"));
-		 			s.setNro_Socio(rs.getInt("nro_socio"));
-		 			s.setEstado(rs.getBoolean("estado"));
-		 			s.setTelefono(rs.getString("telefono"));
-		 		
-		 			socs.add(s);
+//		 			Socio s=new Socio();
+//		 			s.setDni(rs.getString("dni"));
+//		 			s.setNombre(rs.getString("nombre"));
+//		 			s.setApellido(rs.getString("apellido"));
+//		 			s.setNro_Socio(rs.getInt("nro_socio"));
+//		 			s.setEstado(rs.getBoolean("estado"));
+//		 			s.setTelefono(rs.getString("telefono"));
+//		 		
+//		 			socs.add(s);
+		 			
+		 			JsonObject item = new JsonObject();
+		 			item.addProperty("dni", String.valueOf(rs.getString("dni")));
+		 			item.addProperty("nombre", String.valueOf(rs.getString("nombre")));
+		 			item.addProperty("apellido", String.valueOf(rs.getString("apellido")));
+		 			item.addProperty("estado", String.valueOf(rs.getBoolean("estado")));
+		 			item.addProperty("nro_socio", String.valueOf(rs.getInt("nro_socio")));
+		 			item.addProperty("telefono", String.valueOf(rs.getString("telefono")));
+		 			array.add(item);
 		 						}
+		 		gson.add("datos", array);
 		 				}		
 			} catch (SQLException e) {throw e;
 			} catch (AppDataException ade){
@@ -40,7 +56,7 @@ public class DataSocio {
 					e.printStackTrace();
 		 		}
 				
-		return socs;
+		return gson;
 		}
 		 	
 		public Socio getByDni(Socio soc) throws Exception{

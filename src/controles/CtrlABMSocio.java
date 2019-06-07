@@ -52,8 +52,9 @@ public class CtrlABMSocio {
 
 	
 	
-	public ArrayList<Socio>getAll() throws Exception{
+	public com.google.gson.JsonObject getAll()  throws Exception{
 		return dataSoc.getAll();}
+	
 	
 		
 	}

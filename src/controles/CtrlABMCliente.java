@@ -45,7 +45,7 @@ public class CtrlABMCliente {
 
 	
 	
-	public ArrayList<Cliente>getAll() throws Exception{
+	public com.google.gson.JsonObject getAll() throws Exception{
 		return dataCli.getAll();}
 	
 		

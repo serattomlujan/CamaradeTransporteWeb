@@ -123,10 +123,10 @@
 	<div id="header" class="topnav">
 		<ul class="nav">
 			<li><a href="Home?accion=menu">Home</a></li>
-			<li><a href="Socio">Socios</a></li>
-			<li><a href="Cliente">Clientes</a></li>
-			<li><a href="Camion">Camiones</a></li>
-			<li><a href="Cereal">Cereales</a></li>
+			<li> <a href="Socio?accion=Ingresar">Socios</a> </li>
+		<li> <a href="Cliente?accion=Ingresar">Clientes</a> </li>
+		<li> <a href="Camion?accion=Ingresar">Camiones</a> </li>
+			<li> <a href="Cereal?accion=Ingresar">Cereales</a> </li>
 			<li><a href="#">Servicios</a>
 				<ul>
 					<li><a href="precio?accion=Ingresar"> Actualizar precios</a></li>
@@ -141,46 +141,46 @@
 	</div>
 
 	<div class="row">
+	<div class="leftcolumn">
+		<div class="card">
+			<div class="container" align="center">
+			
+              <h1 style="text-align: center">Informe de servicios</h1>
+
+
+	<div class="row">
 		<div class="leftcolumn" align="center">
-			<div class="">
+			<div >
 
-				<h1 style="text-align: center">Servicios</h1>
-
-				<div class="card">
-					<div>
-						<label>Seleccione una opcion</label> <input type="radio"
-							id="opcion1" name="opcion" value="socios"> Socios <br>
-						<input type="radio" id="opcion2" name="opcion" value="cereales">
-						Cereales <br> <input type="radio" id="opcion3" name="opcion"
-							value="camiones"> Camiones <br> <input type="radio"
-							id="opcion4" name="opcion" value="clientes"> Clientes
-					</div>
-
-
-					<label for="inputFechaDesde">FECHA DESDE:</label> <input
-						name="fecha_desde" id="inputFechaDesde" class="form-control"
-						placeholder="" type="date" style="height: 25px;" value="">
-
-					<label for="inputFechaHasta">FECHA HASTA:</label> <input
-						name="fecha_hasta" id="inputFechaHasta" class="form-control"
-						placeholder="" type="date" style="height: 25px;" value="">
-
-					<div class="row">
-						<button type="submit" class="botonGuardar" name="accion"
-							value="BuscarServicio" onclick="table()" data-toggle="tooltip"
-							data-placement="top" title="Buscar datos del Servicio">
-							<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
-							BUSCAR
-						</button>
-
-					</div>
-
-				</div>
+			<div class="row lineaForm radioRow" >
+        		<span class="radioButton"> Seleccione una opcion </span>
+         		<span class="radioButton">  <input type = "radio" id="opcion1" name = "opcion" value ="socios"> Socios </span>
+        		<span class="radioButton"> <input type = "radio" id="opcion2" name = "opcion" value ="cereales"> Cereales </span>
+       			<span class="radioButton"> <input type = "radio" id="opcion3" name = "opcion" value ="camiones"> Camiones </span>
+        		<span class="radioButton"> <input type = "radio" id="opcion4" name = "opcion" value ="clientes"> Clientes </span>
+    </div>
+							
+						<div class="row lineaForm">
+							<div class="cajaFechaInforme"> <label for="inputFechaDesde" class="sr-only">FECHA DESDE: </label> </div>
+							<div class="cajaInput">	<input name="fecha_desde" class="form-control" type="date"	readonly="readonly" value=""> </div>
+							
+							<div class="cajaFechaInforme">	<label for="inputFechaHasta" class="sr-only">FECHA HASTA: </label>	</div>
+							<div class="cajaInput">	<input name="fecha_hasta" class="form-control" type="date"	readonly="readonly" value=""> </div>
+							
+							<button type="submit" class="buscarSocio" name="accion" value="BuscarServicio" onclick="table()"
+								data-toggle="tooltip" data-placement="top" title="Buscar datos del Servicio"> BUSCAR </button>
+					  </div>
+				</div>	
+			</div>	
+	</div>
+</div>
 
 
 			</div>
 		</div>
 	</div>
+
+
 	<div class="card">
 		<table id="customers" class="display tabla" style="width: 100%">
 			<thead>
