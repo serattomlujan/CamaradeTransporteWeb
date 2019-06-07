@@ -81,7 +81,7 @@
 	
      </ul>
 	</div>
-	<form class="form-signin" id="myForm" name="abmcereal" action="Cereal?accion=Editar"
+	<form class="form-signin" id="myForm2" name="abmcereal" action="Cereal"
 						method="post">
 	<div class="row">
 		<div class="leftcolumn">
@@ -94,7 +94,7 @@
 
 
 					<div class="card" align="center" style="padding: 3px 20px;">
-						<button type="submit" name="accion" value="AgregarCereal" onclick="javascript: submitForm('Cereal')">AGREGAR
+						<button type="submit" name="accion" value="AgregarCereal" >AGREGAR
 							CEREAL</button>
 					</div>
 				
@@ -102,8 +102,9 @@
 
 		</div>
 	</div>
-
-	
+</form>
+	<form class="form-signin" id="myForm" name="abmcereal" action="Cereal?accion=Editar"
+						method="post">
 		<div class="card" style="padding: 3px 20px;">
 <!-- 		<form class="form-signin" id="myForm" name="cereal" -->
 <!-- 		action="Cereal?accion=Editar" method="post"> -->
