@@ -83,10 +83,11 @@ $(document).ready(function(){
 		<li> <a href="Cereal?accion=Ingresar">Cereales</a> </li>
 		<li> <a href="#">Servicios</a>
 					<ul>
-						<li><a href="precio?accion=Ingresar"> Actualizar precios</a></li>
 						<li><a href="Servicio?accion=ABMServicio"> Alta de Servicio</a></li>
 						<li><a href="Servicio?accion=FinalizarServicio"> Finalizar Servicio</a></li>
+						<li><a href="Servicio?accion=serviciosFinalizados"> Listado de Servicios</a></li>
 						<li><a href="Servicio?accion=informeServicio"> Informe de Servicios</a></li>
+						<li><a href="precio?accion=Ingresar"> Actualizar precios</a></li>
 					</ul>
 		
 	
@@ -102,7 +103,7 @@ $(document).ready(function(){
                 <th>Cereal</th>
                 <th>Cuit</th>
                 <th>Razon Social</th>
-                <th>id_camion</th>
+                <th>ID_CAMION</th>
                 <th>Patente</th>
                 <th>Fecha</th>
                 <th>Hora</th>

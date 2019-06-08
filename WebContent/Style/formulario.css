@@ -3,6 +3,12 @@ DOCTYPE html> <html> <head> <style>* {
 	box-sizing: border-box;
 }
 
+.textoBuscarGrilla{
+	 font-size: 16px !important;
+	 padding: 5px !important;
+}
+
+
 h1 {
 	font-size: 40px;
 	margin-top: 20px;
@@ -16,6 +22,7 @@ input[type=text], [type=password], [type=date], select, textarea {
 	border-radius: 4px;
 	resize: vertical;
 	font-size: 20px !important;
+	margin: 5px;
 }
 
 input[type=checkbox]{
@@ -83,7 +90,7 @@ input[type=submit]:hover {
 .container {
 	width: 100%;
 	border-radius: 5px;
-	background-color: #6969697a;
+	background-color: #6969694d;
 	padding: 10px;
 }
 
@@ -194,10 +201,6 @@ input[type=submit]:hover {
     border-radius: 4px !important;
 }
 
-.textoBuscarGrilla{
-	 font-size: 16px !important;
-	 padding: 5px;
-}
 
 .radioButton{
 	font-size : 20px !important;

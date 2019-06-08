@@ -71,11 +71,12 @@
 		<li> <a href="Camion?accion=Ingresar">Camiones</a> </li>
 		<li> <a href="Cereal?accion=Ingresar">Cereales</a> </li>
 		<li> <a href="#">Servicios</a>
-					<ul>
-						<li><a href="precio?accion=Ingresar"> Actualizar precios</a></li>
+				<ul>
 						<li><a href="Servicio?accion=ABMServicio"> Alta de Servicio</a></li>
 						<li><a href="Servicio?accion=FinalizarServicio"> Finalizar Servicio</a></li>
+						<li><a href="Servicio?accion=serviciosFinalizados"> Listado de Servicios</a></li>
 						<li><a href="Servicio?accion=informeServicio"> Informe de Servicios</a></li>
+						<li><a href="precio?accion=Ingresar"> Actualizar precios</a></li>
 					</ul>
 		
 	
@@ -111,9 +112,9 @@
 			<table id="customers" align="center" class="tabla">
 				<thead>
 					<tr>
-						<th style="width: 20%">ID CEREAL</th>
-						<th style="width: 50%">DESCRIPCION</th>
-						<th style="width: 30%">ACCION</th>
+						<th>ID CEREAL</th>
+						<th>DESCRIPCION</th>
+						<th>ACCION</th>
 					</tr>
 
 				</thead>
