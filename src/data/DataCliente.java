@@ -26,7 +26,13 @@ public class DataCliente {
 		 			item.addProperty("razon_social", String.valueOf(rs.getString("razon_social")));
 		 			item.addProperty("direccion", String.valueOf(rs.getString("direccion")));
 		 			item.addProperty("telefono", String.valueOf(rs.getString("telefono")));
-		 			item.addProperty("estado", String.valueOf(rs.getBoolean("estado")));
+//		 			item.addProperty("estado", String.valueOf(rs.getBoolean("estado")));
+		 			if(rs.getBoolean("estado")){
+		 				item.addProperty("estado", "Disponible");
+		 			}
+		 			else {
+		 				item.addProperty("estado", "No Disponible");
+		 			}
 		 			array.add(item);	
 		 		}
 		 		gson.add("datos", array);

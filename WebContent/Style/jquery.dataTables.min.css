@@ -326,7 +326,11 @@ table.dataTable, table.dataTable th, table.dataTable td {
 	zoom: 1
 }
 
-.dataTables_wrapper .dataTables_length {
+.dataTables_length {
+	    display: none !important;
+	    }
+
+.dataTables_wrapper {
 	float: left
 }
 

@@ -37,7 +37,13 @@ public class DataSocio {
 		 			item.addProperty("dni", String.valueOf(rs.getString("dni")));
 		 			item.addProperty("nombre", String.valueOf(rs.getString("nombre")));
 		 			item.addProperty("apellido", String.valueOf(rs.getString("apellido")));
-		 			item.addProperty("estado", String.valueOf(rs.getBoolean("estado")));
+//		 			item.addProperty("estado", String.valueOf(rs.getBoolean("estado")));
+		 			if(rs.getBoolean("estado")){
+		 				item.addProperty("estado", "Disponible");
+		 			}
+		 			else {
+		 				item.addProperty("estado", "No Disponible");
+		 			}
 		 			item.addProperty("nro_socio", String.valueOf(rs.getInt("nro_socio")));
 		 			item.addProperty("telefono", String.valueOf(rs.getString("telefono")));
 		 			array.add(item);

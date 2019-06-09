@@ -129,14 +129,12 @@
 			<li> <a href="Cereal?accion=Ingresar">Cereales</a> </li>
 			<li><a href="#">Servicios</a>
 				<ul>
-					<li><a href="precio?accion=Ingresar"> Actualizar precios</a></li>
-					<li><a href="Servicio?accion=ABMServicio"> Alta de
-							Servicio</a></li>
-					<li><a href="Servicio?accion=FinalizarServicio"> Finalizar
-							Servicio</a></li>
-					<li><a href="Servicio?accion=informeServicio"> Informe de
-							Servicios</a></li>
-				</ul>
+						<li><a href="Servicio?accion=ABMServicio"> Alta de Servicio</a></li>
+						<li><a href="Servicio?accion=FinalizarServicio"> Finalizar Servicio</a></li>
+						<li><a href="Servicio?accion=serviciosFinalizados"> Listado de Servicios</a></li>
+						<li><a href="Servicio?accion=informeServicio"> Informe de Servicios</a></li>
+						<li><a href="precio?accion=Ingresar"> Actualizar precios</a></li>
+					</ul>
 		</ul>
 	</div>
 <!-- <form class="form-signin" id="myForm" name="servicio" action="" -->
@@ -144,7 +142,7 @@
 	<div class="row">
 	<div class="leftcolumn">
 		<div class="card">
-			<div class="container" align="center">
+			<div class="container" align="center" style="padding-bottom: 60px;" >
 			
               <h1 style="text-align: center">Informe de servicios</h1>
 

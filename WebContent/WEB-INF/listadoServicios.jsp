@@ -31,7 +31,7 @@
 											var title = $(this).text();
 											$(this)
 													.html(
-															'<input style="font-size: 16px; width: 93%; margin: -4px" type="text" class="textoBuscarGrilla" placeholder="Buscar '+title+'" />');
+															'<input style="font-size: 16px !important; width: 93%; margin: -4px" type="text" class="textoBuscarGrilla" placeholder="Buscar '+title+'" />');
 
 											$('input', this)
 													.on(
@@ -116,10 +116,11 @@
 		<li> <a href="Cereal?accion=Ingresar">Cereales</a> </li>
 		<li> <a href="#">Servicios</a>
 					<ul>
-						<li><a href="precio?accion=Ingresar"> Actualizar precios</a></li>
 						<li><a href="Servicio?accion=ABMServicio"> Alta de Servicio</a></li>
 						<li><a href="Servicio?accion=FinalizarServicio"> Finalizar Servicio</a></li>
+						<li><a href="Servicio?accion=serviciosFinalizados"> Listado de Servicios</a></li>
 						<li><a href="Servicio?accion=informeServicio"> Informe de Servicios</a></li>
+						<li><a href="precio?accion=Ingresar"> Actualizar precios</a></li>
 					</ul>
 		
 	
@@ -129,7 +130,7 @@
 
 
 	<div class="card">
-		<table id="customers" class="display tabla" style="width: 100%">
+		<table id="customers" class="display" style="width: 100%">
 			<thead>
 				<tr>
 					<th>ID Servicio</th>
@@ -147,24 +148,24 @@
 				</tr>
 
 			</thead>
-			<tbody>
+			 <tbody id="employee_data">
 
 			</tbody>
 			<tfoot>
-				<tr style="visibility: hidden">
-					<th>ID Servicio</th>
-					<th>Cereal</th>
-					<th>Cuit</th>
-					<th>Razon Social</th>
-					<th>ID Camion</th>
-					<th>Patente</th>
-					<th>Fecha</th>
-					<th>Hora</th>
-					<th>Toneladas</th>
-					<th>KM</th>
-					<th>Precio Servicio</th>
+<!-- 				<tr style="visibility: hidden"> -->
+<!-- 					<th>ID Servicio</th> -->
+<!-- 					<th>Cereal</th> -->
+<!-- 					<th>Cuit</th> -->
+<!-- 					<th>Razon Social</th> -->
+<!-- 					<th>ID Camion</th> -->
+<!-- 					<th>Patente</th> -->
+<!-- 					<th>Fecha</th> -->
+<!-- 					<th>Hora</th> -->
+<!-- 					<th>Toneladas</th> -->
+<!-- 					<th>KM</th> -->
+<!-- 					<th>Precio Servicio</th> -->
 
-				</tr>
+<!-- 				</tr> -->
 
 
 			</tfoot>
