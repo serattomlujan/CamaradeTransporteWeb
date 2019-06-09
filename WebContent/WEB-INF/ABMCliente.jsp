@@ -20,7 +20,7 @@
 <script type="text/javascript">
 	function alerta() {
  		window.onload = alert('Se ha registrado con exito');
- 		location.assign('Cliente');
+ 		location.assign('Cliente?accion=Ingresar');
 	}
 </script>
 

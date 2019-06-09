@@ -110,7 +110,7 @@ public class PrecioServlet extends HttpServlet {
 			String actualizado;
 			CtrlABMPrecio_km ctrl = new CtrlABMPrecio_km();
 			ctrl.delete();
-			PrecioKM p = new PrecioKM();
+			PrecioKM p= new PrecioKM();
 //			FileInputStream file = new FileInputStream(new File("C:/Users/julie/Precios.xlsx"));
 			FileInputStream file = new FileInputStream(new File("C:/Users/palos/OneDrive/Precios.xlsx"));
 		

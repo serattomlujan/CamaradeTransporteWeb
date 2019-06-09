@@ -31,12 +31,12 @@ public class DataPrecio_km {
 			stmt = FactoryConexion.getInstancia().getConn().prepareStatement("delete from precio_km");
 			stmt.execute();
 		} catch (SQLException e) {
-			AppDataException ade = new AppDataException(e,
-					"Error al eliminar persona.\n" + e.getSQLState() + ":" + e.getMessage(), Level.WARN);
-			throw ade;
-		} catch (AppDataException ade) {
-			throw ade;
-		}
+//			AppDataException ade = new AppDataException(e,
+//					"Error al eliminar persona.\n" + e.getSQLState() + ":" + e.getMessage(), Level.WARN);
+			throw e;}
+//		} catch (AppDataException ade) {
+//			throw ade;
+//		}
 
 	}
 

@@ -102,8 +102,6 @@ public class ServicioServlet extends HttpServlet {
 		Date fecha_desde = Date.valueOf(request.getParameter("fecha_desde"));
 		Date fecha_hasta = Date.valueOf(request.getParameter("fecha_hasta"));
 		String opcion = request.getParameter("opcion");
-		Servicio s=new Servicio();
-s.setIdservicio(1);
 		com.google.gson.JsonObject gson = new JsonObject();
 		try {
 			switch (opcion) {

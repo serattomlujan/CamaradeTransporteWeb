@@ -21,7 +21,7 @@
 <script type="text/javascript">
 	function alerta() {
 		window.onload = alert('Se ha registrado con exito')
-		location.assign('Socio');
+		location.assign('Socio?accion=Ingresar');
 	}
 </script>
 <script>

@@ -87,18 +87,16 @@ bFilter:false,
 		<div class="leftcolumn" align="center">
 			<div class="buscadorDiv">
 				<h1 style="text-align: center">Camiones</h1>
-				<form class="form-signin" id="myForm" name="camion" action=""
+				<form class="form-signin" id="myForm" name="camion" action="Camion"
 					method="post">
 					<div class="card">
 						<label for="inputpatente" class="sr-only">PATENTE</label> <input
 							name="patente" id="inputpatente" class="form-control buscador"
 							placeholder="" required="" autofocus="" type="text"
 							<% if (patente!=null) {%> value=<%=patente %> <%} %>>
-						<button type="submit" name="accion" value="Buscar"
-							onclick="javascript: submitForm('Camion')">BUSCAR</button>
+						<button type="submit" name="accion" value="Buscar">BUSCAR</button>
 						<% if (patente!=null) {%>
-						<button type="submit" name="accion" value="Agregar"
-							onclick="javascript: submitForm('Camion')">AGREGAR
+						<button type="submit" name="accion" value="Agregar">AGREGAR
 							CAMION</button>
 						<%} %>
 					</div>

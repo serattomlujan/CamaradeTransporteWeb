@@ -226,7 +226,7 @@
 						<div class="cajaNumerica">
 							<input name="camion" id="inputCamion" class="form-control"
 								placeholder="" autofocus="" type="text" value=<%=id_camion%>>
-								
+								<label id="macMsgError" style="color: red;"></label>
 						</div>
 						<button type="submit" name="accion"
 								value="AsignarCamion" class="buscarSocio"> ASIGNAR CAMION </button>
@@ -283,7 +283,7 @@
 						
 
 					<div align="center">
-						<button type="submit" name="accion" value="Guardar" class="botonGuardar" > GUARDAR </button>
+						<button type="submit" name="accion" value="Guardar" class="botonGuardar" onclick="validarCampos()" > GUARDAR </button>
 					</div>
 
 				</form>
@@ -326,6 +326,54 @@
  }
 
 </script>
+ <script type="text/javascript">
+        function validarCampos() {
+            var mac = $("#inputCamion").val();
+            var valido = true;
+
+            //VALIDACION MAC
+            if (mac === "" || mac === "0") {
+                $("#macMsgError").html("Este campo no puede estar vac&iacute;o ni ser cero");
+                valido = false;
+            } else if (isNaN(mac)) {
+                $("#macMsgError").html("El campo debe ser un valor num&eacute;rico");
+                valido = false;
+            } else {
+                $("#macMsgError").html("");
+            }
+
+   
+
+            return valido;
+        }
+    </script>
+
+    <script type="text/javascript">
+        function actualizarMaquina(idSala) {
+            if (validarCampos()) {
+                var maquinaForm = $("#maquinaForm").serialize();
+                var idMaquina = $("#idMaquina").val();
+                $.blockUI({message: '<h1>Guardando valores...</h1>'});
+                $.ajax({
+                    type: "POST",
+                    url: "${pageContext.request.contextPath}/configuracion/maquinas/guardarMaquina?idSala=" + idSala + "&idMaquina=" + idMaquina,
+                    data: maquinaForm,
+                    success: function (e) {
+                        $('#modalDetalleMaquina').modal('hide');
+                        window.location.reload();
+                        return true;
+                    },
+                    error: function (e) {
+                        alert("Ocurrio un error al guardar la maquina. Por favor verifique los campos y vuelva a intentarlo");
+                        $.unblockUI();
+                        return false;
+                    }
+                });
+            } else {
+                return false;
+            }
+        }
+    </script>
 
 </body>
 </html>

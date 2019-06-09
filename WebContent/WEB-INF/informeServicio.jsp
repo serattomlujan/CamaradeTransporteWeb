@@ -139,7 +139,8 @@
 				</ul>
 		</ul>
 	</div>
-
+<!-- <form class="form-signin" id="myForm" name="servicio" action="" -->
+<!-- 					method="post">	 -->
 	<div class="row">
 	<div class="leftcolumn">
 		<div class="card">
@@ -159,16 +160,16 @@
        			<span class="radioButton"> <input type = "radio" id="opcion3" name = "opcion" value ="camiones"> Camiones </span>
         		<span class="radioButton"> <input type = "radio" id="opcion4" name = "opcion" value ="clientes"> Clientes </span>
     </div>
-							
+						
 						<div class="row lineaForm">
 							<div class="cajaFechaInforme"> <label for="inputFechaDesde" class="sr-only">FECHA DESDE: </label> </div>
-							<div class="cajaInput">	<input name="fecha_desde" class="form-control" type="date"	readonly="readonly" value=""> </div>
+							<div class="cajaInput">	<input name="fecha_desde" id="inputFechaDesde" class="form-control" type="date"	value=""> </div>
 							
 							<div class="cajaFechaInforme">	<label for="inputFechaHasta" class="sr-only">FECHA HASTA: </label>	</div>
-							<div class="cajaInput">	<input name="fecha_hasta" class="form-control" type="date"	readonly="readonly" value=""> </div>
+							<div class="cajaInput">	<input name="fecha_hasta" id="inputFechaHasta" class="form-control" type="date"	 value=""> </div>
 							
-							<button type="submit" class="buscarSocio" name="accion" value="BuscarServicio" onclick="table()"
-								data-toggle="tooltip" data-placement="top" title="Buscar datos del Servicio"> BUSCAR </button>
+							<button type="submit" class="buscarSocio" name="accion" value="BuscarServicio"
+								data-toggle="tooltip" data-placement="top" title="Buscar datos del Servicio" onclick="table()"> BUSCAR </button>
 					  </div>
 				</div>	
 			</div>	
@@ -179,7 +180,7 @@
 			</div>
 		</div>
 	</div>
-
+<!-- </form> -->
 
 	<div class="card">
 		<table id="customers" class="display tabla" style="width: 100%">

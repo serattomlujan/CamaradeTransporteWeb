@@ -88,7 +88,7 @@ bFilter:false,
 
 				<h1 style="text-align: center">Socios</h1>
 
-				<form class="form-signin" id="myForm" name="socio" action=""
+				<form class="form-signin" id="myForm" name="socio" action="Socio"
 					method="post">
 					<div class="card">
 						<label for="inputdni" class="sr-only">DNI</label> 
@@ -96,15 +96,13 @@ bFilter:false,
 									placeholder="" required="" autofocus="" type="text"
 									<%if (dni != null) {%> value=<%=dni%> <%}%>>
 						
-							<button type="submit" name="accion" value="Buscar"
-							onclick="javascript: submitForm('Socio')">
+							<button type="submit" name="accion" value="Buscar">
 							<i class="fas fa-search"></i> BUSCAR
 						</button>
 							<%
 								if (dni != null) {
 							%>
-							<button type="submit" name="accion" value="Agregar Socio"
-							onclick="javascript: submitForm('Socio')">AGREGAR SOCIO</button>
+							<button type="submit" name="accion" value="Agregar Socio">AGREGAR SOCIO</button>
 							<%
 								}
 							%>

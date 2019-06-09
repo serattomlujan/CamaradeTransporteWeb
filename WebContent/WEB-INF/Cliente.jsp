@@ -85,20 +85,18 @@ bFilter:false,
 
 				<h1 style="text-align: center">Clientes</h1>
 
-				<form class="form-signin" id="myForm" name="cliente" action=""
+				<form class="form-signin" id="myForm" name="cliente" action="Cliente"
 					method="post">
 					<div class="card">
 						<label for="inputcuit" class="sr-only">CUIT</label> <input
 							name="cuit" id="inputcuit" class="form-control buscador"
 							placeholder="" required="" autofocus="" type="text"
 							<%if (cuit != null) {%> value=<%=cuit%> <%}%>>
-						<button type="submit" name="accion" value="Buscar"
-							onclick="javascript: submitForm('Cliente')">BUSCAR</button>
+						<button type="submit" name="accion" value="Buscar">BUSCAR</button>
 						<%
 							if (cuit != null) {
 						%>
-						<button type="submit" name="accion" value="Agregar Cliente"
-							onclick="javascript: submitForm('Cliente?accion=Agregar Cliente')">AGREGAR
+						<button type="submit" name="accion" value="Agregar Cliente">AGREGAR
 							CLIENTE</button>
 						<%
 							}
