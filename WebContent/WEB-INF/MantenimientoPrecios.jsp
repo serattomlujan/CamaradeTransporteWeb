@@ -12,6 +12,7 @@
 <link href="Style/tabla.css" rel="stylesheet">
 <link href="Style/Layout.css" rel="stylesheet">
 <link href="Style/formulario.css" rel="stylesheet">
+
 <script type="text/javascript">
 	function submitForm(met) {
 		document.myForm.action = met;
@@ -37,6 +38,7 @@
 		}
 	%>
 	<div class="header">
+	<div class="loader"></div>
 		<div class="header" style="background: white;">
 			<div>
 				<img src="Style/Encabezado.png" width="60%">

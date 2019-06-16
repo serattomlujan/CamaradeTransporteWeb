@@ -94,7 +94,7 @@
 							</div>
 							<div class="cajaNumericaCuit">
 								<input name="cuit" class="form-control" type="text"
-									readonly="readonly" value=<%=cuit%>>
+									readonly="readonly" value="<%=cuit%>">
 							</div>
 
 							<div class="cajaLabel">
@@ -104,7 +104,7 @@
 							<div class="cajaInput">
 								<input name="razon_social" id="inputrazonsocial"
 									class="form-control" placeholder="" required="" autofocus=""
-									type="text" value=<%=razon_social%>>
+									type="text" value="<%=razon_social%>">
 							</div>
 						</div>
 						<div class="row">
@@ -114,7 +114,7 @@
 							<div class="cajaInput">
 								<input name="direccion" id="inputdireccion" class="form-control"
 									placeholder="" required="" autofocus="" type="text"
-									value=<%=direccion%>>
+									value="<%=direccion%>">
 							</div>
 
 							<div class="cajaLabel">
@@ -123,7 +123,7 @@
 							<div class="cajaInput">
 								<input name="telefono" id="inputemail" class="form-control"
 									placeholder="" required="" autofocus="" type="text"
-									value=<%=telefono%>>
+									value="<%=telefono%>">
 							</div>
 						</div>
 
