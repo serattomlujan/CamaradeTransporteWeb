@@ -5,9 +5,11 @@
 <%@page import="entity.Cereal"%>
 <%@page import="controles.CtrlABMCereal"%>
 <%@page import="controles.CtrlABMPrecio_km"%>
-<%@page import="java.sql.Date"%>
+<%-- <%@page import="java.sql.Date"%> --%>
 <%@page import="java.sql.Time"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -206,7 +208,10 @@
 				</ul>
 		</ul>
 	</div>
-	<%
+	<%java.util.Date fechaAct = new Date();
+	 SimpleDateFormat objSDF = new SimpleDateFormat("yyyy-MM-dd"); 
+	 String fechaAc=objSDF.format(fechaAct);
+
 		Servicio encontrada = null;
 		String id_servicio = "";
 		String cuit = "";
@@ -263,7 +268,6 @@
 						<h2 class="form-signin-heading encabezadoContainer">Datos de
 							alta Servicio</h2>
 
-
 						<div class="row lineaForm">
 
 							<%
@@ -275,7 +279,7 @@
 							<div class="cajaNumerica">
 								<input name="id_servicio" id="inputIdServicio"
 									class="form-control" type="text" readonly="readonly"
-									value=<%=id_servicio%>>
+									value="<%=id_servicio%>">
 							</div>
 
 							<%
@@ -305,7 +309,7 @@
 
 								<input name="cuit" id="inputCuit" class="form-control"
 									required="" placeholder="" autofocus="" type="text"
-									value=<%=cuit%>> <label id="cuitMsgError"
+									value="<%=cuit%>"> <label id="cuitMsgError"
 									style="color: red;"></label>
 							</div>
 							<button type="submit" name="accion" id="buscar" value="Buscar"
@@ -318,7 +322,7 @@
 							<div class="cajaInput">
 								<input style="background: #e9e9e9;" name="razon_social"
 									id="inputRazonSocial" class="form-control" type="text"
-									readonly="readonly" value=<%=razon_social%>> <label
+									readonly="readonly" value="<%=razon_social%>"> <label
 									id="razSocMsgError" style="color: red;"></label>
 							</div>
 						</div>
@@ -354,7 +358,7 @@
 							<div class="cajaInput">
 								<input name="fecha_servicio" id="inputFechaServicio"
 									class="form-control" placeholder="" type="date"
-									style="height: 25px;" value=<%=fecha_servicio%>> <label
+									style="height: 25px;" min="<%=fechaAc%>" value="<%=fecha_servicio%>"> <label
 									id="fechaMsgError" style="color: red;"></label>
 							</div>
 
@@ -365,7 +369,7 @@
 								<input name="hora_servicio" id="inputHoraServicio"
 									class="form-control cajaHora" placeholder="" type="time"
 									style="font-size: 20px; height: 35px; border-radius: 4px; margin-top: 6px;"
-									value=<%=hora_servicio%>> <label id="horaMsgError"
+									value="<%=hora_servicio%>"> <label id="horaMsgError"
 									style="color: red;"></label>
 							</div>
 						</div>
@@ -380,7 +384,7 @@
 							<div class="cajaNumerica">
 								<input name="camion" id="inputCamion" class="form-control"
 									placeholder="" autofocus="" readonly="readonly" type="text"
-									value=<%=id_camion%>> <label id="idCamMsgError"
+									value="<%=id_camion%>"> <label id="idCamMsgError"
 									style="color: red;"></label>
 							</div>
 							<button type="submit" name="accion" id="asignar"
@@ -393,7 +397,7 @@
 							<div class="cajaNumerica">
 								<input name="patente" id="inputPatente" class="form-control"
 									placeholder="" autofocus="" readonly="readonly" type="text"
-									value=<%=patente%>> <label id="patMsgError"
+									value="<%=patente%>"> <label id="patMsgError"
 									style="color: red;"></label>
 							</div>
 						</div>
@@ -428,7 +432,7 @@
 							<div class="cajaNumerica">
 								<input name="total" id="inputTotal" class="form-control"
 									placeholder="" type="text" readonly="readonly"
-									value=<%=precio_servicio%>> <label id="totalMsgError"
+									value="<%=precio_servicio%>"> <label id="totalMsgError"
 									style="color: red;"></label>
 							</div>
 
@@ -440,7 +444,7 @@
 							<div class="col-75">
 								<input name="observacion" id="inputObservacion"
 									class="form-control" placeholder="" type="text"
-									value=<%=observacion%>>
+									value="<%=observacion%>">
 							</div>
 						</div>
 						<%
