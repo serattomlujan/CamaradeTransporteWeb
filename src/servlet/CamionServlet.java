@@ -116,6 +116,7 @@ public class CamionServlet extends HttpServlet {
 				c.getSocio().setApellido(s.getApellido());
 				c.getSocio().setNombre(s.getNombre());
 				c.getSocio().setNro_Socio(s.getNro_Socio());
+				c.setEstado(true);
 				
 			}
 			else if(s==null & c!=null){
@@ -123,7 +124,7 @@ public class CamionServlet extends HttpServlet {
 				c.getSocio().setDni("");
 				c.getSocio().setApellido("");
 				c.getSocio().setNombre("");
-				c.getSocio().setNro_Socio(0);
+				c.getSocio().setDni("0");
 				
 			}
 			else{
@@ -133,8 +134,8 @@ public class CamionServlet extends HttpServlet {
 				c.getSocio().setDni("");
 				c.getSocio().setApellido("");
 				c.getSocio().setNombre("");
-				c.getSocio().setNro_Socio(0);
-				
+				c.getSocio().setDni("0");
+				c.setEstado(true);
 			}
 			request.setAttribute("encontrada", c);
 			request.getRequestDispatcher("/WEB-INF/ABMCamion.jsp").forward(request, response);
@@ -185,6 +186,7 @@ public class CamionServlet extends HttpServlet {
 		System.out.println("entro aAgregar");
 		Camion cam=new Camion();
 		cam.setSocio(new Socio());
+		cam.getSocio().setDni("");
 		cam.setIdcamion(0);
 		cam.setPatente(patente);
 		cam.setMarca("");

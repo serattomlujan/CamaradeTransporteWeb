@@ -293,7 +293,7 @@ public class ServicioServlet extends HttpServlet {
 			c.setCuit(request.getParameter("cuit"));
 			c = ctrl.getByCuit(c);
 			if (c == null) {
-				s.getCliente().setCuit(null);
+				s.getCliente().setCuit("0");
 				s.getCliente().setRazon_social("");
 			} else {
 				s.getCliente().setCuit(c.getCuit());

@@ -104,6 +104,7 @@ public class SocioServlet extends HttpServlet {
 		soc.setApellido("");
 		soc.setNombre("");
 		soc.setTelefono("");
+		soc.setEstado(true);
 		request.setAttribute("encontrada", soc);
 		request.getRequestDispatcher("/WEB-INF/ABMSocio.jsp").forward(request, response);
 	}

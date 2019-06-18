@@ -36,13 +36,12 @@ bFilter:false,
 				dataSrc: "datos"
 			},
 			columns: [
-				
-				{"data": "dni"},
-				{"data": "nombre"},
-				{"data": "apellido"},
-				{"data": "estado"},
 				{"data": "nro_socio"},
-				{"data": "telefono"}
+				{"data": "dni"},
+				{"data": "apellido"},
+				{"data": "nombre"},
+				{"data": "telefono"},
+				{"data": "estado"}
 				]
 	});
 			

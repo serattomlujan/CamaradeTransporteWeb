@@ -96,6 +96,7 @@ public class ClienteServlet extends HttpServlet {
 		cli.setRazon_social("");
 		cli.setDireccion("");
 		cli.setTelefono("");
+		cli.setEstado(true);
 		request.setAttribute("encontrada", cli);
 		request.getRequestDispatcher("/WEB-INF/ABMCliente.jsp").forward(request, response);
 	}

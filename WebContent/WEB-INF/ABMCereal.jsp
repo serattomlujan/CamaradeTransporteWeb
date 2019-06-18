@@ -90,7 +90,7 @@
 							<div class="cajaNumerica">
 								<input name="id_cereal" id="inputId_cereal" class="form-control"
 									placeholder="" readonly="readonly" autofocus="" type="text"
-									value=<%=id_cereal%>>
+									value="<%=id_cereal%>">
 							</div>
 							<%} %>
 						
@@ -102,7 +102,7 @@
 							<div class="cajaInput">
 								<input name="descripcion" id="inputDescripcion"
 									class="form-control" placeholder="" required="" autofocus=""
-									type="text" value=<%=descripcion%>>
+									type="text" value="<%=descripcion%>">
 							</div>
 						</div>
 

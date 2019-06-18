@@ -105,7 +105,7 @@
 						</div>
 						<div class="cajaNumerica">
 							<input name="id_camion" id="inputIdCamion" class="form-control"
-								type="text" readonly="readonly" value=<%=id_camion%>>
+								type="text" readonly="readonly" value="<%=id_camion%>">
 						</div>
 					</div>
 							<%} %>
@@ -121,13 +121,11 @@
 						<div class="cajaNumerica">
 
 							<input name="dni" id="inputDni" class="form-control" required=""
-								placeholder="" autofocus="" type="text" 
-								<%if (dni == null) {%> value="" <%} 
-								else {%> value=<%=dni%> <%}%>>
+								placeholder="" autofocus="" type="text" value="<%=dni%>">
 							
 						</div>
 						<button type="submit" name="accion" value="BuscarSocio" class="buscarSocio"
-								onclick="javascript: submitForm('Camion')"> BUCAR SOCIO </button>
+								onclick="javascript: submitForm('Camion')"> BUSCAR SOCIO </button>
 
 						<div class="cajaLabel">
 							<label for="inputNroSocio"> NRO. SOCIO:</label>
@@ -137,11 +135,11 @@
 								id="inputNroSocio" class="form-control" type="text"
 								readonly="readonly"  
 								<%if (nro_socio ==  -1)  {%> value="" <%} 
-								else {%> value=<%=nro_socio%> <%}%> >
+								else {%> value="<%=nro_socio%>" <%}%> >
 						</div>
 					</div>
 					<div class="row lineaForm">
-					<%if(nro_socio == 0) {%>
+					<%if(dni == "0") {%>
 					<p style="color: #FF0000; margin-top: 0px">
 					No existe socio registrado para el dni ingresado </p>
 							<%} %>
@@ -156,7 +154,7 @@
 								id="inputApellido" class="form-control" type="text"
 								readonly="readonly"
 								<%if (apellido == null) {%> value="" <%} 
-								else {%> value=<%=apellido%> <%}%> >
+								else {%> value="<%=apellido%>" <%}%> >
 						</div>
 					
 						<div class="cajaLabel">
@@ -167,7 +165,7 @@
 								id="inputNombre" class="form-control" type="text"
 								readonly="readonly" 
 								<%if (nombre == null) {%> value="" <%} 
-								else {%> value=<%=nombre%> <%}%>>
+								else {%> value="<%=nombre%>" <%}%>>
 						</div>
 					</div>
 					<p> <strong> Datos del Camion </strong> </p>
@@ -181,7 +179,7 @@
 							<input name="patente" id="inputPatente" class="form-control"
 								placeholder="" autofocus="" type="text" 
 								<%if (patente==null) {%> value="" <%} 
-								else {%> value=<%=patente%> <%}%>
+								else {%> value="<%=patente%>" <%}%>
 								>
 						</div>
 						
@@ -204,7 +202,7 @@
 							<input name="marca" id="inputMarca" class="form-control"
 								placeholder="" autofocus="" type="text" 
 								<%if (marca==null) {%> value="" <%} 
-								else {%> value=<%=marca%> <%}%>
+								else {%> value="<%=marca%>" <%}%>
 								>
 						</div>
 						
@@ -215,7 +213,7 @@
 							<input name="modelo" id="inputeModelo" class="form-control"
 								placeholder="" autofocus="" type="text"
 							<%if (modelo==null) {%> value="" <%} 
-								else {%> value=<%=modelo%> <%}%>
+								else {%> value="<%=modelo%> "<%}%>
 								>
 						</div>
 
@@ -225,7 +223,7 @@
 						<div class="cajaInput">
 							<input name="fecha_ingreso" id="inputFechaIngreso"
 								class="form-control" placeholder="" type="date"
-								value=<%=fecha_ingreso%>>
+								value="<%=fecha_ingreso%>">
 						</div>
 					</div>
 					

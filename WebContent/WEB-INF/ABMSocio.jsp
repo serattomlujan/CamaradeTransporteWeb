@@ -129,7 +129,7 @@
 							<div class="cajaNumerica">
 								<input name="dni" id="inputdni" class="form-control"
 									placeholder="" required="" autofocus="" type="text"
-									readonly="readonly" value=<%=dni%>>
+									readonly="readonly" value="<%=dni%>">
 							</div>
 							
 						<% if((nro_socio.equals("0")) == false) {%>
@@ -138,7 +138,7 @@
 							</div>
 							<div class="cajaNumerica">
 								<input name="nro_socio" class="form-control" type="text"
-									readonly="readonly" id="inputNroSocio"  value=<%=nro_socio%>>
+									readonly="readonly" id="inputNroSocio"  value="<%=nro_socio%>">
 										
 							</div>
 							<%} %>
@@ -150,7 +150,7 @@
 							<div class="cajaInput">
 								<input name="nombre" id="inputnombre" class="form-control"
 									placeholder="" required="" autofocus="" type="text"
-									value=<%=nombre%>>
+									value="<%=nombre%>">
 							</div>
 
 							<div class="cajaLabel">
@@ -159,7 +159,7 @@
 							<div class="cajaInput">
 								<input name="apellido" id="inputapellido" class="form-control"
 									placeholder="" required="" autofocus="" type="text"
-									value=<%=apellido%>>
+									value="<%=apellido%>">
 							</div>
 						</div>
 						<div class="row lineaForm">
@@ -169,7 +169,7 @@
 							<div class="cajaInput">
 								<input name="telefono" id="inputemail" class="form-control"
 									placeholder="" required="" autofocus="" type="text"
-									value=<%=telefono%>>
+									value="<%=telefono%>">
 							</div>
 
 							<div class="cajaLabel">

@@ -76,7 +76,7 @@ public class Home extends HttpServlet {
 				e.printStackTrace();
 			}
 			if (a != null) {
-				Emailer.getInstance().send("julietachaparro94@gmail.com", "restaurar cuenta", a.getContraseña());
+				Emailer.getInstance().send("julietachaparro94@gmail.com", "restaurar cuenta", "Su contraseña es: "+a.getContraseña());
 				
 			}
 		} else {
