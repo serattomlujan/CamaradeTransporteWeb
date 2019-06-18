@@ -106,7 +106,7 @@
 </form>
 	<form class="form-signin" id="myForm" name="abmcereal" action="Cereal?accion=Editar"
 						method="post">
-		<div class="card" style="padding: 3px 20px;">
+		<div class="card" style="padding: 3px 327px;">
 <!-- 		<form class="form-signin" id="myForm" name="cereal" -->
 <!-- 		action="Cereal?accion=Editar" method="post"> -->
 			<table id="customers" align="center" class="tabla">

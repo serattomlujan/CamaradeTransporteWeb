@@ -161,11 +161,7 @@
 							<label for="inputDni">CUIT:</label>
 						</div>
 						<div class="cajaNumerica">
-							<% if (cuit == null) { %>
-							<p style="color: #FF0000; margin-top: 0px">No existe
-								cliente registrado para el cuit ingresado</p>
-							<%}%>
-							
+												
 							<input name="cuit" id="inputCuit" class="form-control"
 								required="" placeholder="" autofocus="" type="text"
 								value=<%=cuit%>> 
@@ -183,6 +179,13 @@
 								readonly="readonly" value=<%=razon_social%>>
 						</div>
 					</div>
+					<div class="row">
+					<% if (cuit == null) { %>
+							<p style="color: #FF0000; margin-top: 0px; margin-left: 45px;">No existe
+								cliente registrado para el cuit ingresado</p>
+							<% } %>
+					</div>
+							
 					<div class="row lineaForm">
      <div class="cajaLabel">
      <label for="inputCereal" class="sr-only">CEREAL:</label></div>
@@ -231,7 +234,7 @@
 								<label id="macMsgError" style="color: red;"></label>
 						</div>
 						<button type="submit" name="accion"
-								value="AsignarCamion" class="buscarSocio"> ASIGNAR CAMION </button>
+								value="AsignarCamion" class="buscarSocio" style="height: 49px;" > ASIGNAR CAMION </button>
 					
 						<div class="cajaLabel">
 							<label for="inputPatente">PATENTE:</label>

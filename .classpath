@@ -10,15 +10,17 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
-	<classpathentry kind="lib" path="C:/Users/julie/Downloads/poi-bin-4.1.0-20190412/poi-4.1.0/poi-4.1.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/julie/Downloads/poi-bin-4.1.0-20190412/poi-4.1.0/lib/commons-collections4-4.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/julie/Downloads/poi-bin-4.1.0-20190412/poi-4.1.0/lib/commons-compress-1.18.jar"/>
-	<classpathentry kind="lib" path="C:/Users/julie/Downloads/commons-fileupload-1.4-bin/commons-fileupload-1.4-bin/commons-fileupload-1.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/julie/Downloads/gson-2.8.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/julie/Downloads/descargas/apache-log4j-2.10.0-bin/apache-log4j-2.10.0-bin/log4j-1.2-api-2.10.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/julie/Downloads/descargas/apache-log4j-2.10.0-bin/apache-log4j-2.10.0-bin/log4j-api-2.10.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/julie/Downloads/descargas/apache-log4j-2.10.0-bin/apache-log4j-2.10.0-bin/log4j-core-2.10.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/julie/Downloads/poi-bin-4.1.0-20190412/poi-4.1.0/poi-ooxml-4.1.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/julie/Downloads/poi-bin-4.1.0-20190412/poi-4.1.0/poi-ooxml-schemas-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/palos/UTN/HP - 2018/Librerias/commons-collections4-4.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/palos/UTN/HP - 2018/Librerias/commons-compress-1.18.jar"/>
+	<classpathentry kind="lib" path="C:/Users/palos/UTN/HP - 2018/Librerias/commons-fileupload-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/palos/UTN/HP - 2018/Librerias/commons-io-2.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/palos/UTN/HP - 2018/Librerias/gson-2.8.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/palos/UTN/HP - 2018/Librerias/log4j-1.2-api-2.9.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/palos/UTN/HP - 2018/Librerias/log4j-api-2.9.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/palos/UTN/HP - 2018/Librerias/log4j-core-2.9.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/palos/UTN/HP - 2018/Librerias/mysql-connector-java-5.1.42-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/palos/UTN/HP - 2018/Librerias/poi-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/palos/UTN/HP - 2018/Librerias/poi-excelant-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/palos/UTN/HP - 2018/Librerias/poi-ooxml-schemas-4.1.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
